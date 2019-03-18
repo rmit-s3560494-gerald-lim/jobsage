@@ -1,4 +1,5 @@
-Matt - s36202202
+s3563242-Richard Kuoch
+s3602202-Matthew Lu
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
