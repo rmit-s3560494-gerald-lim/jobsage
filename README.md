@@ -3,6 +3,9 @@ s3563242 - Richard Kuoch
 s3602202 - Matthew Lu
 
 s3560494 - Gerald Lim
+
+s3588773 - Kunga Kartung
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
