@@ -9,7 +9,7 @@ class Header extends Component {
             <h1> PPMM </h1>
           </div>
           <div class="col-4 text-right">
-            <h1> !--LOGO--! </h1>
+            <h1>Sample logo here</h1>
           </div>
         </div>
       </div>
