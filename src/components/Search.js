@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import './App.css';
 
 const { API_KEY } = process.env
+
+// dummy api url (ignore/change later on)
 const API_URL = 'http://api.musicgraph.com/api/v2/artist/suggest'
 
 class Search extends Component {
@@ -34,14 +37,15 @@ class Search extends Component {
 
   render() {
     return (
-      <form>
-        <input
-          placeholder="Search for..."
-          ref={input => this.search = input}
-          onChange={this.handleInputChange}
-        />
-        <p>{this.state.query}</p>
-      </form>
+      <div id="searchbar-box">
+        <form>
+          <input id="searchbar" class="form-control active-cyan-4 mb-4"
+            placeholder="Search"
+            ref={input => this.search = input}
+            onChange={this.handleInputChange}
+          />
+        </form>
+      </div>
     )
   }
 }
