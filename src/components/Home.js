@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Nav from './Nav';
 import Search from './Search';
 import Header from './Header';
 import './App.css';
@@ -8,7 +7,6 @@ class Home extends Component {
     render() {
         return (
             <div class="content">
-                {/* <Nav /> */}
                 <Header />
                 <Search />
                 <body>
