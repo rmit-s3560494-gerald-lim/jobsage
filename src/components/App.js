@@ -2,28 +2,18 @@ import React, { Component } from 'react';
 import logo from '../logo.svg';
 import Home from '../components/Home';
 // import './App.css';
+import { Switch, Route } from 'react-router-dom';
+import HomePage from './HomePage';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-            Creation of development branch.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header> */}
-        <Home/>
-      </div>
+      <Switch>
+        {/* <Route exact path='/' component={LoginPage} /> */}
+        <Route path='/home' component={Home} />
+        {/* <Route path='/jobs' component={JobPage} /> */}
+        {/* <Route path='/profile' component={ProfilePage} /> */}
+      </Switch>
     );
   }
 }
