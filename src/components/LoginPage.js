@@ -1,60 +1,27 @@
 import React, { Component } from "react";
+import './App.css';
 
 class LoginPage extends Component {
-/*  constructor(props) {
-    super(props);
-
-    this.state = {
-      email: "",
-      password: ""
-    };
-  }
-
-  validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0;
-  }
-
-  handleChange = event => {
-    this.setState({
-      [event.target.id]: event.target.value
-    });
-  }
-
-  handleSubmit = event => {
-    event.preventDefault();
-  }*/
 
   render() {
     return (
-        // <Form onSubmit={this.handleSubmit}>
-        //   <FormGroup controlId="email">
-        //     <FormLabel>Email</FormLabel>
-        //     <FormControl
-        //       type="email"
-        //       value=""
-        //     //  onChange={this.handleChange}
-        //     />
-        //   </FormGroup>
-        //   <FormGroup controlId="password">
-        //     <FormLabel>Password</FormLabel>
-        //     <FormControl
-        //       value=""
-        //     //  onChange={this.handleChange}
-        //       type="password"
-        //     />
-        //   </FormGroup>
-        //   <Button
-        //     block
-        //   //  bsSize="large"
-        //   //  disabled={!this.validateForm()}
-        //     type="submit"
-        //   >
-        //     Login
-        //   </Button>
-        //
-        // </Form>
+      <div class="form">
+
+      <form>
+<div class="form-group">
+  <label for="emailLabel">Email address</label>
+  <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" />
+  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+</div>
+<div class="form-group">
+  <label for="passwordLabel">Password</label>
+  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
       <a href="/signup">Don't have an account?</a>
 
+</div>
     );
   }
 }
