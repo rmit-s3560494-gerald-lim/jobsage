@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const Jobs = props => (
     <tr>
-        <td>{props.job.id}</td>
+        <td>{props.job._id}</td>
         <td>{props.job.category}</td>
         <td>{props.job.city}</td>
         <td>{props.job.company_name}</td>

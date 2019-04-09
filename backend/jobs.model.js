@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 let Jobs = new Schema({
-    id: {
-        type: String
-    },
+    // _id: {
+    //     type: String
+    // },
     category: {
         type: String
     },
@@ -41,5 +41,9 @@ let Jobs = new Schema({
         type: String
     }
 
+},
+{
+    // removes __v field in MongoDB
+    versionKey: false
 });
 module.exports = mongoose.model('Jobs', Jobs);

@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 var mongoose = require('mongoose');
-var id = mongoose.Types.ObjectId();
+// var id = mongoose.Types.ObjectId();
+var date = new Date().getDate();
+var month = new Date().getMonth() + 1; //Current Month
+var year = new Date().getFullYear(); //Current Year
+var hours = new Date().getHours(); //Current Hours
+var min = new Date().getMinutes(); //Current Minutes
+var sec = new Date().getSeconds(); //Current Seconds
+var newTime = year + '-' + month + '-' + date + 'T' + hours + ':' + min + ':' + sec + 'Z';
+
 export default class CreateJobs extends Component {
     constructor(props) {
         super(props);
-
-        this.onChangeId = this.onChangeId.bind(this);
+      
+        // this.onChangeId = this.onChangeId.bind(this);
         this.onChangeCategory = this.onChangeCategory.bind(this);
         this.onChangeCity = this.onChangeCity.bind(this);
         this.onChangeCompanyName = this.onChangeCompanyName.bind(this);
@@ -19,9 +27,10 @@ export default class CreateJobs extends Component {
         this.onChangeSalaryOffered = this.onChangeSalaryOffered.bind(this);
         this.onChangeState = this.onChangeState.bind(this);
         this.onChangeUrl = this.onChangeUrl.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            id: id,
+            // _id: '',
             category: '',
             city: '',
             company_name: '',
@@ -30,78 +39,80 @@ export default class CreateJobs extends Component {
             job_description: '',
             job_title: '',
             job_type: '',
-            post_date: '',
+            post_date: newTime,
             salary_offered: '',
             state: '',
             url: ''
         }
+
+       
     }
 
     onChangeId(e) {
         this.setState({
-            id: e.target_value
+            _id: e.target.value
         });
     }
 
     onChangeCategory(e) {
         this.setState({
-            category: e.target_value
+            category: e.target.value
         });
     }
     onChangeCity(e) {
         this.setState({
-            city: e.target_value
+            city: e.target.value
         });
     }
     onChangeCompanyName(e) {
         this.setState({
-            company_name: e.target_value
+            company_name: e.target.value
         });
     }
     onChangeGeo(e) {
         this.setState({
-            geo: e.target_value
+            geo: e.target.value
         });
     }
     onChangeJobBoard(e) {
         this.setState({
-            job_board: e.target_value
+            job_board: e.target.value
         });
     }
     onChangeJobDescription(e) {
         this.setState({
-            job_description: e.target_value
+            job_description: e.target.value
         });
     }
 
     onChangeJobTitle(e) {
         this.setState({
-            job_title: e.target_value
+            job_title: e.target.value
         });
     }
     onChangeJobType(e) {
         this.setState({
-            job_type: e.target_value
+            job_type: e.target.value
         });
     }
     onChangePostDate(e) {
         this.setState({
-            post_date: e.target_value
+            post_date: e.target.value
         });
     }
     onChangeSalaryOffered(e) {
         this.setState({
-            salary_offered: e.target_value
+            salary_offered: e.target.value
         });
     }
     onChangeState(e) {
         this.setState({
-            state: e.target_value
+            state: e.target.value
         });
     }
     onChangeUrl(e) {
         this.setState({
-            url: e.target_value
+            url: e.target.value
         });
     }
 
@@ -109,7 +120,7 @@ export default class CreateJobs extends Component {
         e.preventDefault();
 
         console.log(`Form submitted:`);
-        console.log(`id: ${this.state.id}`);
+        // console.log(`id: ${this.state._id}`);
         console.log(`category: ${this.state.category}`);
         console.log(`city: ${this.state.city}`);
         console.log(`company_name: ${this.state.company_name}`);
@@ -124,7 +135,7 @@ export default class CreateJobs extends Component {
         console.log(`url: ${this.state.url}`);
 
         const newJob = {
-            id: this.state.id,
+            // _id: this.state.id,
             category: this.state.category,
             city: this.state.city,
             company_name: this.state.company_name,
@@ -142,22 +153,6 @@ export default class CreateJobs extends Component {
         axios.post('http://localhost:4000/jobs/add', newJob)
             .then(res => console.log(res.data));
 
-        this.setState({
-            id: id,
-            category: '',
-            city: '',
-            company_name: '',
-            geo: '',
-            job_board: '',
-            job_description: '',
-            job_title: '',
-            job_type: '',
-            post_date: '',
-            salary_offered: '',
-            state: '',
-            url: ''
-        })
-
     }
 
     render() {
@@ -165,14 +160,15 @@ export default class CreateJobs extends Component {
             <div style={{marginTop: 20}}>
                 <h3>Create New Job Posting</h3>
                 <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
+                    {/* <div className="form-group">
                         <label>ID: </label>
                         <input  type="text"
                                 className="form-control"
-                                value={this.state.id}
+                                value={this.state._id}
                                 onChange={this.onChangeId}
+                                readonly
                                 />
-                    </div>
+                    </div> */}
                     <div className="form-group">
                         <label>Category: </label>
                         <input  type="text"
@@ -201,11 +197,75 @@ export default class CreateJobs extends Component {
                         <label>Geo: </label>
                         <input  type="text"
                                 className="form-control"
-                                value={this.state.category}
-                                onChange={this.onChangeCategory}
+                                value={this.state.geo}
+                                onChange={this.onChangeGeo}
                                 />
                     </div>
-                    
+                    <div className="form-group">
+                        <label>Job Board: </label>
+                        <input  type="text"
+                                className="form-control"
+                                value={this.state.job_board}
+                                onChange={this.onChangeJobBoard}
+                                />
+                    </div>
+                    <div className="form-group">
+                        <label>Job Description: </label>
+                        <input  type="text"
+                                className="form-control"
+                                value={this.state.job_description}
+                                onChange={this.onChangeJobDescription}
+                                />
+                    </div>
+                    <div className="form-group">
+                        <label>Job Title: </label>
+                        <input  type="text"
+                                className="form-control"
+                                value={this.state.job_title}
+                                onChange={this.onChangeJobTitle}
+                                />
+                    </div>
+                    <div className="form-group">
+                        <label>Job Type: </label>
+                        <input  type="text"
+                                className="form-control"
+                                value={this.state.job_type}
+                                onChange={this.onChangeJobType}
+                                />
+                    </div>
+                    <div className="form-group">
+                        <label>Post Date: </label>
+                        <input  type="text"
+                                className="form-control"
+                                value={this.state.post_date}
+                                onChange={this.onChangePostDate}
+                                readonly
+                                />
+                    </div>
+                    <div className="form-group">
+                        <label>Salary Offered: </label>
+                        <input  type="text"
+                                className="form-control"
+                                value={this.state.salary_offered}
+                                onChange={this.onChangeSalaryOffered}
+                                />
+                    </div>
+                    <div className="form-group">
+                        <label>State: </label>
+                        <input  type="text"
+                                className="form-control"
+                                value={this.state.state}
+                                onChange={this.onChangeState}
+                                />
+                    </div>
+                    <div className="form-group">
+                        <label>URL: </label>
+                        <input  type="text"
+                                className="form-control"
+                                value={this.state.url}
+                                onChange={this.onChangeUrl}
+                                />
+                    </div>
                     <div className="form-group">
                         <input type="submit" value="Create Job" className="btn btn-primary" />
                     </div>
