@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.0",
+    "morgan": "^1.9.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-router-dom": "^5.0.0",
@@ -26,6 +33,20 @@
   ],
   "devDependencies": {
     "enzyme": "^3.9.0",
-    "jest": "^24.5.0"
-  }
+    "jest": "23.6.0"
+  },
+  "proxy": "http://localhost:3001",
+  "description": "s3563242 - Richard Kuoch",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmit-s3560494-gerald-lim/ppmm.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rmit-s3560494-gerald-lim/ppmm/issues"
+  },
+  "homepage": "https://github.com/rmit-s3560494-gerald-lim/ppmm#readme"
 }
