@@ -33,7 +33,8 @@
   ],
   "devDependencies": {
     "enzyme": "^3.9.0",
-    "jest": "23.6.0"
+    "enzyme-adapter-react-16": "^1.12.1",
+    "jest": "^23.6.0"
   },
   "proxy": "http://localhost:3001",
   "description": "s3563242 - Richard Kuoch",
@@ -48,5 +49,7 @@
   "bugs": {
     "url": "https://github.com/rmit-s3560494-gerald-lim/ppmm/issues"
   },
-  "homepage": "https://github.com/rmit-s3560494-gerald-lim/ppmm#readme"
+  "homepage": "https://github.com/rmit-s3560494-gerald-lim/ppmm#readme",
+  "test": "NODE_ENV=test jest --forceExit"
+
 }
