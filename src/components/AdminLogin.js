@@ -6,7 +6,6 @@ class AdminLogin extends Component{
         return (
           <div class="centerLogin">
             <header className="App-header">
-            <h3>&nbsp; Admin Login</h3>
             </header>
             <form>
               <div class="form-group">
