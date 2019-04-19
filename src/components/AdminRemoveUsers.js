@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
-// eslint-disable-next-lin
+
 const Header = (props) => {
     return(
         <header>
             <h1>{props.title}</h1>
-            <span className="stats">Users: {props.totalPlayers}</span>
+            <span className="stats">Users: {props.totalUsers}</span>
         </header>
     );
 }
       
-const Player = (props) => {
+const User = (props) => {
     return(
-        <div className = "player">
-            <span className = "player-name">
-                <button className="remove-player" onClick={()=>props.removePlayer(props.id)}>x</button>
+        <div className = "user">
+            <span className = "user-name">
+                <button className="remove-user" onClick={()=>props.removeUser(props.id)}>x</button>
                 {props.name}
             </span>
 
@@ -25,7 +25,7 @@ const Player = (props) => {
 
 class AdminRemoveUsers extends React.Component {
     state = {
-        players: [
+        users: [
             {
                 name: "Richard",
                 id: 1
@@ -45,10 +45,10 @@ class AdminRemoveUsers extends React.Component {
         ]
     };
 
-    handleRemovePlayer = (id) => {
+    handleRemoveUser = (id) => {
         this.setState(prevState => {
             return{
-                players: prevState.players.filter(p => p.id !== id) 
+                users: prevState.users.filter(p => p.id !== id) 
             };
         });
     }
@@ -58,16 +58,16 @@ class AdminRemoveUsers extends React.Component {
             <div className="userlist">
                 <Header 
                     title="User Accounts" 
-                    totalPlayers={this.state.players.length}
+                    totalUsers={this.state.users.length}
                 />
                 
-                {this.state.players.map( player =>
-                    <Player
-                    name={player.name}
-                    id = {player.id}
-                    score={player.score}
-                    key={player.id.toString()}
-                    removePlayer = {this.handleRemovePlayer}
+                {this.state.users.map( user =>
+                    <User
+                    name={user.name}
+                    id = {user.id}
+                    score={user.score}
+                    key={user.id.toString()}
+                    removeUser = {this.handleRemoveUser}
                     />
                 )}
                 
@@ -77,8 +77,3 @@ class AdminRemoveUsers extends React.Component {
 }
 
 export default AdminRemoveUsers;
-
-//ReactDOM.render(
-    //<App />,
-    //document.getElementById('root')
-//);
