@@ -4,15 +4,15 @@ import axios from 'axios';
 
 const Jobs = props => (
     <tr>
-        <td>{props.job._id}</td>
+        {/* <td>{props.job._id}</td> */}
+        <td>{props.job.job_title}</td>
+        <td>{props.job.job_type}</td>
         <td>{props.job.category}</td>
         <td>{props.job.city}</td>
         <td>{props.job.company_name}</td>
         {/* <td>{props.job.geo}</td>
         <td>{props.job.job_board}</td> */}
         {/* <td>{props.job.job_description}</td> */}
-        <td>{props.job.job_title}</td>
-        <td>{props.job.job_type}</td>
         <td>{props.job.post_date}</td>
         <td>{props.job.salary_offered}</td>
         <td>{props.job.state}</td>
@@ -36,7 +36,7 @@ export default class JobsList extends Component {
                 this.setState({ jobs: response.data });
             })
             .catch(function (error) {
-                console.log(error);
+                console.log(error.response);
             })
     }
 
@@ -50,22 +50,23 @@ export default class JobsList extends Component {
         return (
             <div>
                 <h3 id="jobsage">Jobs List</h3>
-                <div class="card">
+                <div className="card">
                 <table className="table table-striped" style={{ marginTop: 20 }} >
-                    <thead class="thead-dark">
+                    <thead className="thead-dark">
                         <tr>
-                            <th>id</th>
-                            <th>category</th>
-                            <th>city</th>
-                            <th>company_name</th>
+                            {/* <th>id</th> */}
+                            <th>Job Title</th>
+                            <th>Job Type</th>
+                            <th>Category</th>
+                            <th>City</th>
+                            <th>Company Name</th>
                             {/* <th>geo</th>
                             <th>job_board</th> */}
                             {/* <th>job_description</th> */}
-                            <th>job_title</th>
-                            <th>job_type</th>
-                            <th>post_date</th>
-                            <th>salary_offered</th>
-                            <th>state</th>
+                            
+                            <th>Post Date</th>
+                            <th>Salary</th>
+                            <th>State</th>
                             {/* <th>url</th> */}
                             <th>Edit</th>
                         </tr>

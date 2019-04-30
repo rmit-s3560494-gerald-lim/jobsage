@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import HomePage from './HomePage';
 import JobsList from './JobsList';
 import CreateJobs from './CreateJobs';
+import EditJobs from './EditJobs';
 
 class App extends Component {
   render() {
@@ -13,6 +14,8 @@ class App extends Component {
           <Route path='/home' component={HomePage} />
           <Route path='/jobs' component={JobsList} />
           <Route path='/add' component={CreateJobs} />
+          <Route path="/edit/:id" component={EditJobs} />
+
           {/* <Route path='/profile' component={ProfilePage} /> */}
         </Switch>
       </BrowserRouter>
