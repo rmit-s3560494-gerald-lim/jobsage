@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
 // var id = mongoose.Types.ObjectId();
 var date = new Date().getDate();
 var month = new Date().getMonth() + 1; //Current Month
