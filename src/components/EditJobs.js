@@ -50,7 +50,7 @@ export default class EditJobs extends Component {
         axios.get('http://localhost:4000/jobs/' + this.props.match.params.id)
             .then(response => {
                 this.setState({
-                    // _id: this.state.id,
+                    _id: this.state.id,
                     category: response.data.category,
                     city: response.data.city,
                     company_name: response.data.company_name,
@@ -155,7 +155,7 @@ export default class EditJobs extends Component {
             state: this.state.state,
             url: this.state.url
         };
-        axios.post('http://localhost:4000/jobs/' + this.props.match.params.id, newJob)
+        axios.post('http://localhost:4000/jobs/edit/' + this.props.match.params.id, newJob)
             .then(res => console.log(res.data));
 
         this.props.history.push('/jobs');

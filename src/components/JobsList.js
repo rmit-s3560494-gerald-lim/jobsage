@@ -40,6 +40,16 @@ export default class JobsList extends Component {
             })
     }
 
+    componentDidUpdate() {
+        axios.get('http://localhost:4000/jobs/')
+            .then(response => {
+                this.setState({ jobs: response.data });
+            })
+            .catch(function (error) {
+                console.log(error.response);
+            })
+    }
+
     jobsList() {
         return this.state.jobs.map(function (currentJob, i) {
             return <Jobs job={currentJob} key={i} />;
