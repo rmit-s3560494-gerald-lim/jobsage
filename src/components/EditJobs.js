@@ -164,10 +164,10 @@ export default class EditJobs extends Component {
     render() {
         return (
             <div>
-            <div className="editjobs">
-                <h3>Update Todo</h3>
-                <form onSubmit={this.onSubmit}>
-                    {/* <div className="form-group">
+                <div className="editjobs">
+                    <h3>Update Job</h3>
+                    <form onSubmit={this.onSubmit}>
+                        {/* <div className="form-group">
                         <label>ID: </label>
                         <input  type="text"
                                 className="form-control"
@@ -176,107 +176,109 @@ export default class EditJobs extends Component {
                                 readonly
                                 />
                     </div> */}
-                    <div className="form-group">
-                        <label>Category: </label>
-                        <input type="text"
-                            className="form-control"
-                            value={this.state.category}
-                            onChange={this.onChangeCategory}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>City: </label>
-                        <input type="text"
-                            className="form-control"
-                            value={this.state.city}
-                            onChange={this.onChangeCity}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Company Name: </label>
-                        <input type="text"
-                            className="form-control"
-                            value={this.state.company_name}
-                            onChange={this.onChangeCompanyName}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Geo: </label>
-                        <input type="text"
-                            className="form-control"
-                            value={this.state.geo}
-                            onChange={this.onChangeGeo}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Job Board: </label>
-                        <input type="text"
-                            className="form-control"
-                            value={this.state.job_board}
-                            onChange={this.onChangeJobBoard}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Job Description: </label>
-                        <input type="text"
-                            className="form-control"
-                            value={this.state.job_description}
-                            onChange={this.onChangeJobDescription}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Job Title: </label>
-                        <input type="text"
-                            className="form-control"
-                            value={this.state.job_title}
-                            onChange={this.onChangeJobTitle}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Job Type: </label>
-                        <input type="text"
-                            className="form-control"
-                            value={this.state.job_type}
-                            onChange={this.onChangeJobType}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Post Date: </label>
-                        <input type="text"
-                            className="form-control"
-                            value={this.state.post_date}
-                            onChange={this.onChangePostDate}
-                            readOnly
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Salary Offered: </label>
-                        <input type="text"
-                            className="form-control"
-                            value={this.state.salary_offered}
-                            onChange={this.onChangeSalaryOffered}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>State: </label>
-                        <input type="text"
-                            className="form-control"
-                            value={this.state.state}
-                            onChange={this.onChangeState}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>URL: </label>
-                        <input type="text"
-                            className="form-control"
-                            value={this.state.url}
-                            onChange={this.onChangeUrl}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <input type="submit" value="Save Job" className="btn btn-primary" />
-                    </div>
-                </form>
+
+                        <div className="form-group">
+                            <label>Job Title: </label>
+                            <input type="text"
+                                className="form-control"
+                                value={this.state.job_title}
+                                onChange={this.onChangeJobTitle}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Job Type: </label>
+                            <input type="text"
+                                className="form-control"
+                                value={this.state.job_type}
+                                onChange={this.onChangeJobType}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Category: </label>
+                            <input type="text"
+                                className="form-control"
+                                value={this.state.category}
+                                onChange={this.onChangeCategory}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>City: </label>
+                            <input type="text"
+                                className="form-control"
+                                value={this.state.city}
+                                onChange={this.onChangeCity}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Company Name: </label>
+                            <input type="text"
+                                className="form-control"
+                                value={this.state.company_name}
+                                onChange={this.onChangeCompanyName}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Geo: </label>
+                            <input type="text"
+                                className="form-control"
+                                value={this.state.geo}
+                                onChange={this.onChangeGeo}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Job Board: </label>
+                            <input type="text"
+                                className="form-control"
+                                value={this.state.job_board}
+                                onChange={this.onChangeJobBoard}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Job Description: </label>
+                            <input type="text"
+                                className="form-control"
+                                value={this.state.job_description}
+                                onChange={this.onChangeJobDescription}
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label>Post Date: </label>
+                            <input type="text"
+                                className="form-control"
+                                value={this.state.post_date}
+                                onChange={this.onChangePostDate}
+                                readOnly
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Salary Offered: </label>
+                            <input type="text"
+                                className="form-control"
+                                value={this.state.salary_offered}
+                                onChange={this.onChangeSalaryOffered}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>State: </label>
+                            <input type="text"
+                                className="form-control"
+                                value={this.state.state}
+                                onChange={this.onChangeState}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>URL: </label>
+                            <input type="text"
+                                className="form-control"
+                                value={this.state.url}
+                                onChange={this.onChangeUrl}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input type="submit" value="Save Job" className="btn btn-primary" />
+                        </div>
+                    </form>
                 </div>
             </div>
         )
