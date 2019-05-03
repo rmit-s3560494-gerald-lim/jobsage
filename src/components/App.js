@@ -6,6 +6,7 @@ import JobsList from './JobsList';
 import CreateJobs from './CreateJobs';
 import EditJobs from './EditJobs';
 
+import AdminRemoveUsers from './AdminRemoveUsers';
 
 class App extends Component {
   render() {
@@ -17,7 +18,7 @@ class App extends Component {
           <Route path='/jobs' component={JobsList} />
           <Route path='/add' component={CreateJobs} />
           <Route path="/edit/:id" component={EditJobs} />
-
+          <Route path='/adminremoveusers' component={AdminRemoveUsers} />
           <Route path='/adminlogin' component={AdminLogin}/>
           {/* <Route path='/profile' component={ProfilePage} /> */}
         </Switch>
