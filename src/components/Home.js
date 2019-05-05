@@ -8,7 +8,7 @@ class Home extends Component {
         return (
             <div class="content">
                 <Header />
-                <Search />
+                {/* <Search /> */}
                 <body>
                     <div class="row">
                         <div class="col-sm-6">

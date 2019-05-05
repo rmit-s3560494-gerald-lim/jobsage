@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 // import './App.css';
-import HomePage from './HomePage';
+import Home from './Home';
 import AdminLogin from './AdminLogin';
 import JobsList from './JobsList';
 import CreateJobs from './CreateJobs';
@@ -15,7 +15,7 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           {/* <Route exact path='/' component={LoginPage} /> */}
-          <Route path='/home' component={HomePage} />
+          <Route exact path='/' component={Home} />
           <Route path='/jobs' component={JobsList} />
           <Route path='/add' component={CreateJobs} />
           <Route path="/edit/:id" component={EditJobs} />
