@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Logo from '../logo.png';
 
 class Header extends Component {
   render() {
@@ -9,7 +10,7 @@ class Header extends Component {
             <h1> PPMM </h1>
           </div>
           <div class="col-4 text-right">
-            <h1>Sample logo here</h1>
+            <h1><img src={Logo} className="logo" alt="logo" /></h1>
           </div>
         </div>
       </div>

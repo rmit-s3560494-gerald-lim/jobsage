@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+// import './App.css';
 import HomePage from './HomePage';
 import AdminLogin from './AdminLogin';
 import JobsList from './JobsList';
