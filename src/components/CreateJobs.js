@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Header from './Header';
 // var mongoose = require('mongoose');
 // var id = mongoose.Types.ObjectId();
 var date = new Date().getDate();
@@ -158,6 +159,9 @@ export default class CreateJobs extends Component {
 
     render() {
         return (
+            <div>
+                <Header />
+            
             <div style={{marginTop: 20}}>
             <div class="createjobs">
                 <h3>Create New Job Posting</h3>
@@ -273,6 +277,7 @@ export default class CreateJobs extends Component {
                     </div>
                 </form>
                 </div>
+            </div>
             </div>
         )
     }

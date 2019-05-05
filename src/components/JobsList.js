@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Header from './Header';
 
 const Jobs = props => (
     <tr>
@@ -59,6 +60,7 @@ export default class JobsList extends Component {
     render() {
         return (
             <div>
+            <Header />
                 <h3 id="jobsage">Jobs List</h3>
                 <div className="card">
                 <table className="table table-striped" style={{ marginTop: 20 }} >

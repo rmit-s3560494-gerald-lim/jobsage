@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Header from './Header';
 
 var date = new Date().getDate();
 var month = new Date().getMonth() + 1; //Current Month
@@ -157,13 +158,15 @@ export default class EditJobs extends Component {
         };
         axios.post('http://localhost:4000/jobs/edit/' + this.props.match.params.id, newJob)
             .then(res => console.log(res.data));
-
+        alert("Job Saved");
         this.props.history.push('/jobs');
     }
 
     render() {
         return (
+            
             <div>
+                <Header />
                 <div className="editjobs">
                     <h3>Update Job</h3>
                     <form onSubmit={this.onSubmit}>
