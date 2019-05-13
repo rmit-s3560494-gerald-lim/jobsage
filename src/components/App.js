@@ -4,7 +4,7 @@ import HomePage from './HomePage';
 import AdminLogin from './AdminLogin';
 import JobsList from './JobsList';
 import CreateJobs from './CreateJobs';
-
+import JobSeekerProfile from './JobSeekerProfile';
 
 class App extends Component {
   render() {
@@ -16,6 +16,7 @@ class App extends Component {
           <Route path='/jobs' component={JobsList} />
           <Route path='/add' component={CreateJobs} />
           <Route path='/adminlogin' component={AdminLogin}/>
+          <Route path='/jobseekerprofile' component={JobSeekerProfile}/>
           {/* <Route path='/profile' component={ProfilePage} /> */}
         </Switch>
       </BrowserRouter>
