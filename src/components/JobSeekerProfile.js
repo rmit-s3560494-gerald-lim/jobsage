@@ -20,7 +20,7 @@ class JobSeekerProfile extends Component{
               <div className="form-group">
                 <label>Skill 1: </label>
                 <div className = "form-group entry input-group col-xs-3">
-                <input className = "form-control" type="text" name = "skill2" id="skill2"/>
+                <input className = "form-control" type="text" name = "skill1" id="skill1"/>
                 <select className = "form-control" name="Proficiency">
                     <option disable selected value>--select an option--</option>
                     <option value = "0">Beginner</option>
@@ -33,7 +33,7 @@ class JobSeekerProfile extends Component{
               <div className = "form-group">
                 <label>Skill 2: </label>
                 <div className = "form-group entry input-group col-xs-3">
-                <input className = "form-control" type="text" name = "skill3" id="skill3"/>
+                <input className = "form-control" type="text" name = "skill2" id="skill2"/>
                 <select className = "form-control" name="Proficiency">
                     <option disable selected value>--select an option--</option>
                     <option value = "0">Beginner</option>
@@ -59,7 +59,7 @@ class JobSeekerProfile extends Component{
               <div className = "form-group">
                 <label>Skill 4: </label>
                 <div className = "form-group entry input-group col-xs-3">
-                <input className = "form-control" type="text" name = "skill3" id="skill3"/>
+                <input className = "form-control" type="text" name = "skill4" id="skill4"/>
                 <select className = "form-control" name="Proficiency">
                     <option disable selected value>--select an option--</option>
                     <option value = "0">Beginner</option>
@@ -72,7 +72,7 @@ class JobSeekerProfile extends Component{
               <div className = "form-group">
                 <label>Skill 5: </label>
                 <div className = "form-group entry input-group col-xs-3">
-                <input className = "form-control" type="text" name = "skill" id="skill"/>
+                <input className = "form-control" type="text" name = "skill5" id="skill5"/>
                 <select className = "form-control" name="Proficiency">
                     <option disable selected value>--select an option--</option>
                     <option value = "0">Beginner</option>
