@@ -34,6 +34,38 @@ let Jobs = new Schema({
     salary_offered: {
         type: String
     },
+    skills: [{
+        skill1: {
+            type: String
+        },
+        rating1: {
+            type: Number
+        },
+        skill2: {
+            type: String
+        },
+        rating2: {
+            type: Number
+        },
+        skill3: {
+            type: String
+        },
+        rating3: {
+            type: Number
+        },
+        skill4: {
+            type: String
+        },
+        rating4: {
+            type: Number
+        },
+        skill5: {
+            type: String
+        },
+        rating5: {
+            type: Number
+        },
+    }],
     state: {
         type: String
     },
@@ -42,8 +74,8 @@ let Jobs = new Schema({
     }
 
 },
-{
-    // removes __v field in MongoDB
-    versionKey: false
-});
+    {
+        // removes __v field in MongoDB
+        versionKey: false
+    });
 module.exports = mongoose.model('Jobs', Jobs);
