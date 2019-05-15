@@ -342,7 +342,7 @@ export default class CreateJobs extends Component {
                                 />
                             </div>
                             
-                            <div className="form-group">
+                            {/* <div className="form-group">
                                 <label>Post Date: </label>
                                 <input type="text"
                                     className="form-control"
@@ -350,7 +350,7 @@ export default class CreateJobs extends Component {
                                     onChange={this.onChangePostDate}
                                     readOnly
                                 />
-                            </div>
+                            </div> */}
                             <div className="form-group">
                                 <label>Salary Offered: </label>
                                 <input type="text"
