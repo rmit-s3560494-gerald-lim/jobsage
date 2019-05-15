@@ -6,6 +6,7 @@ class JobSeekerProfile extends Component {
     super(props);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleFullNameChange = this.handleFullNameChange.bind(this);
     // this.handleEducationChange = this.handleEducationChange.bind(this);
     // this.handleExperienceChange = this.handleExperienceChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -23,6 +24,7 @@ class JobSeekerProfile extends Component {
     this.state = {
       user_name: '',
       password: '',
+      full_name: '',
       user_type: 'jobseeker',
       skills: [{
         skill1: '',
@@ -49,6 +51,7 @@ class JobSeekerProfile extends Component {
     const newProfile = {
       user_name: this.state.user_name,
       password: this.state.password,
+      full_name: this.state.full_name,
       user_type: 'jobseeker',
       skills: [{
         skill1: this.state.skill1,
@@ -78,6 +81,12 @@ class JobSeekerProfile extends Component {
   handlePasswordChange(e) {
     this.setState({
       password: e.target.value
+    });
+  }
+
+  handleFullNameChange(e) {
+    this.setState({
+      full_name: e.target.value
     });
   }
 
@@ -166,12 +175,8 @@ class JobSeekerProfile extends Component {
             <input class="form-control" onChange={this.handlePasswordChange} type="password" name="password" id="password" />
           </div>
           <div class="form-group">
-            <label htmlFor="Experience">Experience:</label>
-            <input class="form-control" onChange={this.handleExperienceChange} type="text" name="experience" id="experience" />
-          </div>
-          <div class="form-group">
-            <label htmlFor="Education">Education:</label>
-            <input class="form-control" onChange={this.handleEducationChange} type="text" name="education" id="education" />
+            <label>Full Name:</label>
+            <input class="form-control" onChange={this.handleFullNameChange} type="text" name="full name" id="fullname" />
           </div>
           <div className="form-group">
             <label>Skills: </label>

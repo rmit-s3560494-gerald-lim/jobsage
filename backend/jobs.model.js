@@ -13,12 +13,12 @@ let Jobs = new Schema({
     company_name: {
         type: String
     },
-    geo: {
-        type: String
-    },
-    job_board: {
-        type: String
-    },
+    // geo: {
+    //     type: String
+    // },
+    // job_board: {
+    //     type: String
+    // },
     job_description: {
         type: String
     },
@@ -66,12 +66,12 @@ let Jobs = new Schema({
             type: Number
         },
     }],
-    state: {
-        type: String
-    },
-    url: {
-        type: String
-    }
+    // state: {
+    //     type: String
+    // },
+    // url: {
+    //     type: String
+    // }
 
 },
     {

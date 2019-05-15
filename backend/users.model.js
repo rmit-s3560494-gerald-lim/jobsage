@@ -4,6 +4,9 @@ let Users = new Schema({
     user_name: {
         type: String,
     },
+    full_name: {
+        type: String,
+    },
     password:{
         type: String,
     },

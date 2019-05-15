@@ -93,14 +93,14 @@ jobsRoutes.route('/edit/:id').post(function (req, res) {
             jobs.category = req.body.category;
             jobs.city = req.body.city;
             jobs.company_name = req.body.company_name;
-            jobs.geo = req.body.geo;
-            jobs.job_board = req.body.job_board;
+            // jobs.geo = req.body.geo;
+            // jobs.job_board = req.body.job_board;
             jobs.job_description = req.body.job_description;
             jobs.job_title = req.body.job_title;
             jobs.job_type = req.body.job_type;
             jobs.post_date = req.body.post_date
             jobs.salary_offered = req.body.salary_offered;
-            jobs.state = req.body.state;
+            // jobs.state = req.body.state;
             jobs.url = req.body.state;
 
             jobs.save().then(jobs => {

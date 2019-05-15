@@ -44,8 +44,8 @@ export default class EditJobs extends Component {
             category: '',
             city: '',
             company_name: '',
-            geo: '',
-            job_board: '',
+            // geo: '',
+            // job_board: '',
             job_description: '',
             job_title: '',
             job_type: '',
@@ -63,8 +63,8 @@ export default class EditJobs extends Component {
                 skill5: '',
                 rating5: '',
             }],
-            state: '',
-            url: ''
+            // state: '',
+            // url: ''
         }
 
     }
@@ -79,8 +79,8 @@ export default class EditJobs extends Component {
                     category: response.data.category,
                     city: response.data.city,
                     company_name: response.data.company_name,
-                    geo: response.data.geo,
-                    job_board: response.data.job_board,
+                    // geo: response.data.geo,
+                    // job_board: response.data.job_board,
                     job_description: response.data.job_description,
                     job_title: response.data.job_title,
                     job_type: response.data.job_type,
@@ -98,8 +98,8 @@ export default class EditJobs extends Component {
                         skill5: response.data.skills[0].skill5,
                         rating5: response.data.skills[0].rating5,
                     }],
-                    state: response.data.state,
-                    url: response.data.url
+                    // state: response.data.state,
+                    // url: response.data.url
                 })
             })
             .catch(function (error) {
@@ -239,7 +239,7 @@ export default class EditJobs extends Component {
             category: this.state.category,
             city: this.state.city,
             company_name: this.state.company_name,
-            geo: this.state.geo,
+            // geo: this.state.geo,
             job_board: this.state.job_board,
             job_description: this.state.job_description,
             job_title: this.state.job_title,
@@ -258,7 +258,7 @@ export default class EditJobs extends Component {
                 skill5: this.state.skill5,
                 rating5: this.state.rating5,
             }],
-            state: this.state.state,
+            // state: this.state.state,
             url: this.state.url
         };
         axios.post('http://localhost:4000/jobs/edit/' + this.props.match.params.id, newJob)
@@ -325,22 +325,22 @@ export default class EditJobs extends Component {
                                 onChange={this.onChangeCompanyName}
                             />
                         </div>
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <label>Geo: </label>
                             <input type="text"
                                 className="form-control"
                                 value={this.state.geo}
                                 onChange={this.onChangeGeo}
                             />
-                        </div>
-                        <div className="form-group">
+                        </div> */}
+                        {/* <div className="form-group">
                             <label>Job Board: </label>
                             <input type="text"
                                 className="form-control"
                                 value={this.state.job_board}
                                 onChange={this.onChangeJobBoard}
                             />
-                        </div>
+                        </div> */}
                         <div className="form-group">
                             <label>Job Description: </label>
                             <input type="text"
@@ -367,14 +367,14 @@ export default class EditJobs extends Component {
                                 onChange={this.onChangeSalaryOffered}
                             />
                         </div>
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <label>State: </label>
                             <input type="text"
                                 className="form-control"
                                 value={this.state.state}
                                 onChange={this.onChangeState}
                             />
-                        </div>
+                        </div> */}
                         <div className="form-group">
                             <label>Skills: </label>
                             <div className="form-group entry input-group col-xs-3">
@@ -424,14 +424,14 @@ export default class EditJobs extends Component {
                                 </select>
                             </div>
                         </div>
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <label>URL: </label>
                             <input type="text"
                                 className="form-control"
                                 value={this.state.url}
                                 onChange={this.onChangeUrl}
                             />
-                        </div>
+                        </div> */}
                         <div className="form-group">
                             <input type="submit" value="Save Job" className="btn btn-primary" />
                         </div>
