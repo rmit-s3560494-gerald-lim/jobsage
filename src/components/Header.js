@@ -16,14 +16,14 @@ class Header extends Component {
               <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="login">Login</a>
+              <a className="nav-link" href="/login">Login</a>
             </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Jobs
         </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a className="dropdown-item" href="jobs">Jobs List</a>
+                <a className="dropdown-item" href="/jobs">Jobs List</a>
                 <a className="dropdown-item" href="/add">Add Jobs</a>
                 {/* <div className="dropdown-divider"></div> */}
                 {/* <a className="dropdown-item" href="#">Something else here</a> */}
