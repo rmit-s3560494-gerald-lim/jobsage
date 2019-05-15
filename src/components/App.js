@@ -9,6 +9,7 @@ import EditJobs from './EditJobs';
 import LoginPage from './LoginPage';
 import SignUpPage from './SignUpPage';
 import JobSeekerProfile from './JobSeekerProfile';
+import AdminHomePage from './AdminHomePage';
 import AdminRemoveUsers from './AdminRemoveUsers';
 
 
@@ -28,6 +29,7 @@ class App extends Component {
           <Route exact path='/login' component={LoginPage} />
           <Route path='/signup' component={SignUpPage} />
           <Route path='/jobseekerprofile' component={JobSeekerProfile}/>
+          <Route path='/adminhomepage' component={AdminHomePage}/>
           {/* <Route path='/profile' component={ProfilePage} /> */}
         </Switch>
       </BrowserRouter>
