@@ -8,15 +8,15 @@ class AdminLogin extends Component{
             <header className="App-header">
             </header>
             <form>
-              <div class="form-group">
+              <div className="form-group">
               <label htmlFor="username">Username:</label> 
-              <input class="form-control" type="text" name="username" id="username"/>
+              <input className="form-control" type="text" name="username" id="username"/>
               </div>
-              <div class="form-group">
+              <div className="form-group">
               <label htmlFor="password">Password:</label> 
-              <input class="form-control" type="password" name="password" id="password"/>
+              <input className="form-control" type="password" name="password" id="password"/>
               </div>
-              <div class="text-right">
+              <div className="text-right">
               <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
               </div>
             </form>

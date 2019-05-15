@@ -17,7 +17,6 @@ const Jobs = props => (
         <td>{props.job.post_date}</td>
         <td>{props.job.salary_offered}</td>
         <td>{props.job.state}</td>
-        {/* <td>{props.job.skills}</td> */}
         {/* <td>{props.job.url}</td> */}
         <td>
             <Link to={"/edit/" + props.job._id}>Edit</Link>
@@ -33,19 +32,11 @@ export default class JobsList extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:4000/jobs/')
+        // axios.get('http://localhost:4000/jobs/')
+        axios.get('http://35.212.88.235/jobs/')
             .then(response => {
                 this.setState({ jobs: response.data });
-            })
-            .catch(function (error) {
-                console.log(error.response);
-            })
-    }
-
-    componentDidUpdate() {
-        axios.get('http://localhost:4000/jobs/')
-            .then(response => {
-                this.setState({ jobs: response.data });
+                console.log(this.state.jobs);
             })
             .catch(function (error) {
                 console.log(error.response);
@@ -61,34 +52,34 @@ export default class JobsList extends Component {
     render() {
         return (
             <div>
-            <Header />
+                {console.log(this.state.jobs)}
+                <Header />
                 <h3 id="jobsage">Jobs List</h3>
                 <div className="card">
-                <table className="table table-striped" style={{ marginTop: 20 }} >
-                    <thead className="thead-dark">
-                        <tr>
-                            {/* <th>id</th> */}
-                            <th>Job Title</th>
-                            <th>Job Type</th>
-                            <th>Category</th>
-                            <th>City</th>
-                            <th>Company Name</th>
-                            {/* <th>geo</th>
+                    <table className="table table-striped" style={{ marginTop: 20 }} >
+                        <thead className="thead-dark">
+                            <tr>
+                                {/* <th>id</th> */}
+                                <th>Job Title</th>
+                                <th>Job Type</th>
+                                <th>Category</th>
+                                <th>City</th>
+                                <th>Company Name</th>
+                                {/* <th>geo</th>
                             <th>job_board</th> */}
-                            {/* <th>job_description</th> */}
-                            
-                            <th>Post Date</th>
-                            <th>Salary</th>
-                            <th>State</th>
-                            <th>Skills</th>
-                            {/* <th>url</th> */}
-                            <th>Edit</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.jobsList()}
-                    </tbody>
-                </table>
+                                {/* <th>job_description</th> */}
+
+                                <th>Post Date</th>
+                                <th>Salary</th>
+                                <th>State</th>
+                                {/* <th>url</th> */}
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.jobsList()}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         )

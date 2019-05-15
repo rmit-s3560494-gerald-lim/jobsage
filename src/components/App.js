@@ -14,7 +14,7 @@ import AdminRemoveUsers from './AdminRemoveUsers';
 
 class App extends Component {
   render() {
-s    return (
+    return (
       <BrowserRouter>
         <Switch>
           {/* <Route exact path='/' component={LoginPage} /> */}

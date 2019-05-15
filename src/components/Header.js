@@ -24,7 +24,7 @@ class Header extends Component {
         </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a className="dropdown-item" href="jobs">Jobs List</a>
-                <a className="dropdown-item" href="add">Add Jobs</a>
+                <a className="dropdown-item" href="/add">Add Jobs</a>
                 {/* <div className="dropdown-divider"></div> */}
                 {/* <a className="dropdown-item" href="#">Something else here</a> */}
               </div>
