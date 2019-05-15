@@ -8,7 +8,7 @@ import CreateJobs from './CreateJobs';
 import EditJobs from './EditJobs';
 import LoginPage from './LoginPage';
 import SignUpPage from './SignUpPage';
-
+import JobSeekerProfile from './JobSeekerProfile';
 import AdminRemoveUsers from './AdminRemoveUsers';
 
 
@@ -27,6 +27,7 @@ class App extends Component {
           <Route path='/signup' component={SignUpPage} />
           <Route exact path='/login' component={LoginPage} />
           <Route path='/signup' component={SignUpPage} />
+          <Route path='/jobseekerprofile' component={JobSeekerProfile}/>
           {/* <Route path='/profile' component={ProfilePage} /> */}
         </Switch>
       </BrowserRouter>
