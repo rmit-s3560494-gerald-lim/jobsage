@@ -2,7 +2,7 @@ import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
 import adminAuth from './AdminAuth';
 
-export const ProtectedRoute = ({component: Component, ...rest}) => {
+export const ProtectedAdminRoute = ({component: Component, ...rest}) => {
   return (
     <Route 
       {...rest} 

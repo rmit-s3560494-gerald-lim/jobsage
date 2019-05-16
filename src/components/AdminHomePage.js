@@ -13,7 +13,7 @@ class AdminHomePage extends Component {
                         <div className="card">
                             <div className="card-body">
                                 <h5 className="card-title">Users</h5>
-                                <a href="/adminRemoveUsers" className="">View Users</a>
+                                <a href="/adminremoveusers" className="">View Users</a>
                             </div>
                         </div>
                         <br/>
@@ -31,7 +31,7 @@ class AdminHomePage extends Component {
                         <div className="card">
                             <div className="card-body">
                                 <h5 className="card-title">Jobs</h5>
-                                <a href="/JobsList" className="">View Jobs List</a>
+                                <a href="/jobs" className="">View Jobs List</a>
                             </div>
                         </div>
                         <br/>

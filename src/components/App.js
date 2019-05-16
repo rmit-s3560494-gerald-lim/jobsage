@@ -4,8 +4,9 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
-import {ProtectedRoute} from './Protected.route';
-// import './App.css';
+import {ProtectedAdminRoute} from './Protected.Admin.route';
+import {ProtectedUserRoute} from './Protected.User.route';
+
 import Home from './Home';
 import AdminLogin from './AdminLogin';
 import JobsList from './JobsList';
@@ -22,19 +23,16 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          {/* <Route exact path='/' component={LoginPage} /> */}
-          <Route exact path='/' component={Home} />
-          <Route path='/jobs' component={JobsList} />
-          <Route path='/add' component={CreateJobs} />
-          <Route path="/edit/:id" component={EditJobs} />
-          <Route path='/adminremoveusers' component={AdminRemoveUsers} />
+          <ProtectedUserRoute exact path='/home' component={Home} />
+          <ProtectedUserRoute path='/jobs' component={JobsList} />
+          <ProtectedUserRoute path='/add' component={CreateJobs} />
+          <ProtectedUserRoute path="/edit/:id" component={EditJobs} />
+          <ProtectedAdminRoute path='/adminremoveusers' component={AdminRemoveUsers} />
           <Route path='/adminlogin' component={AdminLogin}/>
           <Route path='/signup' component={SignUpPage} />
-          <Route exact path='/login' component={LoginPage} />
-          <Route path='/signup' component={SignUpPage} />
-          <Route path='/jobseekerprofile' component={JobSeekerProfile}/>
-          <ProtectedRoute exact path='/adminhomepage' component={AdminHomePage}/>
-          {/* <Route path='/profile' component={ProfilePage} /> */}
+          <Route path='/login' component={LoginPage} />
+          <ProtectedUserRoute path='/jobseekerprofile' component={JobSeekerProfile}/>
+          <ProtectedAdminRoute exact path='/adminhomepage' component={AdminHomePage}/>
         </Switch>
       </BrowserRouter>
     );
