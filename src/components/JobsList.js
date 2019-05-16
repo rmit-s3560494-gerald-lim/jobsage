@@ -52,7 +52,7 @@ export default class JobsList extends Component {
     render() {
         return (
             <div>
-                {console.log(this.state.jobs)}
+                {/* {console.log(this.state.jobs)} */}
                 <Header />
                 <h3 id="jobsage">Jobs List</h3>
                 <div className="card">

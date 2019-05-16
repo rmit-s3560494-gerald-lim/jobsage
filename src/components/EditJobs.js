@@ -72,8 +72,7 @@ export default class EditJobs extends Component {
     componentDidMount() {
         axios.get('http://localhost:4000/jobs/' + this.props.match.params.id)
             .then(response => {
-                console.log(response.data);
-                console.log(response.data.skills[0].skill1);
+                console.log(response.data.skills[0]);
                 this.setState({
                     _id: this.state.id,
                     category: response.data.category,
@@ -101,6 +100,16 @@ export default class EditJobs extends Component {
                     // state: response.data.state,
                     // url: response.data.url
                 })
+                console.log(this.state.skills[0].skill1);
+                console.log(this.state.rating1);
+                console.log(this.state.skill2);
+                console.log(this.state.rating2);
+                console.log(this.state.skill3);
+                console.log(this.state.rating3);
+                console.log(this.state.skill4);
+                console.log(this.state.rating4);
+                console.log(this.state.skill5);
+                console.log(this.state.rating5);
             })
             .catch(function (error) {
                 console.log(error)
@@ -234,6 +243,16 @@ export default class EditJobs extends Component {
 
     onSubmit(e) {
         e.preventDefault();
+        console.log(this.state.skill1);
+        console.log(this.state.rating1);
+        console.log(this.state.skill2);
+        console.log(this.state.rating2);
+        console.log(this.state.skill3);
+        console.log(this.state.rating3);
+        console.log(this.state.skill4);
+        console.log(this.state.rating4);
+        console.log(this.state.skill5);
+        console.log(this.state.rating5);
         const newJob = {
             // _id: this.state.id,
             category: this.state.category,
@@ -259,7 +278,7 @@ export default class EditJobs extends Component {
                 rating5: this.state.rating5,
             }],
             // state: this.state.state,
-            url: this.state.url
+            // url: this.state.url
         };
         axios.post('http://localhost:4000/jobs/edit/' + this.props.match.params.id, newJob)
             .then(res => console.log(res.data));
@@ -378,8 +397,8 @@ export default class EditJobs extends Component {
                         <div className="form-group">
                             <label>Skills: </label>
                             <div className="form-group entry input-group col-xs-3">
-                                <input className="form-control" name="skills" type="text" placeholder="e.g. ReactJS" value={this.state.skills[0].skill1} onChange={this.onChangeSkill1} />
-                                {console.log(this.state.skill3)}
+                                <input className="form-control" name="skills" type="text" placeholder="e.g. ReactJS" defaultValue={this.state.skills[0].skill1} onChange={this.onChangeSkill1} />
+                                
                                 <select className="form-control " id="skillSelect" onChange={this.onChangeRating1}>
                                     <option disabled selected> -- Select option -- </option>
                                     <option value="0">Beginner</option>
@@ -388,36 +407,36 @@ export default class EditJobs extends Component {
                                 </select>
                             </div>
                             <div className="form-group entry input-group col-xs-3">
-                                <input className="form-control" name="skills" type="text" placeholder="" value={this.state.skills[0].skill2} onChange={this.onChangeSkill2} />
+                                <input className="form-control" name="skills" type="text" placeholder="" defaultValue={this.state.skills[0].skill2} onChange={this.onChangeSkill2} />
                                 <select className="form-control " id="skillSelect" onChange={this.onChangeRating2}>
-                                    <option disabled selected value> -- Select option -- </option>
+                                    <option disabled selected> -- Select option -- </option>
                                     <option value="0">Beginner</option>
                                     <option value="1">Intermediate</option>
                                     <option value="2">Expert</option>
                                 </select>
                             </div>
                             <div className="form-group entry input-group col-xs-3">
-                                <input className="form-control" name="skills" type="text" placeholder="" value={this.state.skills[0].skill3} onChange={this.onChangeSkill3} />
+                                <input className="form-control" name="skills" type="text" placeholder="" defaultValue={this.state.skills[0].skill3} onChange={this.onChangeSkill3} />
                                 <select className="form-control " id="skillSelect" onChange={this.onChangeRating3}>
-                                    <option disabled selected value> -- Select option -- </option>
+                                    <option disabled selected> -- Select option -- </option>
                                     <option value="0">Beginner</option>
                                     <option value="1">Intermediate</option>
                                     <option value="2">Expert</option>
                                 </select>
                             </div>
                             <div className="form-group entry input-group col-xs-3">
-                                <input className="form-control" name="skills" type="text" placeholder="" value={this.state.skills[0].skill4} onChange={this.onChangeSkill4} />
+                                <input className="form-control" name="skills" type="text" placeholder="" defaultValue={this.state.skills[0].skill4} onChange={this.onChangeSkill4} />
                                 <select className="form-control " id="skillSelect" onChange={this.onChangeRating4}>
-                                    <option disabled selected value> -- Select option -- </option>
+                                    <option disabled selected> -- Select option -- </option>
                                     <option value="0">Beginner</option>
                                     <option value="1">Intermediate</option>
                                     <option value="2">Expert</option>
                                 </select>
                             </div>
                             <div className="form-group entry input-group col-xs-3">
-                                <input className="form-control" name="skills" type="text" placeholder="" value={this.state.skills[0].skill5} onChange={this.onChangeSkill5} />
+                                <input className="form-control" name="skills" type="text" placeholder="" defaultValue={this.state.skills[0].skill5} onChange={this.onChangeSkill5} />
                                 <select className="form-control " id="skillSelect" onChange={this.onChangeRating5}>
-                                    <option disabled selected value> -- Select option -- </option>
+                                    <option disabled selected> -- Select option -- </option>
                                     <option value="0">Beginner</option>
                                     <option value="1">Intermediate</option>
                                     <option value="2">Expert</option>
@@ -434,6 +453,7 @@ export default class EditJobs extends Component {
                         </div> */}
                         <div className="form-group">
                             <input type="submit" value="Save Job" className="btn btn-primary" />
+                            <a href="/jobs" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
                         </div>
                     </form>
                 </div>
