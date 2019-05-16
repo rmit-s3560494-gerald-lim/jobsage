@@ -1,0 +1,31 @@
+runtime: nodejs
+api_version: '1'
+env: flexible
+threadsafe: true
+instance_class: F1
+handlers:
+  - url: /css/(.*)
+    application_readable: false
+    static_files: css/\1
+    require_matching_file: false
+    upload: css/.*
+  - url: /js/(.*)
+    application_readable: false
+    static_files: js/\1
+    require_matching_file: false
+    upload: js/.*
+  - url: /json/(.*)
+    application_readable: false
+    static_files: json/\1
+    require_matching_file: false
+    upload: json/.*
+  - url: /(.+\.html)$
+    script: \1
+  - url: /.*
+    script: index.html
+automatic_scaling:
+  min_num_instances: 2
+  max_num_instances: 20
+  cpu_utilization:
+    target_utilization: 0.5
+network: {}
