@@ -11,6 +11,8 @@ import SignUpPage from './SignUpPage';
 import JobSeekerProfile from './JobSeekerProfile';
 import AdminHomePage from './AdminHomePage';
 import AdminRemoveUsers from './AdminRemoveUsers';
+import DBQuery from './DBQuery';
+import KNNTest from './KNNTest'
 
 
 class App extends Component {
@@ -30,6 +32,9 @@ class App extends Component {
           <Route path='/signup' component={SignUpPage} />
           <Route path='/jobseekerprofile' component={JobSeekerProfile}/>
           <Route path='/adminhomepage' component={AdminHomePage}/>
+          <Route path='/dbtest' component={DBQuery}/>
+          <Route path='/knn' component={KNNTest}/>
+
           {/* <Route path='/profile' component={ProfilePage} /> */}
         </Switch>
       </BrowserRouter>

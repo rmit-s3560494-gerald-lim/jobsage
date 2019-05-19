@@ -10,6 +10,7 @@ const mongoose = require('mongoose');
 const PORT = 4000;
 let Jobs = require('./jobs.model');
 let Users = require('./users.model');
+let Test = require('./test.model');
 app.use(cors());
 app.use(bodyParser.json());
 mongoose.connect('mongodb://127.0.0.1:27017/jobs', { useNewUrlParser: true });
@@ -25,6 +26,38 @@ app.use('/jobs', jobsRoutes);
 
 const userRoutes = express.Router();
 app.use('/users', userRoutes);
+
+const testRoutes = express.Router();
+app.use('/test', testRoutes);
+
+testRoutes.post("/putData", (req, res) => {
+  let test = new Test();
+
+  const { id, message, skill } = req.body;
+
+  if ((!id && id !== 0) || !message) {
+    return res.json({
+      success: false,
+      error: "INVALID INPUTS"
+    });
+  }
+
+  test.message = message;
+  test.id = id;
+  test.skill = skill;
+  test.save(err => {
+    if (err) return res.json({ success: false, error: err });
+    return res.json({ success: true });
+  });
+});
+
+testRoutes.get("/getData", (req, res) => {
+  Test.find({message: "test!"}, (err, test) => {
+    if (err) return res.json({ success: false, error: err });
+    return res.json({ success: true, data: test });
+  });
+});
+
 
 userRoutes.route('/').get(function (req, res) {
     Users.find(function (err, users) {
@@ -57,6 +90,10 @@ userRoutes.route('/:id').get(function (req, res) {
 });
 
 jobsRoutes.route('/').get(function (req, res) {
+    //Jobs.find({"skills.skill1": "test1", job_title: "just a lil" },function (err, jobs) {
+    //Jobs.find({skills : {$elemMatch: {skill1: "test1"}}, job_title: "just a lil" },function (err, jobs) {
+    //Jobs.find({skills : {skill1: {$all: {"test1"}}},function (err, jobs) {
+    //Copy the job seeker profile passing in object and use that"
     Jobs.find(function (err, jobs) {
         if (err) {
             console.log(err);
