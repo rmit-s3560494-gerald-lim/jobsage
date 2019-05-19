@@ -24,6 +24,7 @@ const Jobs = props => (
     </tr>
 )
 
+var testuser = JSON.parse(localStorage.getItem('user'));
 var jsontest = {
   "geo": "1",
   "skills":[{
@@ -103,6 +104,7 @@ class KNNTest extends Component {
           </div>
           <div>{JSON.stringify(jsontest)}</div>
           <div>{JSON.stringify(x)}</div>
+          <div>{JSON.stringify(testuser)}</div>
       </div>
       // <div>
       //   <Header />

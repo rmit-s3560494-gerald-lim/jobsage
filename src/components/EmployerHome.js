@@ -6,8 +6,7 @@ class EmployerHome extends Component {
     render() {
         return (
             <div className="content">
-                {/* <Header /> */}
-
+                <Header />
                 <div className="row">
                     <div className="col-sm-6">
                         <div className="card">
