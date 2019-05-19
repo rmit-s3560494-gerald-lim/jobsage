@@ -39,7 +39,6 @@
     "enzyme-adapter-react-16": "^1.12.1",
     "jest": "^23.6.0"
   },
-  "proxy": "http://localhost:3001",
   "description": "s3563242 - Richard Kuoch",
   "main": "index.js",
   "repository": {
