@@ -16,8 +16,8 @@ const User = (props) => {
     return(
         <div className = "user">
             <span className = "user-name">
-                <button className="remove-user" onClick={()=>props.removeUser(props.id)}>x</button>
                 {props.name}
+                <button className="remove-user" onClick={()=>props.removeUser(props.id)}>x</button>
             </span>
 
             

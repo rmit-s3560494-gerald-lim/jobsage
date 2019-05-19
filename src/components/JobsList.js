@@ -21,6 +21,9 @@ const Jobs = props => (
         <td>
             <Link to={"/edit/" + props.job._id}>Edit</Link>
         </td>
+        <td>
+            <Link to={"/"}>Delete</Link>
+        </td>
     </tr>
 )
 
@@ -74,6 +77,7 @@ export default class JobsList extends Component {
                                 {/* <th>State</th> */}
                                 {/* <th>url</th> */}
                                 <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
