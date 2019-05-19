@@ -42,7 +42,6 @@ class App extends Component {
 
           <Route path='/adminlogin' component={AdminLogin}/>
           <Route path='/signup' component={SignUpPage} />
-<<<<<<< HEAD
           <Route exact path='/login' component={LoginPage} />
           <Route path='/signup' component={SignUpPage} />
           <Route path='/jobseekerprofile' component={JobSeekerProfile}/>
@@ -51,10 +50,6 @@ class App extends Component {
           <Route path='/knn' component={KNNTest}/>
 
           {/* <Route path='/profile' component={ProfilePage} /> */}
-=======
-          <Route path='/' component={LoginPage} />
-          <Route path='/login' component={LoginPage} />
->>>>>>> 5ad5de3fb0893fed25603aea47bbc411d39d7b84
         </Switch>
       </BrowserRouter>
     );

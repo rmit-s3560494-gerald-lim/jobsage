@@ -27,7 +27,7 @@ class LoginPage extends Component {
         if(response.data[0].user_type === 'employer'){
           localStorage.setItem('isEmployerLoggedIn', 'true');
           localStorage.setItem('user', JSON.stringify(response.data[0]));
-          this.console.log("test");
+
           this.props.history.push('/employerhome');
         } else {
           localStorage.setItem('isEmployeeLoggedIn', 'true');
