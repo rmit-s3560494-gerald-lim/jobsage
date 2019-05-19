@@ -40,6 +40,7 @@ class App extends Component {
 
           <Route path='/adminlogin' component={AdminLogin}/>
           <Route path='/signup' component={SignUpPage} />
+          <Route path='/' component={LoginPage} />
           <Route path='/login' component={LoginPage} />
         </Switch>
       </BrowserRouter>

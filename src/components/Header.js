@@ -1,31 +1,23 @@
 import React, { Component } from 'react';
-import {Redirect} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
-// const Button = withRouter(({ history }) => (
-//   <button className="btn btn-primary my-2 my-sm-0" onClick={handleSignOut}>Sign Out</button>
-// ))
-// import Logo from '../logo.png';
-
-const handleSignOut = (e) => {
-  e.preventDefault();
-
-  if(localStorage.getItem('isAdminLoggedIn') === 'true') {
-    localStorage.setItem('isAdminLoggedIn', 'false');
-    return <Redirect to='/adminlogin' />
-  }
-  if(localStorage.getItem('isEmployerLoggedIn') === 'true') {
-    localStorage.setItem('isEmployerLoggedIn', 'false');
-    return <Redirect to='/login' />
-  }
-  if(localStorage.getItem('isEmployeeLoggedIn') === 'true') {
-    console.log("here")
-    localStorage.setItem('isEmployeeLoggedIn', 'false');
-    return <Redirect to='/login' />
-  }
-
-  console.log(localStorage);
-}
 class Header extends Component {
+
+  handleSignOut = (e) => {
+    e.preventDefault();
+    if(localStorage.getItem('isAdminLoggedIn') === 'true') {
+      localStorage.setItem('isAdminLoggedIn', 'false');
+      this.props.history.push('/adminlogin');
+    }
+    if(localStorage.getItem('isEmployerLoggedIn') === 'true') {
+      localStorage.setItem('isEmployerLoggedIn', 'false');
+      this.props.history.push('/login');
+    }
+    if(localStorage.getItem('isEmployeeLoggedIn') === 'true') {
+      localStorage.setItem('isEmployeeLoggedIn', 'false');
+      this.props.history.push('/login');
+    }
+  }
 
   render() {
     return (
@@ -53,11 +45,11 @@ class Header extends Component {
               </div>
             </li>
           </ul>
-          <button className="btn btn-primary my-2 my-sm-0" onClick={handleSignOut}>Sign Out</button>
+          <button className="btn btn-primary my-2 my-sm-0" onClick={this.handleSignOut}>Sign Out</button>
         </div>
       </nav>
     );
   }
 }
 
-export default Header;
+export default withRouter(Header);
