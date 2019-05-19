@@ -26,9 +26,11 @@ class LoginPage extends Component {
     }).then(response => {
         if(response.data[0].user_type === 'employer'){
           localStorage.setItem('isEmployerLoggedIn', 'true');
+          localStorage.setItem('user', JSON.stringify(response.data[0]));
           this.props.history.push('/employerhome');
         } else {
           localStorage.setItem('isEmployeeLoggedIn', 'true');
+          localStorage.setItem('user', JSON.stringify(response.data[0]));
           this.props.history.push('/employeehome');
         }
     }).catch(error => {

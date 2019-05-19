@@ -1,7 +1,32 @@
 import React, { Component } from 'react';
+import {Redirect} from 'react-router-dom';
+
+// const Button = withRouter(({ history }) => (
+//   <button className="btn btn-primary my-2 my-sm-0" onClick={handleSignOut}>Sign Out</button>
+// ))
 // import Logo from '../logo.png';
 
+const handleSignOut = (e) => {
+  e.preventDefault();
+
+  if(localStorage.getItem('isAdminLoggedIn') === 'true') {
+    localStorage.setItem('isAdminLoggedIn', 'false');
+    return <Redirect to='/adminlogin' />
+  }
+  if(localStorage.getItem('isEmployerLoggedIn') === 'true') {
+    localStorage.setItem('isEmployerLoggedIn', 'false');
+    return <Redirect to='/login' />
+  }
+  if(localStorage.getItem('isEmployeeLoggedIn') === 'true') {
+    console.log("here")
+    localStorage.setItem('isEmployeeLoggedIn', 'false');
+    return <Redirect to='/login' />
+  }
+
+  console.log(localStorage);
+}
 class Header extends Component {
+
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -25,11 +50,10 @@ class Header extends Component {
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a className="dropdown-item" href="/jobs">Jobs List</a>
                 <a className="dropdown-item" href="/add">Add Jobs</a>
-                {/* <div className="dropdown-divider"></div> */}
-                {/* <a className="dropdown-item" href="#">Something else here</a> */}
               </div>
             </li>
           </ul>
+          <button className="btn btn-primary my-2 my-sm-0" onClick={handleSignOut}>Sign Out</button>
         </div>
       </nav>
     );
