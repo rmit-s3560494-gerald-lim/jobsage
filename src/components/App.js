@@ -20,6 +20,7 @@ import SignUpPage from './SignUpPage';
 import JobSeekerProfile from './JobSeekerProfile';
 import AdminHomePage from './AdminHomePage';
 import AdminRemoveUsers from './AdminRemoveUsers';
+import UsersList from './UsersList';
 
 class App extends Component {
   render() {
@@ -42,6 +43,7 @@ class App extends Component {
           <Route path='/signup' component={SignUpPage} />
           <Route path='/' component={LoginPage} />
           <Route path='/login' component={LoginPage} />
+          <Route path='/userslist' components={UsersList}/>
         </Switch>
       </BrowserRouter>
     );
