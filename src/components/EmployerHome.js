@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import Header from './Header';
 import './App.css';
 
-class Home extends Component {
+class EmployerHome extends Component {
     render() {
         return (
             <div className="content">
-                <Header />
-                {/* <Search /> */}
+                {/* <Header /> */}
 
                 <div className="row">
                     <div className="col-sm-6">
@@ -34,4 +33,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default EmployerHome;

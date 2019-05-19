@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-// import './App.css';
-import Home from './Home';
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+} from 'react-router-dom';
+import {ProtectedAdminRoute} from './Protected.Admin.route';
+import {ProtectedEmployerRoute} from './Protected.Employer.route';
+import {ProtectedEmployeeRoute} from './Protected.Employee.route';
+import {ProtectedSharedRoute} from './Protected.Shared.route';
+
+import EmployerHome from './EmployerHome';
+import EmployeeHome from './EmployeeHome';
 import AdminLogin from './AdminLogin';
 import JobsList from './JobsList';
 import CreateJobs from './CreateJobs';
@@ -14,18 +23,23 @@ import AdminRemoveUsers from './AdminRemoveUsers';
 import DBQuery from './DBQuery';
 import KNNTest from './KNNTest'
 
-
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <Switch>
-          {/* <Route exact path='/' component={LoginPage} /> */}
-          <Route exact path='/' component={Home} />
-          <Route path='/jobs' component={JobsList} />
-          <Route path='/add' component={CreateJobs} />
-          <Route path="/edit/:id" component={EditJobs} />
-          <Route path='/adminremoveusers' component={AdminRemoveUsers} />
+          <ProtectedAdminRoute path='/adminremoveusers' component={AdminRemoveUsers} />
+          <ProtectedAdminRoute exact path='/adminhomepage' component={AdminHomePage}/>
+
+          <ProtectedEmployerRoute path='/add' component={CreateJobs} />
+          <ProtectedEmployerRoute exact path='/employerhome' component={EmployerHome} />
+          <ProtectedEmployerRoute path="/edit/:id" component={EditJobs} />
+
+          <ProtectedEmployeeRoute path='/jobseekerprofile' component={JobSeekerProfile}/>
+          <ProtectedEmployeeRoute exact path='/employeehome' component={EmployeeHome} />
+
+          <ProtectedSharedRoute path='/jobs' component={JobsList} />
+
           <Route path='/adminlogin' component={AdminLogin}/>
           <Route path='/signup' component={SignUpPage} />
           <Route exact path='/login' component={LoginPage} />

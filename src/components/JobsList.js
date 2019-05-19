@@ -16,7 +16,7 @@ const Jobs = props => (
         {/* <td>{props.job.job_description}</td> */}
         <td>{props.job.post_date}</td>
         <td>{props.job.salary_offered}</td>
-        <td>{props.job.state}</td>
+        {/* <td>{props.job.state}</td> */}
         {/* <td>{props.job.url}</td> */}
         <td>
             <Link to={"/edit/" + props.job._id}>Edit</Link>
@@ -33,7 +33,7 @@ export default class JobsList extends Component {
 
     componentDidMount() {
         axios.get('http://localhost:4000/jobs/')
-        //axios.get('http://35.212.88.235/jobs/')
+        // axios.get('http://35.212.88.235/jobs/')
             .then(response => {
                 this.setState({ jobs: response.data });
                 console.log(this.state.jobs);
@@ -52,7 +52,7 @@ export default class JobsList extends Component {
     render() {
         return (
             <div>
-                {console.log(this.state.jobs)}
+                {/* {console.log(this.state.jobs)} */}
                 <Header />
                 <h3 id="jobsage">Jobs List</h3>
                 <div className="card">
@@ -71,7 +71,7 @@ export default class JobsList extends Component {
 
                                 <th>Post Date</th>
                                 <th>Salary</th>
-                                <th>State</th>
+                                {/* <th>State</th> */}
                                 {/* <th>url</th> */}
                                 <th>Edit</th>
                             </tr>

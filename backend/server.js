@@ -123,6 +123,8 @@ jobsRoutes.route('/add').post(function (req, res) {
 
 jobsRoutes.route('/edit/:id').post(function (req, res) {
     Jobs.findById(req.params.id, function (err, jobs) {
+        console.log(req.body.skills[0].skill1);
+        console.log(jobs.skills[0].skill1);
         if (!jobs) {
             res.status(404).send('data is not found');
         } else {
@@ -130,15 +132,25 @@ jobsRoutes.route('/edit/:id').post(function (req, res) {
             jobs.category = req.body.category;
             jobs.city = req.body.city;
             jobs.company_name = req.body.company_name;
-            jobs.geo = req.body.geo;
-            jobs.job_board = req.body.job_board;
+            // jobs.geo = req.body.geo;
+            // jobs.job_board = req.body.job_board;
             jobs.job_description = req.body.job_description;
             jobs.job_title = req.body.job_title;
             jobs.job_type = req.body.job_type;
-            jobs.post_date = req.body.post_date
+            jobs.post_date = req.body.post_date;
             jobs.salary_offered = req.body.salary_offered;
-            jobs.state = req.body.state;
-            jobs.url = req.body.state;
+            // jobs.state = req.body.state;
+            jobs.skills[0].skill1 = req.body.skills[0].skill1;
+            jobs.skills[0].rating1 = req.body.skills[0].rating1;
+            jobs.skills[0].skill2 = req.body.skills[0].skill2;
+            jobs.skills[0].rating2 = req.body.skills[0].rating2;
+            jobs.skills[0].skill3 = req.body.skills[0].skill3;
+            jobs.skills[0].rating3 = req.body.skills[0].rating3;
+            jobs.skills[0].skill4 = req.body.skills[0].skill4;
+            jobs.skills[0].rating4 = req.body.skills[0].rating4;
+            jobs.skills[0].skill5 = req.body.skills[0].skill5;
+            jobs.skills[0].rating5 = req.body.skills[0].rating5;
+            // jobs.url = req.body.url;
 
             jobs.save().then(jobs => {
                 res.json('Jobs updated!');
