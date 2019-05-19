@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import './App.css';
-import Header from './Header';
 import axios from 'axios';
-import userAuth from './UserAuth';
+
 class LoginPage extends Component {
 
   constructor(props) {
@@ -15,8 +14,6 @@ class LoginPage extends Component {
   }
 
   handleChange = (e) => {
-    console.log(e.target.name);
-    console.log(e.target.value);
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -27,13 +24,13 @@ class LoginPage extends Component {
       email: this.state.email,
       password: this.state.password,
     }).then(response => {
-      userAuth.login(() => {
-        if(response.data[0].user_type === 'employee'){
-          this.props.history.push('/home');
+        if(response.data[0].user_type === 'employer'){
+          localStorage.setItem('isEmployerLoggedIn', 'true');
+          this.props.history.push('/employerhome');
         } else {
-          this.props.history.push('/add');
+          localStorage.setItem('isEmployeeLoggedIn', 'true');
+          this.props.history.push('/employeehome');
         }
-      })
     }).catch(error => {
       console.log('Error: ', error);
     })
@@ -47,7 +44,6 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-        <Header />
         <div class="centerLogin">
         <div class="form">
 

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import adminAuth from './AdminAuth';
 
 class AdminLogin extends Component{
     
@@ -27,9 +26,8 @@ class AdminLogin extends Component{
           return obj.user_name === this.state.username && obj.password === this.state.password;
         });
         if(userName.length !== 0) {
-          adminAuth.login(() => {
-            this.props.history.push('/adminhomepage');
-          })
+          localStorage.setItem('isAdminLoggedIn', 'true');
+          this.props.history.push('/adminhomepage');
         }
       })
       .catch(function(error) {

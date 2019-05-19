@@ -5,9 +5,12 @@ import {
   Route,
 } from 'react-router-dom';
 import {ProtectedAdminRoute} from './Protected.Admin.route';
-import {ProtectedUserRoute} from './Protected.User.route';
+import {ProtectedEmployerRoute} from './Protected.Employer.route';
+import {ProtectedEmployeeRoute} from './Protected.Employee.route';
+import {ProtectedSharedRoute} from './Protected.Shared.route';
 
-import Home from './Home';
+import EmployerHome from './EmployerHome';
+import EmployeeHome from './EmployeeHome';
 import AdminLogin from './AdminLogin';
 import JobsList from './JobsList';
 import CreateJobs from './CreateJobs';
@@ -23,16 +26,21 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <ProtectedUserRoute exact path='/home' component={Home} />
-          <ProtectedUserRoute path='/jobs' component={JobsList} />
-          <ProtectedUserRoute path='/add' component={CreateJobs} />
-          <ProtectedUserRoute path="/edit/:id" component={EditJobs} />
           <ProtectedAdminRoute path='/adminremoveusers' component={AdminRemoveUsers} />
+          <ProtectedAdminRoute exact path='/adminhomepage' component={AdminHomePage}/>
+
+          <ProtectedEmployerRoute path='/add' component={CreateJobs} />
+          <ProtectedEmployerRoute exact path='/employerhome' component={EmployerHome} />
+          <ProtectedEmployerRoute path="/edit/:id" component={EditJobs} />
+          
+          <ProtectedEmployeeRoute path='/jobseekerprofile' component={JobSeekerProfile}/>
+          <ProtectedEmployeeRoute exact path='/employeehome' component={EmployeeHome} />
+
+          <ProtectedSharedRoute path='/jobs' component={JobsList} />
+
           <Route path='/adminlogin' component={AdminLogin}/>
           <Route path='/signup' component={SignUpPage} />
           <Route path='/login' component={LoginPage} />
-          <ProtectedUserRoute path='/jobseekerprofile' component={JobSeekerProfile}/>
-          <ProtectedAdminRoute exact path='/adminhomepage' component={AdminHomePage}/>
         </Switch>
       </BrowserRouter>
     );
