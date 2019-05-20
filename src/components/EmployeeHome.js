@@ -285,8 +285,6 @@ class EmployeeHome extends Component {
         return (
             <div className="content">
                 <Header />
-                {/* <Search /> */}
-
                 <div className="row">
                     <div className="col-sm-6">
                         <div className="card">

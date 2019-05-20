@@ -20,8 +20,12 @@ import SignUpPage from './SignUpPage';
 import JobSeekerProfile from './JobSeekerProfile';
 import AdminHomePage from './AdminHomePage';
 import AdminRemoveUsers from './AdminRemoveUsers';
+<<<<<<< HEAD
 import DBQuery from './DBQuery';
 import KNNTest from './KNNTest'
+=======
+import UsersList from './UsersList';
+>>>>>>> 64b84bb0ac7af7193075fc3f055323be327553d6
 
 class App extends Component {
   render() {
@@ -42,6 +46,7 @@ class App extends Component {
 
           <Route path='/adminlogin' component={AdminLogin}/>
           <Route path='/signup' component={SignUpPage} />
+<<<<<<< HEAD
           <Route exact path='/login' component={LoginPage} />
           <Route path='/signup' component={SignUpPage} />
           <Route path='/jobseekerprofile' component={JobSeekerProfile}/>
@@ -50,6 +55,11 @@ class App extends Component {
           <Route path='/knn' component={KNNTest}/>
 
           {/* <Route path='/profile' component={ProfilePage} /> */}
+=======
+          <Route path='/' component={LoginPage} />
+          <Route path='/login' component={LoginPage} />
+          <Route path='/userslist' components={UsersList}/>
+>>>>>>> 64b84bb0ac7af7193075fc3f055323be327553d6
         </Switch>
       </BrowserRouter>
     );
