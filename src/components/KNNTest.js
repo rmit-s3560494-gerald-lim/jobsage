@@ -40,12 +40,13 @@ const Jobs = props => (
 // };
 //
 // var x = jsontest.skills[0].skill1;
-//var job_skill_set
-// var neighbour = require('nearestneighbour')({
-//     objects : test,
-//     number : 2
-//   })
-//   console.log( neighbour.nearest([1,2,3,1,3]))
+var test = [[0,1,0,0,1],[2,1,0,0,1]];
+var job_skill_set
+var neighbour = require('nearestneighbour')({
+    objects : test,
+    number : 1
+  })
+  console.log( neighbour.nearest([1,2,2,2,3]))
 
 class KNNTest extends Component {
 
