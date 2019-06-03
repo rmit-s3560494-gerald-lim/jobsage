@@ -26,18 +26,6 @@ class LoginPage extends Component {
       email: this.state.email,
       password: this.state.password,
     }).then(response => {
-<<<<<<< HEAD
-        if(response.data[0].user_type === 'employer'){
-          localStorage.setItem('isEmployerLoggedIn', 'true');
-          localStorage.setItem('user', JSON.stringify(response.data[0]));
-
-          this.props.history.push('/employerhome');
-        } else {
-          localStorage.setItem('isEmployeeLoggedIn', 'true');
-          localStorage.setItem('user', JSON.stringify(response.data[0]));
-          this.props.history.push('/employeehome');
-        }
-=======
       if (response.data[0].user_type === 'employer') {
         localStorage.setItem('isEmployerLoggedIn', 'true');
         localStorage.setItem('user', JSON.stringify(response.data[0]));
@@ -47,7 +35,6 @@ class LoginPage extends Component {
         localStorage.setItem('user', JSON.stringify(response.data[0]));
         this.props.history.push('/employeehome');
       }
->>>>>>> 64b84bb0ac7af7193075fc3f055323be327553d6
     }).catch(error => {
       this.setState({
         error: true,

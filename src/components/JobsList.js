@@ -8,15 +8,17 @@ const Jobs = props => (
         {/* <td>{props.job._id}</td> */}
         <td>{props.job.job_title}</td>
         <td>{props.job.job_type}</td>
-        <td>{props.job.category}</td>
+        {/*<td>{props.job.category}</td> */}
         <td>{props.job.city}</td>
         <td>{props.job.company_name}</td>
         {/* <td>{props.job.geo}</td>
         <td>{props.job.job_board}</td> */}
-        {/* <td>{props.job.job_description}</td> */}
-        <td>{props.job.post_date}</td>
+        <td>{props.job.job_description}</td>
+        <td>{props.job.skills[0].skill1 + ', ' + props.job.skills[0].skill2 +  ', ' + props.job.skills[0].skill3 +
+       ', ' + props.job.skills[0].skill4 +', '+ props.job.skills[0].skill5}</td>
+        {/*  <td>{props.job.post_date}</td>*/}
         <td>{props.job.salary_offered}</td>
-        {/* <td>{props.job.state}</td> */}
+      {/*   <td>{props.job.state}</td> */}
         {/* <td>{props.job.url}</td> */}
         <td>
             <Link to={"/edit/" + props.job._id}>Edit</Link>
@@ -62,17 +64,17 @@ export default class JobsList extends Component {
                                 {/* <th>id</th> */}
                                 <th>Job Title</th>
                                 <th>Job Type</th>
-                                <th>Category</th>
+                                {/*<th>Category</th>*/}
                                 <th>City</th>
                                 <th>Company Name</th>
                                 {/* <th>geo</th>
                             <th>job_board</th> */}
                                 {/* <th>job_description</th> */}
 
-                                <th>Post Date</th>
+                                <th>Job Description</th>
+                                <th>Skills</th>
                                 <th>Salary</th>
-                                {/* <th>State</th> */}
-                                {/* <th>url</th> */}
+                              {/*  <th>url</th> */}
                                 <th>Edit</th>
                             </tr>
                         </thead>
