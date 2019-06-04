@@ -35,9 +35,9 @@ class EmployeeHome extends Component {
   }
 
   componentDidMount() {
-      axios.get('http://localhost:4000/jobs/')
-      //axios.get('http://35.212.88.235/jobs/')
+      axios.get('http://35.212.88.235/jobs/')
           .then(response => {
+              console.log(response.data);
               this.setState({ jobs: response.data });
               console.log(this.state.jobs);
               localStorage.setItem('jobs_list', JSON.stringify(response.data));
@@ -254,6 +254,8 @@ class EmployeeHome extends Component {
       var job_set_with_id = [];
       var custom_list = [];
       //console.log(job_data_set);
+      console.log(localStorage.getItem('user'));
+      console.log(jobs_details);
       for (var i = 0; i < jobs_details.length; i++){
         this.createJobSkillRatingArray(user_details.skills[0], jobs_details[i], job_data_set, job_set_with_id);
       }

@@ -34,8 +34,7 @@ export default class JobsList extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:4000/jobs/')
-        // axios.get('http://35.212.88.235/jobs/')
+        axios.get('http://35.212.88.235/jobs/')
             .then(response => {
                 this.setState({ jobs: response.data });
                 console.log(this.state.jobs);

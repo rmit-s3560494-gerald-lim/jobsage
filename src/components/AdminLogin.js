@@ -31,6 +31,10 @@ class AdminLogin extends Component {
         if (userName.length !== 0) {
           localStorage.setItem('isAdminLoggedIn', 'true');
           this.props.history.push('/adminhomepage');
+        } else {
+          this.setState({
+            error: true,
+          });
         }
       })
       .catch(error => {
