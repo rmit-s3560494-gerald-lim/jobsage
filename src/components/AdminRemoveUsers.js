@@ -1,75 +1,65 @@
 import React from 'react';
 import './App.css';
-// import Header from './Header';
 import axios from 'axios';
+import Header from './Header';
 
+const Users = props => (
+    <tr>
+        <td>{props.user_name}</td>
+        <td>{props.user_email}</td>
+        <td>{props.user_type}</td>
+    </tr>
+)
 
+export default class AdminRemoveUsers extends React.Component {
+    
+    constructor(props) {
+        super(props);
+        this.state = { users: [] };
+    }
 
-const Header = (props) => {
-    return(
-        <header>
-            <h1>{props.title}</h1>
-            <span className="stats">Users: {props.totalUsers}</span>
-        </header>
-    );
-}
-      
-const User = (props) => {
-    return(
-        <div className = "user">
-            <span className = "user-name">
-                <button className="remove-user" onClick={()=>props.removeUser(props.id)}>x</button>
-                {props.name}
-            </span>
-
-            
-        </div>
-    );
-}
-
-class AdminRemoveUsers extends React.Component {
-    state = {
-        users: []
-    };
-
-    componentWillMount() {
+    componentDidMount() {
         axios.get('http://35.212.88.235/users/')
             .then(response => {
                 this.setState({
                     users: response.data
                 })
             })
+            .catch(function (error) {
+                console.log(error.response);
+            })
     }
-
-    handleRemoveUser = (id) => {
-        this.setState(prevState => {
-            return{
-                users: prevState.users.filter(p => p.id !== id) 
-            };
+    
+    usersList(){
+        return this.state.users.map(function(currentUser, i) {
+            return <Users user={currentUser} key={i} />;     
         });
     }
-
+    
     render(){
         return(
-            <div className="userlist">
-                <Header 
-                    title="User Accounts" 
-                    totalUsers={this.state.users.length}
-                />
-                
-                {this.state.users.map( user =>
-                    <User
-                    name={user.user_name}
-                    // score={user.score}
-
-                    // key={user.id.toString()}
-                    removeUser = {this.handleRemoveUser}
-                    />
-                )}
-                
+            <div>   
+                <Header />
+                <h3 id="jobsage">Users List</h3>
+                <div className="card">
+                    <table className="table table-striped" style={{ marginTop: 20 }} >
+                        <thead className="thead-dark">
+                            <tr>
+                                <th>User Name</th>
+                                <th>User Email</th>
+                                <th>User Type</th>
+                                <th>Skills</th>
+                                <th>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.usersList()}
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        );
+        )
     }
 }
 
-export default AdminRemoveUsers;
+//export default AdminRemoveUsers;
