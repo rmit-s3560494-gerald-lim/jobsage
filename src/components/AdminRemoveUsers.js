@@ -5,9 +5,9 @@ import Header from './Header';
 
 const Users = props => (
     <tr>
-        <td>{props.user_name}</td>
-        <td>{props.user_email}</td>
-        <td>{props.user_type}</td>
+        <td>{props.user.user_name}</td>
+        <td>{props.user.user_email}</td>
+        <td>{props.user.user_type}</td>
     </tr>
 )
 
@@ -23,7 +23,9 @@ export default class AdminRemoveUsers extends React.Component {
             .then(response => {
                 this.setState({
                     users: response.data
-                })
+                   
+                });
+                console.log(this.state.users);
             })
             .catch(function (error) {
                 console.log(error.response);
@@ -32,7 +34,7 @@ export default class AdminRemoveUsers extends React.Component {
     
     usersList(){
         return this.state.users.map(function(currentUser, i) {
-            return <Users user={currentUser} key={i} />;     
+          return <Users user={currentUser} key={i} />;
         });
     }
     
@@ -48,7 +50,6 @@ export default class AdminRemoveUsers extends React.Component {
                                 <th>User Name</th>
                                 <th>User Email</th>
                                 <th>User Type</th>
-                                <th>Skills</th>
                                 <th>Remove</th>
                             </tr>
                         </thead>
@@ -61,5 +62,3 @@ export default class AdminRemoveUsers extends React.Component {
         )
     }
 }
-
-//export default AdminRemoveUsers;
