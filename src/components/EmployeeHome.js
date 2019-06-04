@@ -39,7 +39,7 @@ class EmployeeHome extends Component {
           .then(response => {
               console.log(response.data);
               this.setState({ jobs: response.data });
-              console.log(this.state.jobs);2
+              console.log(this.state.jobs);
               localStorage.setItem('jobs_list', JSON.stringify(response.data));
           })
           .catch(function (error) {

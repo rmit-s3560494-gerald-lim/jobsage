@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+// import Header from './Header';
+import axios from 'axios';
 
 
 
@@ -27,25 +29,17 @@ const User = (props) => {
 
 class AdminRemoveUsers extends React.Component {
     state = {
-        users: [
-            {
-                name: "Richard",
-                id: 1
-            },
-            {
-                name: "Alex",
-                id: 2
-            },
-            {
-                name: "Pearce",
-                id: 3
-            },
-            {
-                name: "James",
-                id: 4
-            }
-        ]
+        users: []
     };
+
+    componentWillMount() {
+        axios.get('http://35.212.88.235/users/')
+            .then(response => {
+                this.setState({
+                    users: response.data
+                })
+            })
+    }
 
     handleRemoveUser = (id) => {
         this.setState(prevState => {
@@ -65,10 +59,10 @@ class AdminRemoveUsers extends React.Component {
                 
                 {this.state.users.map( user =>
                     <User
-                    name={user.name}
-                    id = {user.id}
-                    score={user.score}
-                    key={user.id.toString()}
+                    name={user.user_name}
+                    // score={user.score}
+
+                    // key={user.id.toString()}
                     removeUser = {this.handleRemoveUser}
                     />
                 )}
