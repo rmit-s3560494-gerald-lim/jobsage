@@ -15,6 +15,10 @@ class LoginPage extends Component {
     };
   }
 
+  componentDidMount() {
+    localStorage.clear();
+  }
+
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value

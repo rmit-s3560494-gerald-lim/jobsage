@@ -34,7 +34,7 @@ class EmployeeHome extends Component {
       this.state = { jobs: [] };
   }
 
-  componentDidMount() {
+  componentWillMount() {
       axios.get('http://35.212.88.235/jobs/')
           .then(response => {
               console.log(response.data);
