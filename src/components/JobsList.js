@@ -14,11 +14,11 @@ const Jobs = props => (
         {/* <td>{props.job.geo}</td>
         <td>{props.job.job_board}</td> */}
         <td>{props.job.job_description}</td>
-        <td>{props.job.skills[0].skill1 + ', ' + props.job.skills[0].skill2 +  ', ' + props.job.skills[0].skill3 +
-       ', ' + props.job.skills[0].skill4 +', '+ props.job.skills[0].skill5}</td>
+        <td>{props.job.skills[0].skill1 + ', ' + props.job.skills[0].skill2 + ', ' + props.job.skills[0].skill3 +
+            ', ' + props.job.skills[0].skill4 + ', ' + props.job.skills[0].skill5}</td>
         {/*  <td>{props.job.post_date}</td>*/}
         <td>{props.job.salary_offered}</td>
-      {/*   <td>{props.job.state}</td> */}
+        {/*   <td>{props.job.state}</td> */}
         {/* <td>{props.job.url}</td> */}
         <td>
             <Link to={"/edit/" + props.job._id}>Edit</Link>
@@ -56,31 +56,33 @@ export default class JobsList extends Component {
                 {/* {console.log(this.state.jobs)} */}
                 <Header />
                 <h3 id="jobsage">Jobs List</h3>
-                <div className="card">
-                    <table className="table table-striped" style={{ marginTop: 20 }} >
-                        <thead className="thead-dark">
-                            <tr>
-                                {/* <th>id</th> */}
-                                <th>Job Title</th>
-                                <th>Job Type</th>
-                                {/*<th>Category</th>*/}
-                                <th>City</th>
-                                <th>Company Name</th>
-                                {/* <th>geo</th>
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table table-striped" style={{ marginTop: 20 }} >
+                            <thead class="thead-dark">
+                                <tr>
+                                    {/* <th>id</th> */}
+                                    <th>Job Title</th>
+                                    <th>Job Type</th>
+                                    {/*<th>Category</th>*/}
+                                    <th>City</th>
+                                    <th>Company Name</th>
+                                    {/* <th>geo</th>
                             <th>job_board</th> */}
-                                {/* <th>job_description</th> */}
+                                    {/* <th>job_description</th> */}
 
-                                <th>Job Description</th>
-                                <th>Skills</th>
-                                <th>Salary</th>
-                              {/*  <th>url</th> */}
-                                <th>Edit</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.jobsList()}
-                        </tbody>
-                    </table>
+                                    <th>Job Description</th>
+                                    <th>Skills</th>
+                                    <th>Salary</th>
+                                    {/*  <th>url</th> */}
+                                    <th>Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.jobsList()}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         )
