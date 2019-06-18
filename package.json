@@ -52,6 +52,5 @@
   "bugs": {
     "url": "https://github.com/rmit-s3560494-gerald-lim/ppmm/issues"
   },
-  "homepage": "https://github.com/rmit-s3560494-gerald-lim/ppmm#readme",
-  "test": "NODE_ENV=test jest --forceExit"
+  "homepage": "https://github.com/rmit-s3560494-gerald-lim/ppmm#readme"
 }
