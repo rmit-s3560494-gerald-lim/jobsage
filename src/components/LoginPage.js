@@ -58,36 +58,36 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-        <div class="centerLogin">
-          <img src={logo} class="img-fluid" alt="JobSage Logo" />
-          <h1 id="applicationTitle" class="display-3">JobSage</h1>
+        <div className="centerLogin">
+          <img src={logo} className="img-fluid" alt="JobSage Logo" />
+          <h1 id="applicationTitle" className="display-3">JobSage</h1>
           {this.state.error === true && (
             <Error />
           )}
-          <div class="form">
+          <div className="form">
             <form onSubmit={this.handleSubmit}>
-              <div class="form-group">
-                <label for="emailLabel">Email Address</label>
+              <div className="form-group">
+                <label>Email Address</label>
                 <input
                   type="email"
-                  class="form-control"
+                  className="form-control"
                   name="email"
                   onChange={this.handleChange}
                   id="email"
                   aria-describedby="emailHelp"
                   placeholder="Enter email" />
               </div>
-              <div class="form-group">
-                <label for="passwordLabel">Password</label>
+              <div className="form-group">
+                <label>Password</label>
                 <input
                   type="password"
-                  class="form-control"
+                  className="form-control"
                   name="password"
                   onChange={this.handleChange}
                   id="exampleInputPassword1"
                   placeholder="Password" />
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" className="btn btn-primary">Submit</button>
             </form>
             <a id="signUpLink" href="/signup">Don't have an account?</a>
           </div>
