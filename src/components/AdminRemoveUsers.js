@@ -3,19 +3,23 @@ import './App.css';
 import axios from 'axios';
 import Header from './Header';
 
-const Users = props => (
-    <tr>
-        <td>{props.user.user_name}</td>
-        <td>{props.user.user_email}</td>
-        <td>{props.user.user_type}</td>
-    </tr>
-)
 
 export default class AdminRemoveUsers extends React.Component {
-    
+
+
+    // Users = props => (
+    //     <tr>
+    //         <td>{props.user.user_name}</td>
+    //         <td>{props.user.user_email}</td>
+    //         <td>{props.user.user_type}</td>
+    //         <td><button onClick = {this.delete} className="btn btn-danger">Delete</button></td>
+    //     </tr>
+    // )
+
     constructor(props) {
         super(props);
         this.state = { users: [] };
+        // this.delete = this.delete.bind(this);
     }
 
     componentDidMount() {
@@ -23,7 +27,7 @@ export default class AdminRemoveUsers extends React.Component {
             .then(response => {
                 this.setState({
                     users: response.data
-                   
+
                 });
                 console.log(this.state.users);
             })
@@ -31,16 +35,30 @@ export default class AdminRemoveUsers extends React.Component {
                 console.log(error.response);
             })
     }
-    
-    usersList(){
-        return this.state.users.map(function(currentUser, i) {
-          return <Users user={currentUser} key={i} />;
-        });
+
+    delete = (currUser) => {
+        console.log(currUser)
+        // axios.post('http://35.212.88.235/users/delete/', currUser.id)
+        //     .then(console.log('Deleted'))
+        //     .catch(err => console.log(err))
     }
-    
-    render(){
-        return(
-            <div>   
+
+    makeUserTable = (currUser) =>
+        <tr>
+            <td>{currUser.user_name}</td>
+            <td>{currUser.user_email}</td>
+            <td>{currUser.user_type}</td>
+            <td><button onClick={() => this.delete(currUser)} className="btn btn-danger">Delete</button></td>
+        </tr>
+
+
+    usersList() {
+        return this.state.users.map(user => this.makeUserTable(user));
+    }
+
+    render() {
+        return (
+            <div>
                 <Header />
                 <h3 id="jobsage">Users List</h3>
                 <div className="card">
@@ -50,7 +68,7 @@ export default class AdminRemoveUsers extends React.Component {
                                 <th>User Name</th>
                                 <th>User Email</th>
                                 <th>User Type</th>
-                                <th>Remove</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
