@@ -15,6 +15,12 @@ const homeLink = () => {
 }
 class Header extends Component {
 
+  getName() {
+    var user_details = JSON.parse(localStorage.getItem('user'));
+    var name = user_details.user_name;
+    return name
+  }
+
   handleSignOut = (e) => {
     e.preventDefault();
     if (localStorage.getItem('isAdminLoggedIn') === 'true') {
@@ -55,7 +61,18 @@ class Header extends Component {
               </div>
             </li>
           </ul>
-          <button className="btn btn-primary my-2 my-sm-0" onClick={this.handleSignOut}>Sign Out</button>
+        </div>
+        <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+              <ul className="navbar-nav ml-auto">
+              <li className="nav-item dropdown">
+                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome, {this.getName()}</a>
+                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a className="dropdown-item" href="/profile">My Profile</a>
+                  <a className="dropdown-item" href="#" onClick={this.handleSignOut}>Sign out</a>
+                </div>
+              </li>
+                </ul>
+         {/*<button className="btn btn-primary my-2 my-sm-0" onClick={this.handleSignOut}>Sign Out</button>*/}
         </div>
       </nav>
     );

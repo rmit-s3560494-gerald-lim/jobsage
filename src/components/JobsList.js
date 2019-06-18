@@ -19,12 +19,13 @@ const Jobs = props => (
         {/*  <td>{props.job.post_date}</td>*/}
         <td>{props.job.salary_offered}</td>
         {/*   <td>{props.job.state}</td> */}
-        {/* <td>{props.job.url}</td> */}
+        <td> <a href={props.job.url} target="_blank">Click here to apply</a></td>
         <td>
             <Link to={"/edit/" + props.job._id}>Edit</Link>
         </td>
     </tr>
 )
+
 
 export default class JobsList extends Component {
 
@@ -74,7 +75,7 @@ export default class JobsList extends Component {
                                     <th>Job Description</th>
                                     <th>Skills</th>
                                     <th>Salary</th>
-                                    {/*  <th>url</th> */}
+                                    <th>Apply</th>
                                     <th>Edit</th>
                                 </tr>
                             </thead>
