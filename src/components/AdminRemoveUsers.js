@@ -36,11 +36,11 @@ export default class AdminRemoveUsers extends React.Component {
             })
     }
 
-    delete = (currUser) => {
-        console.log(currUser)
-        // axios.post('http://35.212.88.235/users/delete/', currUser.id)
-        //     .then(console.log('Deleted'))
-        //     .catch(err => console.log(err))
+    delete(currUser) {
+        console.log(currUser._id)
+        axios.get('http://35.212.88.235/users/delete/' + currUser._id)
+             .then(console.log('Deleted'))
+             .catch(err => console.log(err))
     }
 
     makeUserTable = (currUser) =>
