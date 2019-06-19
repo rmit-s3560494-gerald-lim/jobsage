@@ -21,14 +21,6 @@ class Header extends Component {
     return name;
   }
 
-  getUserId() {
-    var user_details = JSON.parse(localStorage.getItem('user'));
-    var id = user_details._id;
-    var url = "/users/" + id;
-    console.log(url);
-    return url;
-  }
-
   handleSignOut = (e) => {
     e.preventDefault();
     if (localStorage.getItem('isAdminLoggedIn') === 'true') {
@@ -75,7 +67,7 @@ class Header extends Component {
               <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome, {this.getName()}</a>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a className="dropdown-item" href={this.getUserId()}>My Profile</a>
+                  <a className="dropdown-item" href="/users/">My Profile</a>
                   <a className="dropdown-item" href="#" onClick={this.handleSignOut}>Sign out</a>
                 </div>
               </li>

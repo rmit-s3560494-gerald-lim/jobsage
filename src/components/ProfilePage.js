@@ -38,8 +38,14 @@ export default class ProfilePage extends Component {
 
     }
 
+    getUserId() {
+        var user_details = JSON.parse(localStorage.getItem('user'));
+        var id = user_details._id;
+        return id;
+      }
+
     componentDidMount() {
-        axios.get('http://35.212.88.235/users/' + this.props.match.params.id)
+        axios.get('http://35.212.88.235/users/' + this.getUserId())
             .then(response => {
                 console.log(this.props.match.params.id);
                 this.setState({
@@ -106,7 +112,7 @@ export default class ProfilePage extends Component {
             // state: this.state.state,
             // url: this.state.url
         };
-        axios.post('http://35.212.88.235/edit/' + this.props.match.params.id, newUser)
+        axios.post('http://35.212.88.235/edit/' + this.getUserId(), newUser)
             .then(res => console.log(res.data));
         alert("Profile Updated!");
         this.props.history.push('/users');
