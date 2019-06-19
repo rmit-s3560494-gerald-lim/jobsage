@@ -25,7 +25,7 @@ class Header extends Component {
     var user_details = JSON.parse(localStorage.getItem('user'));
     var id = user_details._id;
     var url = "/users/" + id;
-    console.log(id);
+    console.log(url);
     return url;
   }
 

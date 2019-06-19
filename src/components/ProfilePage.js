@@ -41,8 +41,9 @@ export default class ProfilePage extends Component {
     componentDidMount() {
         axios.get('http://35.212.88.235/users/' + this.props.match.params.id)
             .then(response => {
-                console.log(response.data.skills[0]);
+                console.log(this.props.match.params.id);
                 this.setState({
+                    _id: this.state.id,
                     user_name: response.data.user_name,
                     user_email: response.data.user_email,
                     password: response.data.password,
@@ -105,7 +106,7 @@ export default class ProfilePage extends Component {
             // state: this.state.state,
             // url: this.state.url
         };
-        axios.post('http://35.212.88.235/users/edit/' + this.props.match.params.id, newUser)
+        axios.post('http://35.212.88.235/edit/' + this.props.match.params.id, newUser)
             .then(res => console.log(res.data));
         alert("Profile Updated!");
         this.props.history.push('/users');

@@ -38,7 +38,7 @@ class App extends Component {
           <ProtectedEmployeeRoute exact path='/employeehome' component={EmployeeHome} />
 
           <ProtectedSharedRoute path='/jobs' component={JobsList} />
-          <ProtectedSharedRoute path='/profile' component={ProfilePage}/>
+          <ProtectedSharedRoute path='/users' component={ProfilePage}/>
 
           <Route path='/adminlogin' component={AdminLogin}/>
           <Route path='/signup' component={SignUpPage} />

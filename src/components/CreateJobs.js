@@ -15,7 +15,6 @@ export default class CreateJobs extends Component {
         super(props);
 
         // this.onChangeId = this.onChangeId.bind(this);
-        this.onChangeCategory = this.onChangeCategory.bind(this);
         this.onChangeCity = this.onChangeCity.bind(this);
         this.onChangeCompanyName = this.onChangeCompanyName.bind(this);
         this.onChangeJobDescription = this.onChangeJobDescription.bind(this);
@@ -38,7 +37,6 @@ export default class CreateJobs extends Component {
 
         this.state = {
             // _id: '',
-            category: '',
             city: '',
             company_name: '',
             geo: '',
@@ -199,7 +197,6 @@ export default class CreateJobs extends Component {
 
         const newJob = {
             // _id: this.state.id,
-            category: this.state.category,
             city: this.state.city,
             company_name: this.state.company_name,
             job_description: this.state.job_description,
@@ -223,7 +220,7 @@ export default class CreateJobs extends Component {
             url: this.state.url
         }
 
-        axios.post('http://localhost:4000/jobs/add', newJob)
+        axios.post('http://35.212.88.235/jobs/add', newJob)
             .then(res => console.log(res.data));
         alert("New Job added");
 
@@ -252,14 +249,6 @@ export default class CreateJobs extends Component {
                                     className="form-control"
                                     value={this.state.job_type}
                                     onChange={this.onChangeJobType}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label>Category: </label>
-                                <input type="text"
-                                    className="form-control"
-                                    value={this.state.category}
-                                    onChange={this.onChangeCategory}
                                 />
                             </div>
                             <div className="form-group">

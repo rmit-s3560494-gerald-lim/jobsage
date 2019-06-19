@@ -280,7 +280,7 @@ export default class EditJobs extends Component {
 
     render() {
         return (
-            
+
             <div>
                 <Header />
                 <div className="editjobs">
@@ -300,14 +300,6 @@ export default class EditJobs extends Component {
                                 className="form-control"
                                 value={this.state.job_type}
                                 onChange={this.onChangeJobType}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label>Category: </label>
-                            <input type="text"
-                                className="form-control"
-                                value={this.state.category}
-                                onChange={this.onChangeCategory}
                             />
                         </div>
                         <div className="form-group">
@@ -346,7 +338,7 @@ export default class EditJobs extends Component {
                             <label>Skills: </label>
                             <div className="form-group entry input-group col-xs-3">
                                 <input className="form-control" name="skills" type="text" placeholder="e.g. ReactJS" defaultValue={this.state.skills[0].skill1} onChange={this.onChangeSkill1} />
-                                
+
                                 <select className="form-control " id="skillSelect" onChange={this.onChangeRating1}>
                                     <option disabled selected> -- Select option -- </option>
                                     <option value="0">Beginner</option>
