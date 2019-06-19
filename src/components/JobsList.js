@@ -44,12 +44,12 @@ export default class JobsList extends Component {
             <td>{job.salary_offered}</td>
             <td> <a href={job.url} target="https://google.com">Apply</a></td>
 
-            <td>
-                <Link to={"/edit/" + job._id}>Edit</Link>
-            </td>
-            <td>
-                <button onClick={() => this.delete(job)} className="btn btn-danger">Delete</button>
-            </td>
+          {localStorage.getItem('isEmployerLoggedIn') === 'true' && (  <td>
+                  <Link to={"/edit/" + job._id}>Edit</Link>
+            </td>)}
+          {localStorage.getItem('isEmployerLoggedIn') === 'true' && (  <td>
+                  <button onClick={() => this.delete(job)} className="btn btn-danger">Delete</button>
+            </td>)}
         </tr>
     )
 
@@ -76,8 +76,10 @@ export default class JobsList extends Component {
                                     <th>Skills</th>
                                     <th>Salary</th>
                                     <th>Apply</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+                                    {localStorage.getItem('isEmployerLoggedIn') === 'true' && (
+                                        <th>Edit</th>)}
+                                    {localStorage.getItem('isEmployerLoggedIn') === 'true' && (
+                                    <th>Delete</th>)}
                                 </tr>
                             </thead>
                             <tbody>

@@ -112,7 +112,7 @@ export default class ProfilePage extends Component {
             // state: this.state.state,
             // url: this.state.url
         };
-        axios.post('http://35.212.88.235/users/' + this.getUserId(), newUser)
+        axios.post('http://35.212.88.235/users/edit/' + this.getUserId(), newUser)
             .then(res => console.log(res.data));
         alert("Profile Updated!");
         this.props.history.push('/users');
