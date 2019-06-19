@@ -112,7 +112,7 @@ export default class ProfilePage extends Component {
             // state: this.state.state,
             // url: this.state.url
         };
-        axios.post('http://35.212.88.235/edit/' + this.getUserId(), newUser)
+        axios.post('http://35.212.88.235/users/' + this.getUserId(), newUser)
             .then(res => console.log(res.data));
         alert("Profile Updated!");
         this.props.history.push('/users');
@@ -147,6 +147,7 @@ export default class ProfilePage extends Component {
                             <label>Password: </label>
                             <input type="text"
                                 className="form-control"
+                                name="password"
                                 value={this.state.password}
                                 onChange={this.onChange}
                             />
@@ -154,9 +155,9 @@ export default class ProfilePage extends Component {
                         <div className="form-group">
                             <label>Skills: </label>
                             <div className="form-group entry input-group col-xs-3">
-                                <input className="form-control" name="skills" type="text" placeholder="e.g. ReactJS" defaultValue={this.state.skills[0].skill1} onChange={this.onChangeSkill1} />
+                                <input className="form-control" name="skill1" type="text" placeholder="e.g. ReactJS" defaultValue={this.state.skills[0].skill1} onChange={this.onChangeSkill1} />
 
-                                <select className="form-control " id="skillSelect" onChange={this.onChangeRating1}>
+                                <select className="form-control " name="rating1" id="skillSelect" onChange={this.onChangeRating1}>
                                     <option disabled selected> -- Select option -- </option>
                                     <option value="0">Beginner</option>
                                     <option value="1">Intermediate</option>
@@ -164,8 +165,8 @@ export default class ProfilePage extends Component {
                                 </select>
                             </div>
                             <div className="form-group entry input-group col-xs-3">
-                                <input className="form-control" name="skills" type="text" placeholder="" defaultValue={this.state.skills[0].skill2} onChange={this.onChangeSkill2} />
-                                <select className="form-control " id="skillSelect" onChange={this.onChangeRating2}>
+                                <input className="form-control" name="skill2" type="text" placeholder="" defaultValue={this.state.skills[0].skill2} onChange={this.onChangeSkill2} />
+                                <select className="form-control" name="rating2" id="skillSelect" onChange={this.onChangeRating2}>
                                     <option disabled selected> -- Select option -- </option>
                                     <option value="0">Beginner</option>
                                     <option value="1">Intermediate</option>
@@ -173,8 +174,8 @@ export default class ProfilePage extends Component {
                                 </select>
                             </div>
                             <div className="form-group entry input-group col-xs-3">
-                                <input className="form-control" name="skills" type="text" placeholder="" defaultValue={this.state.skills[0].skill3} onChange={this.onChangeSkill3} />
-                                <select className="form-control " id="skillSelect" onChange={this.onChangeRating3}>
+                                <input className="form-control" name="skill3" type="text" placeholder="" defaultValue={this.state.skills[0].skill3} onChange={this.onChangeSkill3} />
+                                <select className="form-control " name="rating3" id="skillSelect" onChange={this.onChangeRating3}>
                                     <option disabled selected> -- Select option -- </option>
                                     <option value="0">Beginner</option>
                                     <option value="1">Intermediate</option>
@@ -182,8 +183,8 @@ export default class ProfilePage extends Component {
                                 </select>
                             </div>
                             <div className="form-group entry input-group col-xs-3">
-                                <input className="form-control" name="skills" type="text" placeholder="" defaultValue={this.state.skills[0].skill4} onChange={this.onChangeSkill4} />
-                                <select className="form-control " id="skillSelect" onChange={this.onChangeRating4}>
+                                <input className="form-control" name="skill4" type="text" placeholder="" defaultValue={this.state.skills[0].skill4} onChange={this.onChangeSkill4} />
+                                <select className="form-control " name="rating4" id="skillSelect" onChange={this.onChangeRating4}>
                                     <option disabled selected> -- Select option -- </option>
                                     <option value="0">Beginner</option>
                                     <option value="1">Intermediate</option>
@@ -191,8 +192,8 @@ export default class ProfilePage extends Component {
                                 </select>
                             </div>
                             <div className="form-group entry input-group col-xs-3">
-                                <input className="form-control" name="skills" type="text" placeholder="" defaultValue={this.state.skills[0].skill5} onChange={this.onChangeSkill5} />
-                                <select className="form-control " id="skillSelect" onChange={this.onChangeRating5}>
+                                <input className="form-control" name="skill5" type="text" placeholder="" defaultValue={this.state.skills[0].skill5} onChange={this.onChangeSkill5} />
+                                <select className="form-control " name="rating5" id="skillSelect" onChange={this.onChangeRating5}>
                                     <option disabled selected> -- Select option -- </option>
                                     <option value="0">Beginner</option>
                                     <option value="1">Intermediate</option>
@@ -201,7 +202,7 @@ export default class ProfilePage extends Component {
                             </div>
                         </div>
                         <div className="form-group">
-                            <input type="submit" value="Save Job" className="btn btn-primary" />
+                            <input type="submit" value="Update Profile" className="btn btn-primary" />
                             <a href="/users" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
                         </div>
                     </form>
