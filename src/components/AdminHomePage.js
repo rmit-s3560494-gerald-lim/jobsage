@@ -17,14 +17,6 @@ class AdminHomePage extends Component {
                             </div>
                         </div>
                         <br/>
-                        <div className="card">
-                            <div className="card-body">
-                                <h5 className="card-title">Inbox</h5>
-                                <a href="/" className="">View Messages</a>
-                                <br/>
-                                <a href="/" className="">Send Message</a>
-                            </div>
-                        </div>
                     </div>
                     <div className="col-sm-6">
                         <br/>
@@ -35,14 +27,6 @@ class AdminHomePage extends Component {
                             </div>
                         </div>
                         <br/>
-                        <div className="card">
-                            <div className="card-body">
-                                <h5 className="card-title">Infographics</h5>
-                                <p>Number of active users</p>
-                                <br/>
-                                <p>Number of job postings</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
