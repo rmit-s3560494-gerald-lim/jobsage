@@ -13,7 +13,7 @@ const Jobs = props => (
     <td>{props.job.skills[0].skill1 + ', ' + props.job.skills[0].skill2 + ', ' + props.job.skills[0].skill3 +
       ', ' + props.job.skills[0].skill4 + ', ' + props.job.skills[0].skill5}</td>
     <td>{props.job.salary_offered}</td>
-    <td> <a href={props.job.url} target="_blank">Click here to apply</a></td>
+    <td> <a href={props.job.url} class="btn btn-primary" target="https://google.com">Apply</a></td>
   </tr>
 )
 
@@ -176,60 +176,60 @@ class EmployeeHome extends Component {
   }
 
   render() {
-    if(this.state.isLoaded !== true) {
+    if (this.state.isLoaded !== true) {
       return (
         <div />
       )
     } else {
-    return (
-      <div className="content">
-        <Header />
-        <div className="row">
-          <div className="col-sm-6">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">Article 1</h5>
-                <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <a href="/" className="btn btn-primary">Go somewhere</a>
+      return (
+        <div className="content">
+          <Header />
+          <div className="row">
+            <div className="col-sm-6">
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">Article 1</h5>
+                  <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  <a href="/" className="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-6">
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">Article 2</h5>
+                  <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  <a href="/" className="btn btn-primary">Go somewhere</a>
+                </div>
               </div>
             </div>
           </div>
-          <div className="col-sm-6">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">Article 2</h5>
-                <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <a href="/" className="btn btn-primary">Go somewhere</a>
-              </div>
+          <div className="card">
+            <h3 id="jobsage">Here are your recommended jobs:</h3>
+            <div class="table-responsive">
+              <table className="table table-striped" style={{ marginTop: 20 }} >
+                <thead className="thead-dark">
+                  <tr>
+                    <th>Job Title</th>
+                    <th>Job Type</th>
+                    <th>City</th>
+                    <th>Company Name</th>
+                    <th>Job Description</th>
+                    <th>Skills</th>
+                    <th>Salary</th>
+                    <th>Apply</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.returnCustomList(this.state.custom_list)}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
-        <div className="card">
-          <h3 id="jobsage">Here are your recommended jobs:</h3>
-          <div class="table-responsive">
-            <table className="table table-striped" style={{ marginTop: 20 }} >
-              <thead className="thead-dark">
-                <tr>
-                  <th>Job Title</th>
-                  <th>Job Type</th>
-                  <th>City</th>
-                  <th>Company Name</th>
-                  <th>Job Description</th>
-                  <th>Skills</th>
-                  <th>Salary</th>
-                  <th>Application</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.returnCustomList(this.state.custom_list)}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
 
-    );
-  }
+      );
+    }
   }
 }
 

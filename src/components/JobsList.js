@@ -42,7 +42,7 @@ export default class JobsList extends Component {
                 + job.skills[0].skill5}
             </td>
             <td>{job.salary_offered}</td>
-            <td> <a href={job.url} target="_blank">Apply</a></td>
+            <td> <a href={job.url} target="https://google.com">Apply</a></td>
 
             <td>
                 <Link to={"/edit/" + job._id}>Edit</Link>
@@ -54,10 +54,6 @@ export default class JobsList extends Component {
     )
 
     jobsList() {
-        // return this.state.jobs.map(function (currentJob, i) {
-        // return <Jobs job={currentJob} key={i} />;
-        // });
-
         return this.state.jobs.map(job => this.makeJobRow(job));
     }
 

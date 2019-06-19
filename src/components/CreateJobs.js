@@ -18,15 +18,12 @@ export default class CreateJobs extends Component {
         this.onChangeCategory = this.onChangeCategory.bind(this);
         this.onChangeCity = this.onChangeCity.bind(this);
         this.onChangeCompanyName = this.onChangeCompanyName.bind(this);
-        // this.onChangeGeo = this.onChangeGeo.bind(this);
-        // this.onChangeJobBoard = this.onChangeJobBoard.bind(this);
         this.onChangeJobDescription = this.onChangeJobDescription.bind(this);
         this.onChangeJobTitle = this.onChangeJobTitle.bind(this);
         this.onChangeJobType = this.onChangeJobType.bind(this);
         this.onChangePostDate = this.onChangePostDate.bind(this);
         this.onChangeSalaryOffered = this.onChangeSalaryOffered.bind(this);
-        // this.onChangeState = this.onChangeState.bind(this);
-        // this.onChangeUrl = this.onChangeUrl.bind(this);
+        this.onChangeUrl = this.onChangeUrl.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.onChangeSkill1 = this.onChangeSkill1.bind(this);
         this.onChangeRating1 = this.onChangeRating1.bind(this);
@@ -38,8 +35,6 @@ export default class CreateJobs extends Component {
         this.onChangeRating4 = this.onChangeRating4.bind(this);
         this.onChangeSkill5 = this.onChangeSkill5.bind(this);
         this.onChangeRating5 = this.onChangeRating5.bind(this);
-
-        // this.addField = this.addField.bind(this);
 
         this.state = {
             // _id: '',
@@ -97,11 +92,6 @@ export default class CreateJobs extends Component {
             geo: e.target.value
         });
     }
-    // onChangeJobBoard(e) {
-    //     this.setState({
-    //         job_board: e.target.value
-    //     });
-    // }
     onChangeJobDescription(e) {
         this.setState({
             job_description: e.target.value
@@ -128,11 +118,6 @@ export default class CreateJobs extends Component {
             salary_offered: e.target.value
         });
     }
-    // onChangeState(e) {
-    //     this.setState({
-    //         state: e.target.value
-    //     });
-    // }
     onChangeUrl(e) {
         this.setState({
             url: e.target.value
@@ -195,25 +180,6 @@ export default class CreateJobs extends Component {
             rating5: e.target.value
         })
     }
-
-    
-
-    // onChangeSkills(e) {
-    //     if(["skill", "rating"].includes(e.target.className)) {
-    //         let skills = [...this.state.skills]
-    //         skills[e.target.dataset.id][e.target.className] = e.target.value
-    //         this.setState({skills}, () => console.log(this.state.skills))
-    //     } else {
-    //         this.setState({ [e.target.skill]: e.target.value })
-    //     }
-    // }
-
-    // addSkill = (e) => {
-    //     this.setState((prevState) => ({
-    //         skills: [...prevState.skills, {skill:"", rating:""}],
-    //     }));
-    // }
-
     onSubmit(e) {
         e.preventDefault();
 
@@ -222,14 +188,11 @@ export default class CreateJobs extends Component {
         console.log(`category: ${this.state.category}`);
         console.log(`city: ${this.state.city}`);
         console.log(`company_name: ${this.state.company_name}`);
-        // console.log(`geo: ${this.state.geo}`);
-        // console.log(`job_board: ${this.state.job_board}`);
         console.log(`job_description: ${this.state.job_description}`);
         console.log(`job_title: ${this.state.job_title}`);
         console.log(`job_type: ${this.state.job_type}`);
         console.log(`post_date: ${this.state.post_date}`);
         console.log(`salary_offered: ${this.state.salary_offered}`);
-        // console.log(`state: ${this.state.state}`);
         console.log(`skills: ${this.state.skills}`);
         console.log(`skills: ${JSON.stringify(this.state.skills)}`)
         console.log(`url: ${this.state.url}`);
@@ -239,8 +202,6 @@ export default class CreateJobs extends Component {
             category: this.state.category,
             city: this.state.city,
             company_name: this.state.company_name,
-            // geo: this.state.geo,
-            // job_board: this.state.job_board,
             job_description: this.state.job_description,
             job_title: this.state.job_title,
             job_type: this.state.job_type,
@@ -317,22 +278,6 @@ export default class CreateJobs extends Component {
                                     onChange={this.onChangeCompanyName}
                                 />
                             </div>
-                            {/* <div className="form-group">
-                                <label>Geo: </label>
-                                <input type="text"
-                                    className="form-control"
-                                    value={this.state.geo}
-                                    onChange={this.onChangeGeo}
-                                />
-                            </div> */}
-                            {/* <div className="form-group">
-                                <label>Job Board: </label>
-                                <input type="text"
-                                    className="form-control"
-                                    value={this.state.job_board}
-                                    onChange={this.onChangeJobBoard}
-                                />
-                            </div> */}
                             <div className="form-group">
                                 <label>Job Description: </label>
                                 <input type="text"
@@ -341,16 +286,6 @@ export default class CreateJobs extends Component {
                                     onChange={this.onChangeJobDescription}
                                 />
                             </div>
-                            
-                            {/* <div className="form-group">
-                                <label>Post Date: </label>
-                                <input type="text"
-                                    className="form-control"
-                                    value={this.state.post_date}
-                                    onChange={this.onChangePostDate}
-                                    readOnly
-                                />
-                            </div> */}
                             <div className="form-group">
                                 <label>Salary Offered: </label>
                                 <input type="text"
@@ -359,14 +294,6 @@ export default class CreateJobs extends Component {
                                     onChange={this.onChangeSalaryOffered}
                                 />
                             </div>
-                            {/* <div className="form-group">
-                                <label>State: </label>
-                                <input type="text"
-                                    className="form-control"
-                                    value={this.state.state}
-                                    onChange={this.onChangeState}
-                                />
-                            </div> */}
                             <div className="form-group">
                                 <label>Skills: </label>
                                 <div className="form-group entry input-group col-xs-3">
@@ -415,22 +342,14 @@ export default class CreateJobs extends Component {
                                     </select>
                                 </div>
                             </div>
-                            {/* <div className="form-group">
-                                <label>Skills: </label>
-                                <input type="text"
-                                    className="form-control"
-                                    value={this.state.skills}
-                                    onChange={this.onChangeSkill1}
-                                    />
-                            </div> */}
-                            {/* <div className="form-group">
+                            <div className="form-group">
                                 <label>URL: </label>
                                 <input type="text"
                                     className="form-control"
                                     value={this.state.url}
                                     onChange={this.onChangeUrl}
                                 />
-                            </div> */}
+                            </div>
                             <div className="form-group">
                                 <input type="submit" value="Create Job" className="btn btn-primary" />
                             </div>
