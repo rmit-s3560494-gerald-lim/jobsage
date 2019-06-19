@@ -6,20 +6,9 @@ import Header from './Header';
 
 export default class AdminRemoveUsers extends React.Component {
 
-
-    // Users = props => (
-    //     <tr>
-    //         <td>{props.user.user_name}</td>
-    //         <td>{props.user.user_email}</td>
-    //         <td>{props.user.user_type}</td>
-    //         <td><button onClick = {this.delete} className="btn btn-danger">Delete</button></td>
-    //     </tr>
-    // )
-
     constructor(props) {
         super(props);
         this.state = { users: [] };
-        // this.delete = this.delete.bind(this);
     }
 
     componentDidMount() {
@@ -33,14 +22,17 @@ export default class AdminRemoveUsers extends React.Component {
             })
             .catch(function (error) {
                 console.log(error.response);
+                window.location.reload();
             })
     }
 
-    delete = (currUser) => {
-        console.log(currUser)
-        // axios.post('http://35.212.88.235/users/delete/', currUser.id)
-        //     .then(console.log('Deleted'))
-        //     .catch(err => console.log(err))
+    delete(currUser) {
+        console.log(currUser._id)
+        axios.get('http://35.212.88.235/users/delete/' + currUser._id)
+             .then(console.log('Deleted'))
+             .catch(err => console.log(err))
+             alert("User deleted");
+             window.location.reload();
     }
 
     makeUserTable = (currUser) =>
