@@ -2,14 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Header from './Header';
 
-var date = new Date().getDate();
-var month = new Date().getMonth() + 1; //Current Month
-var year = new Date().getFullYear(); //Current Year
-var hours = new Date().getHours(); //Current Hours
-var min = new Date().getMinutes(); //Current Minutes
-var sec = new Date().getSeconds(); //Current Seconds
-var newTime = year + '-' + month + '-' + date + 'T' + hours + ':' + min + ':' + sec + 'Z';
-
 export default class ProfilePage extends Component {
 
     constructor(props) {

@@ -18,6 +18,18 @@ export default class JobsList extends Component {
             })
             .catch(function (error) {
                 console.log(error.response);
+                window.location.reload();
+            })
+    }
+    componentDidUpdate() {
+        axios.get('http://35.212.88.235/jobs/')
+            .then(response => {
+                this.setState({ jobs: response.data });
+                console.log(this.state.jobs);
+            })
+            .catch(function (error) {
+                console.log(error.response);
+                window.location.reload();
             })
     }
 
@@ -26,6 +38,8 @@ export default class JobsList extends Component {
         axios.get('http://35.212.88.235/jobs/delete/' + job._id)
             .then(console.log('Deleted'))
             .catch(err => console.log(err))
+        alert("Job Deleted");
+        window.location.reload();
     }
 
     makeJobRow = (job) => (

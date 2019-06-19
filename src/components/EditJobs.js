@@ -2,30 +2,17 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Header from './Header';
 
-var date = new Date().getDate();
-var month = new Date().getMonth() + 1; //Current Month
-var year = new Date().getFullYear(); //Current Year
-var hours = new Date().getHours(); //Current Hours
-var min = new Date().getMinutes(); //Current Minutes
-var sec = new Date().getSeconds(); //Current Seconds
-var newTime = year + '-' + month + '-' + date + 'T' + hours + ':' + min + ':' + sec + 'Z';
-
 export default class EditJobs extends Component {
 
     constructor(props) {
         super(props);
 
-        this.onChangeCategory = this.onChangeCategory.bind(this);
         this.onChangeCity = this.onChangeCity.bind(this);
         this.onChangeCompanyName = this.onChangeCompanyName.bind(this);
-        this.onChangeGeo = this.onChangeGeo.bind(this);
-        this.onChangeJobBoard = this.onChangeJobBoard.bind(this);
         this.onChangeJobDescription = this.onChangeJobDescription.bind(this);
         this.onChangeJobTitle = this.onChangeJobTitle.bind(this);
         this.onChangeJobType = this.onChangeJobType.bind(this);
-        this.onChangePostDate = this.onChangePostDate.bind(this);
         this.onChangeSalaryOffered = this.onChangeSalaryOffered.bind(this);
-        this.onChangeState = this.onChangeState.bind(this);
         this.onChangeUrl = this.onChangeUrl.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.onChangeSkill1 = this.onChangeSkill1.bind(this);
@@ -41,13 +28,11 @@ export default class EditJobs extends Component {
 
         this.state = {
             // _id: '',
-            category: '',
             city: '',
             company_name: '',
             job_description: '',
             job_title: '',
             job_type: '',
-            post_date: newTime,
             salary_offered: '',
             skills: [{
                 skill1: '',
@@ -63,12 +48,12 @@ export default class EditJobs extends Component {
             }],
             url: ''
         }
-
     }
 
     componentDidMount() {
         axios.get('http://35.212.88.235/jobs/' + this.props.match.params.id)
             .then(response => {
+                console.log(response.data.url);
                 console.log(response.data.skills[0]);
                 this.setState({
                     _id: this.state.id,
@@ -95,31 +80,11 @@ export default class EditJobs extends Component {
                     url: response.data.url
                 })
                 console.log(this.state.skills[0].skill1);
-                console.log(this.state.rating1);
-                console.log(this.state.skill2);
-                console.log(this.state.rating2);
-                console.log(this.state.skill3);
-                console.log(this.state.rating3);
-                console.log(this.state.skill4);
-                console.log(this.state.rating4);
-                console.log(this.state.skill5);
-                console.log(this.state.rating5);
             })
             .catch(function (error) {
                 console.log(error)
             })
-    }
-
-    onChangeId(e) {
-        this.setState({
-            _id: e.target.value
-        });
-    }
-
-    onChangeCategory(e) {
-        this.setState({
-            category: e.target.value
-        });
+            console.log(this.state.url);
     }
     onChangeCity(e) {
         this.setState({
@@ -129,16 +94,6 @@ export default class EditJobs extends Component {
     onChangeCompanyName(e) {
         this.setState({
             company_name: e.target.value
-        });
-    }
-    onChangeGeo(e) {
-        this.setState({
-            geo: e.target.value
-        });
-    }
-    onChangeJobBoard(e) {
-        this.setState({
-            job_board: e.target.value
         });
     }
     onChangeJobDescription(e) {
@@ -157,19 +112,9 @@ export default class EditJobs extends Component {
             job_type: e.target.value
         });
     }
-    onChangePostDate(e) {
-        this.setState({
-            post_date: e.target.value
-        });
-    }
     onChangeSalaryOffered(e) {
         this.setState({
             salary_offered: e.target.value
-        });
-    }
-    onChangeState(e) {
-        this.setState({
-            state: e.target.value
         });
     }
     onChangeUrl(e) {
@@ -341,45 +286,45 @@ export default class EditJobs extends Component {
 
                                 <select className="form-control " id="skillSelect" onChange={this.onChangeRating1}>
                                     <option disabled selected> -- Select option -- </option>
-                                    <option value="0">Beginner</option>
-                                    <option value="1">Intermediate</option>
-                                    <option value="2">Expert</option>
+                                    <option value="1">Beginner</option>
+                                    <option value="2">Intermediate</option>
+                                    <option value="3">Expert</option>
                                 </select>
                             </div>
                             <div className="form-group entry input-group col-xs-3">
                                 <input className="form-control" name="skills" type="text" placeholder="" defaultValue={this.state.skills[0].skill2} onChange={this.onChangeSkill2} />
                                 <select className="form-control " id="skillSelect" onChange={this.onChangeRating2}>
                                     <option disabled selected> -- Select option -- </option>
-                                    <option value="0">Beginner</option>
-                                    <option value="1">Intermediate</option>
-                                    <option value="2">Expert</option>
+                                    <option value="1">Beginner</option>
+                                    <option value="2">Intermediate</option>
+                                    <option value="3">Expert</option>
                                 </select>
                             </div>
                             <div className="form-group entry input-group col-xs-3">
                                 <input className="form-control" name="skills" type="text" placeholder="" defaultValue={this.state.skills[0].skill3} onChange={this.onChangeSkill3} />
                                 <select className="form-control " id="skillSelect" onChange={this.onChangeRating3}>
                                     <option disabled selected> -- Select option -- </option>
-                                    <option value="0">Beginner</option>
-                                    <option value="1">Intermediate</option>
-                                    <option value="2">Expert</option>
+                                    <option value="1">Beginner</option>
+                                    <option value="2">Intermediate</option>
+                                    <option value="3">Expert</option>
                                 </select>
                             </div>
                             <div className="form-group entry input-group col-xs-3">
                                 <input className="form-control" name="skills" type="text" placeholder="" defaultValue={this.state.skills[0].skill4} onChange={this.onChangeSkill4} />
                                 <select className="form-control " id="skillSelect" onChange={this.onChangeRating4}>
                                     <option disabled selected> -- Select option -- </option>
-                                    <option value="0">Beginner</option>
-                                    <option value="1">Intermediate</option>
-                                    <option value="2">Expert</option>
+                                    <option value="1">Beginner</option>
+                                    <option value="2">Intermediate</option>
+                                    <option value="3">Expert</option>
                                 </select>
                             </div>
                             <div className="form-group entry input-group col-xs-3">
                                 <input className="form-control" name="skills" type="text" placeholder="" defaultValue={this.state.skills[0].skill5} onChange={this.onChangeSkill5} />
                                 <select className="form-control " id="skillSelect" onChange={this.onChangeRating5}>
                                     <option disabled selected> -- Select option -- </option>
-                                    <option value="0">Beginner</option>
-                                    <option value="1">Intermediate</option>
-                                    <option value="2">Expert</option>
+                                    <option value="1">Beginner</option>
+                                    <option value="2">Intermediate</option>
+                                    <option value="3">Expert</option>
                                 </select>
                             </div>
                         </div>

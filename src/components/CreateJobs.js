@@ -224,6 +224,8 @@ export default class CreateJobs extends Component {
             .then(res => console.log(res.data));
         alert("New Job added");
 
+        this.props.history.push('/jobs');
+
     }
 
     render() {
