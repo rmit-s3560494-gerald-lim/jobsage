@@ -14,18 +14,13 @@ describe('#Database Front-end', () => {
     test('should show each column', () => {
         const wrapper = new shallow(<JobsList />);
         expect(wrapper.containsMatchingElement(
-            <th>id</th>,
-            <th>category</th>,
-            <th>city</th>,
-            <th>company_name</th>,
-            <th>geo</th>,
-            <th>job_board</th>,
-            <th>job_title</th>,
-            <th>job_type</th>,
-            <th>post_date</th>,
-            <th>salary_offered</th>,
-            <th>state</th>,
-            <th>url</th>
+            <th>Job Title</th>,
+            <th>Job Type</th>,
+            <th>City</th>,
+            <th>Company Name</th>,
+            <th>Job Description</th>,
+            <th>Skills</th>,
+            <th>Salary</th>,
         )).toBeTruthy;
     });
 });
