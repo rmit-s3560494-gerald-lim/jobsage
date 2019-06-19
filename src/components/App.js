@@ -20,7 +20,7 @@ import SignUpPage from './SignUpPage';
 import JobSeekerProfile from './JobSeekerProfile';
 import AdminHomePage from './AdminHomePage';
 import AdminRemoveUsers from './AdminRemoveUsers';
-//import UsersList from './UsersList';
+import ProfilePage from './ProfilePage.js';
 
 class App extends Component {
   render() {
@@ -38,12 +38,14 @@ class App extends Component {
           <ProtectedEmployeeRoute exact path='/employeehome' component={EmployeeHome} />
 
           <ProtectedSharedRoute path='/jobs' component={JobsList} />
+          <ProtectedSharedRoute path='/profile' component={ProfilePage}/>
 
           <Route path='/adminlogin' component={AdminLogin}/>
           <Route path='/signup' component={SignUpPage} />
           <Route path='/' component={LoginPage} />
           <Route path='/login' component={LoginPage} />
-    
+
+
         </Switch>
       </BrowserRouter>
     );

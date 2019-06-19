@@ -2,7 +2,7 @@ import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
 
 export const ProtectedSharedRoute = ({
-  component: Component, 
+  component: Component,
   ...rest
 }) => {
   const isAdminAuth = localStorage.getItem('isAdminLoggedIn');
@@ -11,8 +11,8 @@ export const ProtectedSharedRoute = ({
   return (
     <Route
       {...rest}
-      render={props => isEmployerAuth === 'true' 
-        || isEmployeeAuth === 'true' 
+      render={props => isEmployerAuth === 'true'
+        || isEmployeeAuth === 'true'
         || isAdminAuth ? (
         <Component {...props} {...rest} />
       ) : (
