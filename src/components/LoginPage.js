@@ -65,7 +65,7 @@ class LoginPage extends Component {
             <Error />
           )}
           <div className="form">
-            <form onSubmit={this.handleSubmit}>
+            <form className="loginform" onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <label>Email Address</label>
                 <input
