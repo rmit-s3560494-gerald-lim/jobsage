@@ -84,7 +84,7 @@ export default class EditJobs extends Component {
             .catch(function (error) {
                 console.log(error)
             })
-            console.log(this.state.url);
+        console.log(this.state.url);
     }
     onChangeCity(e) {
         this.setState({

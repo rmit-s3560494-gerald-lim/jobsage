@@ -23,7 +23,7 @@ beforeEach(function () {
         }] 
     }))
 })
-describe('LoginPage Unit Tests', () => {
+describe('Profile Page Unit Tests', () => {
     test('renders', () => {
         const wrapper = shallow(<ProfilePage />);
         expect(wrapper.exists()).toBe(true);

@@ -2,49 +2,16 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Header from './Header';
 
-var date = new Date().getDate();
-var month = new Date().getMonth() + 1; //Current Month
-var year = new Date().getFullYear(); //Current Year
-var hours = new Date().getHours(); //Current Hours
-var min = new Date().getMinutes(); //Current Minutes
-var sec = new Date().getSeconds(); //Current Seconds
-var newTime = year + '-' + month + '-' + date + 'T' + hours + ':' + min + ':' + sec + 'Z';
-
 export default class CreateJobs extends Component {
     constructor(props) {
         super(props);
 
-        // this.onChangeId = this.onChangeId.bind(this);
-        this.onChangeCity = this.onChangeCity.bind(this);
-        this.onChangeCompanyName = this.onChangeCompanyName.bind(this);
-        this.onChangeJobDescription = this.onChangeJobDescription.bind(this);
-        this.onChangeJobTitle = this.onChangeJobTitle.bind(this);
-        this.onChangeJobType = this.onChangeJobType.bind(this);
-        this.onChangePostDate = this.onChangePostDate.bind(this);
-        this.onChangeSalaryOffered = this.onChangeSalaryOffered.bind(this);
-        this.onChangeUrl = this.onChangeUrl.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-        this.onChangeSkill1 = this.onChangeSkill1.bind(this);
-        this.onChangeRating1 = this.onChangeRating1.bind(this);
-        this.onChangeSkill2 = this.onChangeSkill2.bind(this);
-        this.onChangeRating2 = this.onChangeRating2.bind(this);
-        this.onChangeSkill3 = this.onChangeSkill3.bind(this);
-        this.onChangeRating3 = this.onChangeRating3.bind(this);
-        this.onChangeSkill4 = this.onChangeSkill4.bind(this);
-        this.onChangeRating4 = this.onChangeRating4.bind(this);
-        this.onChangeSkill5 = this.onChangeSkill5.bind(this);
-        this.onChangeRating5 = this.onChangeRating5.bind(this);
-
         this.state = {
-            // _id: '',
             city: '',
             company_name: '',
-            geo: '',
-            job_board: '',
             job_description: '',
             job_title: '',
             job_type: '',
-            post_date: newTime,
             salary_offered: '',
             skills: [{
                 skill1: '',
@@ -58,166 +25,61 @@ export default class CreateJobs extends Component {
                 skill5: '',
                 rating5: '',
             }],
-            state: '',
-            url: ''
+            url: '',
+            employer_id: '',
         }
 
     }
 
-    onChangeId(e) {
-        this.setState({
-            _id: e.target.value
-        });
+    handleChange = (e) => {
+        var name = e.target.name;
+        const { skills } = this.state;
+        if (name.includes('skill')) {
+            skills[0][name] = e.target.value;
+            this.setState({
+                skills
+            })
+        } else if (name.includes('rating')) {
+            skills[0][name] = e.target.value;
+            this.setState({
+                skills
+            })
+        } else {
+            this.setState({
+                [e.target.name]: e.target.value
+            })
+        }
     }
 
-    onChangeCategory(e) {
-        this.setState({
-            category: e.target.value
-        });
-    }
-    onChangeCity(e) {
-        this.setState({
-            city: e.target.value
-        });
-    }
-    onChangeCompanyName(e) {
-        this.setState({
-            company_name: e.target.value
-        });
-    }
-    onChangeGeo(e) {
-        this.setState({
-            geo: e.target.value
-        });
-    }
-    onChangeJobDescription(e) {
-        this.setState({
-            job_description: e.target.value
-        });
-    }
-
-    onChangeJobTitle(e) {
-        this.setState({
-            job_title: e.target.value
-        });
-    }
-    onChangeJobType(e) {
-        this.setState({
-            job_type: e.target.value
-        });
-    }
-    onChangePostDate(e) {
-        this.setState({
-            post_date: e.target.value
-        });
-    }
-    onChangeSalaryOffered(e) {
-        this.setState({
-            salary_offered: e.target.value
-        });
-    }
-    onChangeUrl(e) {
-        this.setState({
-            url: e.target.value
-        });
-    }
-
-    onChangeSkill1(e) {
-        this.setState({
-            skill1: e.target.value
-        });
-    }
-
-    onChangeRating1(e) {
-        this.setState({
-            rating1: e.target.value
-        })
-    }
-
-    onChangeSkill2(e) {
-        this.setState({
-            skill2: e.target.value
-        });
-    }
-
-    onChangeRating2(e) {
-        this.setState({
-            rating2: e.target.value
-        })
-    }
-    onChangeSkill3(e) {
-        this.setState({
-            skill3: e.target.value
-        });
-    }
-
-    onChangeRating3(e) {
-        this.setState({
-            rating3: e.target.value
-        })
-    }
-    onChangeSkill4(e) {
-        this.setState({
-            skill4: e.target.value
-        });
-    }
-
-    onChangeRating4(e) {
-        this.setState({
-            rating4: e.target.value
-        })
-    }
-    onChangeSkill5(e) {
-        this.setState({
-            skill5: e.target.value
-        });
-    }
-
-    onChangeRating5(e) {
-        this.setState({
-            rating5: e.target.value
-        })
-    }
-    onSubmit(e) {
+    onSubmit = (e) => {
         e.preventDefault();
+        var employer_details = JSON.parse(localStorage.getItem('user'));
+        var eid = employer_details._id;
 
-        console.log(`Form submitted:`);
-        // console.log(`id: ${this.state._id}`);
-        console.log(`category: ${this.state.category}`);
-        console.log(`city: ${this.state.city}`);
-        console.log(`company_name: ${this.state.company_name}`);
-        console.log(`job_description: ${this.state.job_description}`);
-        console.log(`job_title: ${this.state.job_title}`);
-        console.log(`job_type: ${this.state.job_type}`);
-        console.log(`post_date: ${this.state.post_date}`);
-        console.log(`salary_offered: ${this.state.salary_offered}`);
-        console.log(`skills: ${this.state.skills}`);
-        console.log(`skills: ${JSON.stringify(this.state.skills)}`)
-        console.log(`url: ${this.state.url}`);
+        console.log(this.state);
+        const { skills } = this.state;
 
         const newJob = {
-            // _id: this.state.id,
             city: this.state.city,
             company_name: this.state.company_name,
             job_description: this.state.job_description,
             job_title: this.state.job_title,
             job_type: this.state.job_type,
-            post_date: this.state.post_date,
             salary_offered: this.state.salary_offered,
-            state: this.state.state,
             skills: [{
-                skill1: this.state.skill1,
-                rating1: this.state.rating1,
-                skill2: this.state.skill2,
-                rating2: this.state.rating2,
-                skill3: this.state.skill3,
-                rating3: this.state.rating3,
-                skill4: this.state.skill4,
-                rating4: this.state.rating4,
-                skill5: this.state.skill5,
-                rating5: this.state.rating5,
+                skill1: skills[0]['skill1'],
+                rating1: skills[0]['rating1'],
+                skill2: skills[0]['skill2'],
+                rating2: skills[0]['rating2'],
+                skill3: skills[0]['skill3'],
+                rating3: skills[0]['rating3'],
+                skill4: skills[0]['skill4'],
+                rating4: skills[0]['rating4'],
+                skill5: skills[0]['skill5'],
+                rating5: skills[0]['rating5'],
             }],
-            url: this.state.url
+            url: this.state.url,
+            employer_id: eid,
         }
 
         axios.post('http://35.212.88.235/jobs/add', newJob)
@@ -225,7 +87,6 @@ export default class CreateJobs extends Component {
         alert("New Job added");
 
         this.props.history.push('/jobs');
-
     }
 
     render() {
@@ -240,56 +101,62 @@ export default class CreateJobs extends Component {
                             <div className="form-group">
                                 <label>Job Title: </label>
                                 <input type="text"
+                                    name="job_title"
                                     className="form-control"
                                     value={this.state.job_title}
-                                    onChange={this.onChangeJobTitle}
+                                    onChange={this.handleChange}
                                 />
                             </div>
                             <div className="form-group">
                                 <label>Job Type: </label>
                                 <input type="text"
+                                    name="job_type"
                                     className="form-control"
                                     value={this.state.job_type}
-                                    onChange={this.onChangeJobType}
+                                    onChange={this.handleChange}
                                 />
                             </div>
                             <div className="form-group">
                                 <label>City: </label>
                                 <input type="text"
+                                    name="city"
                                     className="form-control"
                                     value={this.state.city}
-                                    onChange={this.onChangeCity}
+                                    onChange={this.handleChange}
                                 />
                             </div>
                             <div className="form-group">
                                 <label>Company Name: </label>
                                 <input type="text"
+                                    name="company_name"
                                     className="form-control"
                                     value={this.state.company_name}
-                                    onChange={this.onChangeCompanyName}
+                                    onChange={this.handleChange}
                                 />
                             </div>
                             <div className="form-group">
                                 <label>Job Description: </label>
                                 <input type="text"
+                                    name="job_description"
                                     className="form-control"
                                     value={this.state.job_description}
-                                    onChange={this.onChangeJobDescription}
+                                    onChange={this.handleChange}
                                 />
                             </div>
                             <div className="form-group">
                                 <label>Salary Offered: </label>
                                 <input type="text"
+                                    name="salary_offered"
                                     className="form-control"
                                     value={this.state.salary_offered}
-                                    onChange={this.onChangeSalaryOffered}
+                                    onChange={this.handleChange}
                                 />
                             </div>
                             <div className="form-group">
                                 <label>Skills: </label>
                                 <div className="form-group entry input-group col-xs-3">
-                                    <input className="form-control" name="skills" type="text" placeholder="e.g. ReactJS" onChange={this.onChangeSkill1} />
-                                    <select className="form-control " id="skillSelect" onChange={this.onChangeRating1}>
+                                    <input className="form-control" name="skill1" type="text" placeholder="e.g. ReactJS" onChange={this.handleChange} />
+                                    <select className="form-control" name="rating1" id="skillSelect" onChange={this.handleChange}>
                                         <option disabled selected value> -- Select option -- </option>
                                         <option value="0">Beginner</option>
                                         <option value="1">Intermediate</option>
@@ -297,8 +164,8 @@ export default class CreateJobs extends Component {
                                     </select>
                                 </div>
                                 <div className="form-group entry input-group col-xs-3">
-                                    <input className="form-control" name="skills" type="text" placeholder="" onChange={this.onChangeSkill2} />
-                                    <select className="form-control " id="skillSelect" onChange={this.onChangeRating2}>
+                                    <input className="form-control" name="skill2" type="text" placeholder="" onChange={this.handleChange} />
+                                    <select className="form-control " name="rating2" id="skillSelect" onChange={this.handleChange}>
                                         <option disabled selected value> -- Select option -- </option>
                                         <option value="0">Beginner</option>
                                         <option value="1">Intermediate</option>
@@ -306,8 +173,8 @@ export default class CreateJobs extends Component {
                                     </select>
                                 </div>
                                 <div className="form-group entry input-group col-xs-3">
-                                    <input className="form-control" name="skills" type="text" placeholder="" onChange={this.onChangeSkill3} />
-                                    <select className="form-control " id="skillSelect" onChange={this.onChangeRating3}>
+                                    <input className="form-control" name="skill3" type="text" placeholder="" onChange={this.handleChange} />
+                                    <select className="form-control " name="rating3" id="skillSelect" onChange={this.handleChange}>
                                         <option disabled selected value> -- Select option -- </option>
                                         <option value="0">Beginner</option>
                                         <option value="1">Intermediate</option>
@@ -315,8 +182,8 @@ export default class CreateJobs extends Component {
                                     </select>
                                 </div>
                                 <div className="form-group entry input-group col-xs-3">
-                                    <input className="form-control" name="skills" type="text" placeholder="" onChange={this.onChangeSkill4} />
-                                    <select className="form-control " id="skillSelect" onChange={this.onChangeRating4}>
+                                    <input className="form-control" name="skill4" type="text" placeholder="" onChange={this.handleChange} />
+                                    <select className="form-control " name="rating4" id="skillSelect" onChange={this.handleChange}>
                                         <option disabled selected value> -- Select option -- </option>
                                         <option value="0">Beginner</option>
                                         <option value="1">Intermediate</option>
@@ -324,8 +191,8 @@ export default class CreateJobs extends Component {
                                     </select>
                                 </div>
                                 <div className="form-group entry input-group col-xs-3">
-                                    <input className="form-control" name="skills" type="text" placeholder="" onChange={this.onChangeSkill5} />
-                                    <select className="form-control " id="skillSelect" onChange={this.onChangeRating5}>
+                                    <input className="form-control" name="skill5" type="text" placeholder="" onChange={this.handleChange} />
+                                    <select className="form-control " name="rating5" id="skillSelect" onChange={this.handleChange}>
                                         <option disabled selected value> -- Select option -- </option>
                                         <option value="0">Beginner</option>
                                         <option value="1">Intermediate</option>
@@ -336,9 +203,10 @@ export default class CreateJobs extends Component {
                             <div className="form-group">
                                 <label>URL: </label>
                                 <input type="text"
+                                    name="url"
                                     className="form-control"
                                     value={this.state.url}
-                                    onChange={this.onChangeUrl}
+                                    onChange={this.handleChange}
                                 />
                             </div>
                             <div className="form-group">
