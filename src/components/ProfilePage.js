@@ -39,7 +39,7 @@ export default class ProfilePage extends Component {
     componentDidMount() {
         axios.get('http://35.212.88.235/users/' + this.getUserId())
             .then(response => {
-                console.log(this.props.match.params.id);
+            console.log(response.data.user_name)
                 this.setState({
                     _id: this.state.id,
                     user_name: response.data.user_name,
@@ -67,23 +67,19 @@ export default class ProfilePage extends Component {
     }
 
     onChange = (e) => {
+
       this.setState({
         [e.target.name]: [e.target.value],
+
       });
+      console.log(e.target.name);
+      console.log(e.target.value);
+      console.log("HELLO");
     }
 
     onSubmit(e) {
         e.preventDefault();
-        console.log(this.state.skill1);
-        console.log(this.state.rating1);
-        console.log(this.state.skill2);
-        console.log(this.state.rating2);
-        console.log(this.state.skill3);
-        console.log(this.state.rating3);
-        console.log(this.state.skill4);
-        console.log(this.state.rating4);
-        console.log(this.state.skill5);
-        console.log(this.state.rating5);
+        console.log(this.state.user_name);
         const newUser = {
             // _id: this.state.id,
             user_name: this.state.user_name,

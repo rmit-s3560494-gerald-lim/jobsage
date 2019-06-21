@@ -8,9 +8,11 @@ export default class JobsList extends Component {
     constructor(props) {
         super(props);
         this.state = { jobs: [] };
+
     }
 
     componentDidMount() {
+      if(localStorage.getItem('isEmployerLoggedIn') !== 'true') {
         axios.get('http://35.212.88.235/jobs/')
             .then(response => {
                 this.setState({ jobs: response.data });
@@ -20,17 +22,55 @@ export default class JobsList extends Component {
                 console.log(error.response);
                 window.location.reload();
             })
+      }
+      else {
+        if(localStorage.getItem('isAdminLoggedIn') !== 'true') {
+          var user_details = JSON.parse(localStorage.getItem('user'));
+          console.log(user_details._id)
+        }
+        axios.get('http://35.212.88.235/jobs/view/' + user_details._id)
+          .then(response => {
+              this.setState({ jobs: response.data });
+              console.log(this.state.jobs);
+          })
+          .catch(function (error) {
+              console.log("ERROR")
+              console.log(error.response);
+              {/*window.location.reload();*/}
+          })
+      }
+
+
+
     }
     componentDidUpdate() {
+        if(localStorage.getItem('isEmployerLoggedIn') !== 'true') {
         axios.get('http://35.212.88.235/jobs/')
             .then(response => {
                 this.setState({ jobs: response.data });
-                console.log(this.state.jobs);
+                {/*console.log(this.state.jobs);*/}
             })
             .catch(function (error) {
                 console.log(error.response);
                 window.location.reload();
             })
+          }
+        else {
+          if(localStorage.getItem('isAdminLoggedIn') !== 'true') {
+            var user_details = JSON.parse(localStorage.getItem('user'));
+
+          }
+          axios.get('http://35.212.88.235/jobs/view/' + user_details._id)
+              .then(response => {
+                  this.setState({ jobs: response.data });
+                  {/*console.log(this.state.jobs);*/}
+              })
+              .catch(function (error) {
+                  console.log(error.response);
+                  window.location.reload();
+              })
+            }
+
     }
 
     delete(job) {
@@ -64,6 +104,9 @@ export default class JobsList extends Component {
           {localStorage.getItem('isEmployerLoggedIn') === 'true' && (  <td>
                   <button onClick={() => this.delete(job)} className="btn btn-danger">Delete</button>
             </td>)}
+          {localStorage.getItem('isEmployerLoggedIn') === 'true' && (  <td>
+                  <Link to={"/view/" + job.applicants}>View Applicants</Link>
+            </td>)}
         </tr>
     )
 
@@ -94,6 +137,8 @@ export default class JobsList extends Component {
                                         <th>Edit</th>)}
                                     {localStorage.getItem('isEmployerLoggedIn') === 'true' && (
                                     <th>Delete</th>)}
+                                    {localStorage.getItem('isEmployerLoggedIn') === 'true' && (
+                                    <th>Applicants</th>)}
                                 </tr>
                             </thead>
                             <tbody>

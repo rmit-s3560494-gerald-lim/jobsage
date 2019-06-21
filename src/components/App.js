@@ -21,6 +21,7 @@ import JobSeekerProfile from './JobSeekerProfile';
 import AdminHomePage from './AdminHomePage';
 import AdminRemoveUsers from './AdminRemoveUsers';
 import ProfilePage from './ProfilePage.js';
+import ViewApplicants from './ViewApplicants';
 
 class App extends Component {
   render() {
@@ -33,12 +34,13 @@ class App extends Component {
           <ProtectedEmployerRoute path='/add' component={CreateJobs} />
           <ProtectedEmployerRoute exact path='/employerhome' component={EmployerHome} />
           <ProtectedEmployerRoute path="/edit/:id" component={EditJobs} />
+          <ProtectedEmployerRoute path="/view/:id" component={ViewApplicants} />
 
           <ProtectedEmployeeRoute path='/jobseekerprofile' component={JobSeekerProfile}/>
           <ProtectedEmployeeRoute exact path='/employeehome' component={EmployeeHome} />
 
           <ProtectedSharedRoute path='/jobs' component={JobsList} />
-          <ProtectedSharedRoute path='/users' component={ProfilePage}/>
+          <ProtectedSharedRoute path='/profile' component={ProfilePage}/>
 
           <Route path='/adminlogin' component={AdminLogin}/>
           <Route path='/signup' component={SignUpPage} />

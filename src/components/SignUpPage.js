@@ -7,7 +7,7 @@ class SignUpPage extends Component {
   render() {
     return (
       <div>
-        <Header />
+        {/*<Header />*/}
       <div class="centerLogin">
         <div class="form">
 

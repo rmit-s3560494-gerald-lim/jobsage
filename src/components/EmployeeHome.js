@@ -40,9 +40,11 @@ class EmployeeHome extends Component {
         var jobs_details = JSON.parse(localStorage.getItem('jobs_list'));
         var job_data_set = [];
         var job_set_with_id = [];
+
         for (var i = 0; i < jobs_details.length; i++) {
           this.createJobSkillRatingArray(user_skills, jobs_details[i], job_data_set, job_set_with_id);
         }
+
 
         var neighbour = require('nearestneighbour')({
           objects: job_data_set,

@@ -217,7 +217,7 @@ export default class EditJobs extends Component {
             }],
             url: this.state.url
         };
-        axios.post('http://35.212.88.235/edit/' + this.props.match.params.id, newJob)
+        axios.post('http://35.212.88.235/jobs/edit/' + this.props.match.params.id, newJob)
             .then(res => console.log(res.data));
         alert("Job Saved");
         this.props.history.push('/jobs');
