@@ -25,6 +25,7 @@ class EmployeeHome extends Component {
       jobs: [],
       custom_list: [],
       isLoaded: false,
+      displayNewUserMessage: false,
     };
   }
 
@@ -56,10 +57,15 @@ class EmployeeHome extends Component {
           this.customJobsList(knn_jobs[j], jobs_details, job_set_with_id, this.state.custom_list);
         }
         this.setState({
+          displayNewUserMessage: false,
           isLoaded: true,
         })
       })
-      .catch(function (error) {
+      .catch(error => {
+        this.setState({
+          displayNewUserMessage: true,
+          isLoaded: true,
+        })
         console.log(error.response);
       })
   }
@@ -208,28 +214,32 @@ class EmployeeHome extends Component {
           </div>
           <div className="card">
             <h3 id="jobsage">Here are your recommended jobs:</h3>
-            <div class="table-responsive">
-              <table className="table table-striped" style={{ marginTop: 20 }} >
-                <thead className="thead-dark">
-                  <tr>
-                    <th>Job Title</th>
-                    <th>Job Type</th>
-                    <th>City</th>
-                    <th>Company Name</th>
-                    <th>Job Description</th>
-                    <th>Skills</th>
-                    <th>Salary</th>
-                    <th>Apply</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {this.returnCustomList(this.state.custom_list)}
-                </tbody>
-              </table>
-            </div>
+            {this.state.displayNewUserMessage === false && (
+              <div class="table-responsive">
+                <table className="table table-striped" style={{ marginTop: 20 }} >
+                  <thead className="thead-dark">
+                    <tr>
+                      <th>Job Title</th>
+                      <th>Job Type</th>
+                      <th>City</th>
+                      <th>Company Name</th>
+                      <th>Job Description</th>
+                      <th>Skills</th>
+                      <th>Salary</th>
+                      <th>Apply</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {this.returnCustomList(this.state.custom_list)}
+                  </tbody>
+                </table>
+              </div>
+            )}
+            {this.state.displayNewUserMessage === true && (
+              <span>Please add skills under my profile to show relevant jobs</span>
+            )}
           </div>
         </div>
-
       );
     }
   }

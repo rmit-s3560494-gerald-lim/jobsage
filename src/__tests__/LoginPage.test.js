@@ -1,6 +1,8 @@
 import React from 'react';
-import { shallow, mount, render } from 'enzyme';
-import LoginPage from '../components/LoginPage'
+import { shallow } from 'enzyme';
+import LoginPage from '../components/LoginPage';
+import logo from "../logo.png";
+
 
 describe('LoginPage Unit Tests', () => {
   test('renders', () => {
@@ -12,16 +14,7 @@ describe('LoginPage Unit Tests', () => {
 
   it('renders the logo', () => {
     const wrapper = shallow(<LoginPage />);
-    expect(wrapper.containsMatchingElement(
-      <img className="img-fluid" alt="JobSage Logo" />
-    )).toBe(true);
-  });
-
-  it('has a login label', () => {
-    const wrapper = mount(<LoginPage />);
-    expect(wrapper.containsMatchingElement(
-      <label>Email Address</label>
-    )).toBeTruthy();
+    expect(wrapper.html()).toContain('img src="logo.png"');
   });
 
   xit('has an input for email', () => {
@@ -31,7 +24,7 @@ describe('LoginPage Unit Tests', () => {
   })
 
   it('has a submit button', () => {
-    const wrapper = mount (<LoginPage />);
+    const wrapper = mount(<LoginPage />);
     expect(wrapper.containsMatchingElement(
       <button type="submit" className="btn btn-primary">Submit</button>
     )).toBeTruthy();
