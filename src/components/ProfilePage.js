@@ -79,7 +79,16 @@ export default class ProfilePage extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-        console.log(this.state.user_name);
+        console.log(this.state.skills[0].skill1);
+        console.log(this.state.rating1);
+        console.log(this.state.skill2);
+        console.log(this.state.rating2);
+        console.log(this.state.skill3);
+        console.log(this.state.rating3);
+        console.log(this.state.skill4);
+        console.log(this.state.rating4);
+        console.log(this.state.skill5);
+        console.log(this.state.rating5);
         const newUser = {
             // _id: this.state.id,
             user_name: this.state.user_name,
