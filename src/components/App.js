@@ -4,10 +4,10 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
-import {ProtectedAdminRoute} from './Protected.Admin.route';
-import {ProtectedEmployerRoute} from './Protected.Employer.route';
-import {ProtectedEmployeeRoute} from './Protected.Employee.route';
-import {ProtectedSharedRoute} from './Protected.Shared.route';
+import { ProtectedAdminRoute } from './Protected.Admin.route';
+import { ProtectedEmployerRoute } from './Protected.Employer.route';
+import { ProtectedEmployeeRoute } from './Protected.Employee.route';
+import { ProtectedSharedRoute } from './Protected.Shared.route';
 
 import EmployerHome from './EmployerHome';
 import EmployeeHome from './EmployeeHome';
@@ -29,20 +29,20 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <ProtectedAdminRoute path='/adminremoveusers' component={AdminRemoveUsers} />
-          <ProtectedAdminRoute exact path='/adminhomepage' component={AdminHomePage}/>
+          <ProtectedAdminRoute exact path='/adminhomepage' component={AdminHomePage} />
 
           <ProtectedEmployerRoute path='/add' component={CreateJobs} />
           <ProtectedEmployerRoute exact path='/employerhome' component={EmployerHome} />
           <ProtectedEmployerRoute path="/edit/:id" component={EditJobs} />
           <ProtectedEmployerRoute path="/view/:id" component={ViewApplicants} />
 
-          <ProtectedEmployeeRoute path='/jobseekerprofile' component={JobSeekerProfile}/>
+          <ProtectedEmployeeRoute path='/jobseekerprofile' component={JobSeekerProfile} />
           <ProtectedEmployeeRoute exact path='/employeehome' component={EmployeeHome} />
 
           <ProtectedSharedRoute path='/jobs' component={JobsList} />
-          <ProtectedSharedRoute path='/profile' component={ProfilePage}/>
+          <ProtectedSharedRoute path='/profile' component={ProfilePage} />
 
-          <Route path='/adminlogin' component={AdminLogin}/>
+          <Route path='/adminlogin' component={AdminLogin} />
           <Route path='/signup' component={SignUpPage} />
           <Route path='/' component={LoginPage} />
           <Route path='/login' component={LoginPage} />
