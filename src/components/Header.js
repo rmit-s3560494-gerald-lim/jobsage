@@ -41,7 +41,7 @@ class Header extends Component {
     return (
       <nav id="navBar" className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="/">
-          <img id="headerLogo" src={logo} alt="application logo"/>
+          <img id="headerLogo" src={logo} alt="application logo" />
         </a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -63,18 +63,18 @@ class Header extends Component {
           </ul>
         </div>
         <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-              <ul className="navbar-nav ml-auto">
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome, {this.getName()}</a>
-                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome, {this.getName()}</a>
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                 {localStorage.getItem('isEmployeeLoggedIn') === 'true' && (
                   <a className="dropdown-item" href="/profile">My Profile</a>
                 )}
-                  <a className="dropdown-item" href="#" onClick={this.handleSignOut}>Sign out</a>
-                </div>
-              </li>
-                </ul>
-         {/*<button className="btn btn-primary my-2 my-sm-0" onClick={this.handleSignOut}>Sign Out</button>*/}
+                <a className="dropdown-item" href="#" onClick={this.handleSignOut}>Sign out</a>
+              </div>
+            </li>
+          </ul>
+          {/*<button className="btn btn-primary my-2 my-sm-0" onClick={this.handleSignOut}>Sign Out</button>*/}
         </div>
       </nav>
     );

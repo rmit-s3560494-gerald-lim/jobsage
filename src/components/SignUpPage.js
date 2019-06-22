@@ -20,6 +20,7 @@ class SignUpPage extends Component {
     super(props);
 
     this.state = {
+      user_name: '',
       email: '',
       password1: '',
       password2: '',
@@ -52,17 +53,18 @@ class SignUpPage extends Component {
 
   validateNewUser = () => {
     axios.post('http://35.212.88.235/users/signup', {
+      user_name: this.state.user_name,
       user_email: this.state.email,
       password: this.state.password2,
       user_type: this.state.type,
     }).then(response => {
-      console.log(response.data);
+      console.log(response);
       this.setState({
         emailError: false,
       })
       this.props.history.push('/login');
     }).catch(error => {
-      console.log(error);
+      console.log(error.response);
       this.setState({
         emailError: true,
       });
@@ -79,11 +81,16 @@ class SignUpPage extends Component {
       <div>
         <div class="centerLogin">
           <img src={logo} className="img-fluid" alt="JobSage Logo" />
-          {this.state.passwordError === true && (
+          {this.state.passwordError === true || this.state.emailError === true && (
             <Error />
           )}
           <div class="form">
             <form onSubmit={this.handleSubmit}>
+              <div class="form-group">
+                <lable for="unameLabel">User Name</lable>
+                <input type="text" class="form-control" onChange={this.handleChange} id="uname"
+                  name="user_name" placeholder="User Name" />
+              </div>
               <div class="form-group">
                 <label for="emailLabel">Email address</label>
                 <input type="email" class="form-control" onChange={this.handleChange} id="email"

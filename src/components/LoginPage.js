@@ -30,7 +30,7 @@ class LoginPage extends Component {
       email: this.state.email,
       password: this.state.password,
     }).then(response => {
-      if(response.data[0].user_type === undefined) {
+      if (response.data[0].user_type === undefined) {
         this.setState({
           error: true,
         });
