@@ -183,6 +183,10 @@ class EmployeeHome extends Component {
     });
   }
 
+  simulateClick = (e) => {
+    e.click()
+  }
+
   render() {
     if (this.state.isLoaded !== true) {
       return (
@@ -213,30 +217,50 @@ class EmployeeHome extends Component {
             </div>
           </div>
           <div className="card">
-            <h3 id="jobsage">Here are your recommended jobs:</h3>
+
             {this.state.displayNewUserMessage === false && (
-              <div class="table-responsive">
-                <table className="table table-striped" style={{ marginTop: 20 }} >
-                  <thead className="thead-dark">
-                    <tr>
-                      <th>Job Title</th>
-                      <th>Job Type</th>
-                      <th>City</th>
-                      <th>Company Name</th>
-                      <th>Job Description</th>
-                      <th>Skills</th>
-                      <th>Salary</th>
-                      <th>Apply</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {this.returnCustomList(this.state.custom_list)}
-                  </tbody>
-                </table>
-              </div>
+              <React.Fragment>
+                <h3 id="jobsage">Here are your recommended jobs:</h3>
+                <div class="table-responsive">
+                  <table className="table table-striped" style={{ marginTop: 20 }} >
+                    <thead className="thead-dark">
+                      <tr>
+                        <th>Job Title</th>
+                        <th>Job Type</th>
+                        <th>City</th>
+                        <th>Company Name</th>
+                        <th>Job Description</th>
+                        <th>Skills</th>
+                        <th>Salary</th>
+                        <th>Apply</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {this.returnCustomList(this.state.custom_list)}
+                    </tbody>
+                  </table>
+                </div>
+              </React.Fragment>
             )}
             {this.state.displayNewUserMessage === true && (
-              <span>Please add skills under my profile to show relevant jobs</span>
+              <div>
+                <div ref={this.simulateClick} data-toggle="modal" data-target="#exampleModal"></div>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">No skills found</h5>
+                      </div>
+                      <div class="modal-body">
+                        Please add skills to your profile in the top right under "My Profile"
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             )}
           </div>
         </div>
