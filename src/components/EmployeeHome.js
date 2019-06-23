@@ -38,6 +38,7 @@ class EmployeeHome extends Component {
       custom_list: [],
       isLoaded: false,
       displayNewUserMessage: false,
+      custom_list_id: [],
     };
   }
 
@@ -66,7 +67,7 @@ class EmployeeHome extends Component {
         var knn_jobs = neighbour.nearest(user_skill_ratings);
 
         for (var j = 0; j < knn_jobs.length; j++) {
-          this.customJobsList(knn_jobs[j], jobs_details, job_set_with_id, this.state.custom_list);
+          this.customJobsList(knn_jobs[j], jobs_details, job_set_with_id, this.state.custom_list, this.state.custom_list_id);
         }
 
         axios.get(`http://35.212.88.235/users/id/${JSON.parse(localStorage.getItem('user'))._id}`)
@@ -178,7 +179,7 @@ class EmployeeHome extends Component {
     job_set_id.push(array2);
   }
 
-  customJobsList(knn_jobs_skill, jobs, job_set_id, custom_list) {
+  customJobsList(knn_jobs_skill, jobs, job_set_id, custom_list, custom_id) {
     //  array of numbers
     var id;
     // length is 6
@@ -188,15 +189,22 @@ class EmployeeHome extends Component {
         (knn_jobs_skill[1] === job_set_id[k][2]) &&
         (knn_jobs_skill[2] === job_set_id[k][3]) &&
         (knn_jobs_skill[3] === job_set_id[k][4]) &&
-        (knn_jobs_skill[4] === job_set_id[k][5])) {
+        (knn_jobs_skill[4] === job_set_id[k][5]) && !custom_id.includes(job_set_id[k][0])) {
         id = job_set_id[k][0];
+        break;
       }
     }
 
     var desired_job = jobs.filter(obj => {
       return obj._id === id;
     });
-    custom_list.push(desired_job[0]);
+
+    if (custom_list.includes(desired_job[0])) {
+      console.log('job exits');
+    } else {
+      custom_list.push(desired_job[0])
+      custom_id.push(id)
+    }
   }
 
 
