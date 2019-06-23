@@ -7,7 +7,9 @@ export default class JobsList extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { jobs: [] };
+    this.state = {
+      jobs: []
+    };
 
   }
 
@@ -93,7 +95,7 @@ export default class JobsList extends Component {
         + job.skills[0].skill5}
       </td>
       <td>{job.salary_offered}</td>
-      <td> <a href={job.url} target="https://google.com">Apply</a></td>
+      <td> <a href={job.url} onClick={this.addApplicant(job._id)} target="https://google.com">Apply</a></td>
 
       {localStorage.getItem('isEmployerLoggedIn') === 'true' && (<td>
         <Link to={"/edit/" + job._id}>Edit</Link>
@@ -106,6 +108,10 @@ export default class JobsList extends Component {
       </td>)}
     </tr>
   )
+
+  addApplicant = (id) => {
+    console.log(id)
+  }
 
   jobsList() {
     return this.state.jobs.map(job => this.makeJobRow(job));

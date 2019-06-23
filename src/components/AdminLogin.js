@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import logo from '../logo.png';
 
-const Error = props => <div id="userLoginError" class="alert alert-danger" role="alert">Username and Password invalid</div>
+const Error = props => <div id="helperAlert" class="alert alert-danger" role="alert">Username and Password invalid</div>
 class AdminLogin extends Component {
 
   constructor(props) {
@@ -26,27 +26,18 @@ class AdminLogin extends Component {
   }
 
   validateAdmin = () => {
-    let userName = '';
-    axios.get('http://35.212.88.235/admins/')
-      .then(response => {
-        userName = response.data.filter(obj => {
-          return obj.user_name === this.state.username && obj.password === this.state.password;
-        });
-        if (userName.length !== 0) {
-          localStorage.setItem('isAdminLoggedIn', 'true');
-          localStorage.setItem('user', JSON.stringify(response.data[0]));
-          this.props.history.push('/adminhomepage');
-        } else {
-          this.setState({
-            error: true,
-          });
-        }
+    axios.post('http://35.212.88.235/admins/validation/', {
+      user_name: this.state.username,
+      password: this.state.password,
+    }).then(response => {
+      localStorage.setItem('isAdminLoggedIn', 'true');
+      localStorage.setItem('user', JSON.stringify(response.data[0]));
+      this.props.history.push('/adminhomepage');
+    }).catch(error => {
+      this.setState({
+        error: true,
       })
-      .catch(error => {
-        this.setState({
-          error: true,
-        });
-      })
+    })
   }
 
   handleSubmit = (e) => {
