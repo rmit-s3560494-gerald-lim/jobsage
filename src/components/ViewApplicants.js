@@ -26,6 +26,7 @@ export default class ViewApplicants extends React.Component {
         applicants.forEach(applicant => {
           axios.get(`http://35.212.88.235/users/${applicant}`)
             .then(response => {
+              console.log(response.data);
               this.setState({
                 users: [...this.state.users, response.data]
               })
@@ -49,22 +50,24 @@ export default class ViewApplicants extends React.Component {
     window.location.reload();
   }
 
-  makeUserTable = (currUser) =>
+  makeUserTable = (currUser) => (
     <tr>
       <td>{currUser.user_name}</td>
       <td>{currUser.user_email}</td>
       <td><button onClick={() => this.delete(currUser)} className="btn btn-danger">Delete</button></td>
     </tr>
+  )
 
-  usersList() {
-    return this.state.users.map(user => this.makeUserTable(user));
+  usersList = () => {
+    return (
+      this.state.users.map(user => this.makeUserTable(user))
+    )
   }
 
   render() {
     return (
       <div>
         <Header />
-
         <h3 id="jobsage">Applicants</h3>
         <div className="card">
           <table className="table table-striped" style={{ marginTop: 20 }} >

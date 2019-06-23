@@ -35,17 +35,19 @@ export default class AdminRemoveUsers extends React.Component {
     window.location.reload();
   }
 
-  makeUserTable = (currUser) =>
+  makeUserTable = (currUser) => (
     <tr>
       <td>{currUser.user_name}</td>
       <td>{currUser.user_email}</td>
       <td>{currUser.user_type}</td>
       <td><button onClick={() => this.delete(currUser)} className="btn btn-danger">Delete</button></td>
     </tr>
+  )
 
-
-  usersList() {
-    return this.state.users.map(user => this.makeUserTable(user));
+  usersList = () => {
+    return (
+      this.state.users.map(user => this.makeUserTable(user))
+    )
   }
 
   render() {
