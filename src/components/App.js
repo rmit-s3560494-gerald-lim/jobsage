@@ -45,9 +45,9 @@ class App extends Component {
 
           <Route exact path='/adminlogin' component={AdminLogin} />
           <Route exact path='/signup' component={SignUpPage} />
-          <Route exact path='/' component={LoginPage} />
           <Route exact path='/login' component={LoginPage} />
           <Route exact path='/forgotpassword' component={ForgotPassword} />
+          <Route path='/' component={LoginPage} />
 
         </Switch>
       </BrowserRouter>
