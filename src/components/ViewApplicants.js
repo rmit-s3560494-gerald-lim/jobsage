@@ -3,29 +3,46 @@ import './App.css';
 import axios from 'axios';
 import Header from './Header';
 
-export default class AdminRemoveUsers extends React.Component {
+
+export default class ViewApplicants extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { users: [] };
+    this.state = {
+      users: [],
+      job: {},
+    };
   }
 
   componentDidMount() {
-    axios.get('http://35.212.88.235/users/')
+    const { id } = this.props.match.params;
+
+    axios.get(`http://35.212.88.235/jobs/${id}/applicants`)
       .then(response => {
-        this.setState({
-          users: response.data
+        var applicants = response.data;
+
+        applicants.forEach(applicant => {
+          axios.get(`http://35.212.88.235/users/${applicant}`)
+            .then(response => {
+              this.setState({
+                users: [...this.state.users, response.data]
+              })
+            })
+            .catch(error => {
+              console.log(error.response);
+            })
         });
       })
-      .catch(function (error) {
-        window.location.reload();
+      .catch(error => {
+        console.log(error.response);
       })
   }
 
   delete(currUser) {
     axios.get('http://35.212.88.235/users/delete/' + currUser._id)
-      .then(alert("User deleted"))
+      .then(console.log('Deleted'))
       .catch(err => console.log(err))
+    alert("User deleted");
     window.location.reload();
   }
 
@@ -33,7 +50,6 @@ export default class AdminRemoveUsers extends React.Component {
     <tr>
       <td>{currUser.user_name}</td>
       <td>{currUser.user_email}</td>
-      <td>{currUser.user_type}</td>
       <td><button onClick={() => this.delete(currUser)} className="btn btn-danger">Delete</button></td>
     </tr>
   )
@@ -48,14 +64,13 @@ export default class AdminRemoveUsers extends React.Component {
     return (
       <div>
         <Header />
-        <h3 id="jobsage">Users List</h3>
+        <h3 id="jobsage">Applicants</h3>
         <div className="card">
           <table className="table table-striped" style={{ marginTop: 20 }} >
             <thead className="thead-dark">
               <tr>
                 <th>User Name</th>
                 <th>User Email</th>
-                <th>User Type</th>
                 <th>Delete</th>
               </tr>
             </thead>

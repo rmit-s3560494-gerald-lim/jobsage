@@ -1,0 +1,13 @@
+Type of Database
+MongoDB (MongoAtlas)
+Version 4.0.10
+
+Database Connection Address
+https://cloud.mongodb.com/user#/atlas/login
+Credentials
+	Username: kkcsit97@gmail.com
+	Password: Newstead13!
+
+Other Information
+1. Click on collections inside the "SANDBOX" area to view the data collections that are currently being stored.
+2. Admin accounts may be created from inside.

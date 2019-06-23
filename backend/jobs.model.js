@@ -66,12 +66,9 @@ let Jobs = new Schema({
             type: Number
         },
     }],
-    // state: {
-    //     type: String
-    // },
-    // url: {
-    //     type: String
-    // }
+    url: {
+        type: String
+    }
 
 },
     {

@@ -13,6 +13,7 @@
     "mongodb-memory-server": "^5.0.2",
     "mongoose": "^5.5.0",
     "morgan": "^1.9.1",
+    "nearestneighbour": "^0.1.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-router-dom": "^5.0.0",
@@ -51,6 +52,5 @@
   "bugs": {
     "url": "https://github.com/rmit-s3560494-gerald-lim/ppmm/issues"
   },
-  "homepage": "https://github.com/rmit-s3560494-gerald-lim/ppmm#readme",
-  "test": "NODE_ENV=test jest --forceExit"
+  "homepage": "https://github.com/rmit-s3560494-gerald-lim/ppmm#readme"
 }

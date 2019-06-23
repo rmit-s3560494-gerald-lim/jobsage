@@ -3,89 +3,156 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Header from './Header';
 
-const Jobs = props => (
-    <tr>
-        {/* <td>{props.job._id}</td> */}
-        <td>{props.job.job_title}</td>
-        <td>{props.job.job_type}</td>
-        <td>{props.job.category}</td>
-        <td>{props.job.city}</td>
-        <td>{props.job.company_name}</td>
-        {/* <td>{props.job.geo}</td>
-        <td>{props.job.job_board}</td> */}
-        {/* <td>{props.job.job_description}</td> */}
-        <td>{props.job.post_date}</td>
-        <td>{props.job.salary_offered}</td>
-        {/* <td>{props.job.state}</td> */}
-        {/* <td>{props.job.url}</td> */}
-        <td>
-            <Link to={"/edit/" + props.job._id}>Edit</Link>
-        </td>
-        <td>
-            <Link to={"/"}>Delete</Link>
-        </td>
-    </tr>
-)
-
 export default class JobsList extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = { jobs: [] };
+  constructor(props) {
+    super(props);
+    this.state = {
+      jobs: []
+    };
+
+  }
+
+  componentWillMount() {
+    if (localStorage.getItem('isEmployerLoggedIn') !== 'true') {
+      axios.get('http://35.212.88.235/jobs/')
+        .then(response => {
+          this.setState({ jobs: response.data });
+        })
+        .catch(function (error) {
+          console.log(error.response);
+          window.location.reload();
+        })
+    }
+    else {
+      if (localStorage.getItem('isAdminLoggedIn') !== 'true') {
+        var user_details = JSON.parse(localStorage.getItem('user'));
+      }
+      axios.get('http://35.212.88.235/jobs/view/' + user_details._id)
+        .then(response => {
+          this.setState({ jobs: response.data });
+        })
+        .catch(function (error) {
+          console.log(error.response);
+        })
     }
 
-    componentDidMount() {
-        axios.get('http://localhost:4000/jobs/')
-        // axios.get('http://35.212.88.235/jobs/')
-            .then(response => {
-                this.setState({ jobs: response.data });
-                console.log(this.state.jobs);
-            })
-            .catch(function (error) {
-                console.log(error.response);
-            })
+
+
+  }
+  componentWillUpdate() {
+    if (localStorage.getItem('isEmployerLoggedIn') !== 'true') {
+      axios.get('http://35.212.88.235/jobs/')
+        .then(response => {
+          this.setState({ jobs: response.data });
+        })
+        .catch(function (error) {
+          console.log(error.response);
+          window.location.reload();
+        })
+    }
+    else {
+      if (localStorage.getItem('isAdminLoggedIn') !== 'true') {
+        var user_details = JSON.parse(localStorage.getItem('user'));
+      }
+      axios.get('http://35.212.88.235/jobs/view/' + user_details._id)
+        .then(response => {
+          this.setState({ jobs: response.data });
+        })
+        .catch(function (error) {
+          console.log(error.response);
+          window.location.reload();
+        })
     }
 
-    jobsList() {
-        return this.state.jobs.map(function (currentJob, i) {
-            return <Jobs job={currentJob} key={i} />;
-        });
-    }
+  }
 
-    render() {
-        return (
-            <div>
-                {console.log(this.state.jobs)}
-                <Header />
-                <h3 id="jobsage">Jobs List</h3>
-                <div className="card">
-                    <table className="table table-striped" style={{ marginTop: 20 }} >
-                        <thead className="thead-dark">
-                            <tr>
-                                {/* <th>id</th> */}
-                                <th>Job Title</th>
-                                <th>Job Type</th>
-                                <th>Category</th>
-                                <th>City</th>
-                                <th>Company Name</th>
-                                {/* <th>geo</th>
-                            <th>job_board</th> */}
-                                {/* <th>job_description</th> */}
+  delete(job) {
+    axios.get('http://35.212.88.235/jobs/delete/' + job._id)
+      .then(console.log('Deleted'))
+      .catch(err => console.log(err))
+    alert("Job Deleted");
+    window.location.reload();
+  }
 
-                                <th>Post Date</th>
-                                <th>Salary</th>
-                                {/* <th>State</th> */}
-                                {/* <th>url</th> */}
-                                <th>Edit</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.jobsList()}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        )
-    }
+  makeJobRow = (job) => (
+    <tr>
+      <td>{job.job_title}</td>
+      <td>{job.job_type}</td>
+      <td>{job.city}</td>
+      <td>{job.company_name}</td>
+      <td>{job.job_description}</td>
+      <td>{job.skills[0].skill1 + ', '
+        + job.skills[0].skill2 + ', '
+        + job.skills[0].skill3 + ', '
+        + job.skills[0].skill4 + ', '
+        + job.skills[0].skill5}
+      </td>
+      <td>{job.salary_offered}</td>
+      <td> <a href={job.url} onClick={() => this.addApplicant(job._id)} target="https://google.com">Apply</a></td>
+
+      {localStorage.getItem('isEmployerLoggedIn') === 'true' && (<td>
+        <Link to={"/edit/" + job._id}>Edit</Link>
+      </td>)}
+      {localStorage.getItem('isEmployerLoggedIn') === 'true' && (<td>
+        <button onClick={() => this.delete(job)} className="btn btn-danger">Delete</button>
+      </td>)}
+      {localStorage.getItem('isEmployerLoggedIn') === 'true' && (<td>
+        <Link to={"/view/" + job._id}>View Applicants</Link>
+      </td>)}
+    </tr>
+  )
+
+  addApplicant = (id) => {
+    var applicant = JSON.parse(localStorage.getItem('user'))._id;
+
+    axios.post(`http://35.212.88.235/jobs/${id}/apply/${applicant}`)
+      .then(response => {
+        alert('Shown intered in job');
+      })
+      .catch(error => {
+        console.log(error);
+      })
+
+  }
+
+  jobsList() {
+    return this.state.jobs.map(job => this.makeJobRow(job));
+  }
+
+  render() {
+    return (
+      <div>
+        <Header />
+        <h3 id="jobsage">Jobs List</h3>
+        <div class="card">
+          <div class="table-responsive">
+            <table class="table table-striped" style={{ marginTop: 20 }} >
+              <thead class="thead-dark">
+                <tr>
+                  <th>Job Title</th>
+                  <th>Job Type</th>
+                  <th>City</th>
+                  <th>Company Name</th>
+                  <th>Job Description</th>
+                  <th>Skills</th>
+                  <th>Salary</th>
+                  <th>Apply</th>
+                  {localStorage.getItem('isEmployerLoggedIn') === 'true' && (
+                    <th>Edit</th>)}
+                  {localStorage.getItem('isEmployerLoggedIn') === 'true' && (
+                    <th>Delete</th>)}
+                  {localStorage.getItem('isEmployerLoggedIn') === 'true' && (
+                    <th>Applicants</th>)}
+                </tr>
+              </thead>
+              <tbody>
+                {this.jobsList()}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
