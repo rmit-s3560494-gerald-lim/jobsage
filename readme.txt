@@ -1,5 +1,6 @@
 Release Notes
-1.
+1. Job descriptions may be too long for displaying on table, minor issue
+2. 
 
 Installation and Running Instructions
 1. Clone project from GitHub URL.
@@ -10,6 +11,7 @@ Installation and Running Instructions
 6. (Optional) Refer to development guide in report if you need help installing tools like npm, node, etc.
 
 Change Log
+1. 
 
 GitHub URL
 https://github.com/rmit-s3560494-gerald-lim/jobsage

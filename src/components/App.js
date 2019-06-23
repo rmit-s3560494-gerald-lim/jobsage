@@ -17,7 +17,6 @@ import CreateJobs from './CreateJobs';
 import EditJobs from './EditJobs';
 import LoginPage from './LoginPage';
 import SignUpPage from './SignUpPage';
-import JobSeekerProfile from './JobSeekerProfile';
 import AdminHomePage from './AdminHomePage';
 import AdminRemoveUsers from './AdminRemoveUsers';
 import ProfilePage from './ProfilePage.js';
@@ -37,7 +36,6 @@ class App extends Component {
           <ProtectedEmployerRoute path="/edit/:id" component={EditJobs} />
           <ProtectedEmployerRoute path="/view/:id" component={ViewApplicants} />
 
-          <ProtectedEmployeeRoute path='/jobseekerprofile' component={JobSeekerProfile} />
           <ProtectedEmployeeRoute exact path='/employeehome' component={EmployeeHome} />
 
           <ProtectedSharedRoute path='/jobs' component={JobsList} />

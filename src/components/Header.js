@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import logo from '../logo.png';
 
+// Check what type of user is logged in and redirect to correct homepage
 const homeLink = () => {
   if (localStorage.getItem('isAdminLoggedIn') === 'true') {
     return '/adminhomepage';
@@ -15,12 +16,14 @@ const homeLink = () => {
 }
 class Header extends Component {
 
+  // get user_name of user from local storage
   getName() {
     var user_details = JSON.parse(localStorage.getItem('user'));
     var name = user_details.user_name;
     return name;
   }
 
+  // set all logged in booleans as false and redirect to corresponding login pages
   handleSignOut = (e) => {
     e.preventDefault();
     if (localStorage.getItem('isAdminLoggedIn') === 'true') {

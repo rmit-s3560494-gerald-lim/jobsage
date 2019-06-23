@@ -30,6 +30,7 @@ export default class EditJobs extends Component {
     }
   }
 
+  // Switching rating int to string for user to view on frontend
   skillRatingMapperToText = (skill) => {
     switch (skill) {
       case 1:
@@ -43,6 +44,7 @@ export default class EditJobs extends Component {
     };
   }
 
+  // Switching rating back from string to int to store in the backend
   skillRatingMapperToInt = (skill) => {
     switch (skill) {
       case 'Beginner':
@@ -57,8 +59,10 @@ export default class EditJobs extends Component {
   }
 
   componentDidMount() {
+    // Find jobs with the selected id
     axios.get('http://35.212.88.235/jobs/' + this.props.match.params.id)
       .then(response => {
+        // Set current state to what is found in the backend, if the field is undefined, it will return a blank string instead
         this.setState({
           category: response.data.category ? response.data.category : '',
           city: response.data.city ? response.data.city : '',
@@ -134,14 +138,19 @@ export default class EditJobs extends Component {
       }],
       url: this.state.url
     };
+    
+    // Post job to backend via /edit route with job id and the job object sent from the frontend
     axios.post('http://35.212.88.235/jobs/edit/' + this.props.match.params.id, newJob)
       .then(res => {
         console.log(res.data)
+        
+        // Alert user that job is saved
         alert("Job Saved");
         this.props.history.push('/jobs');
       });
   }
 
+  // Check if there is already a value in the selection for rating select; return -- Select Option -- if it is blank
   existingValueCheck = (value) => {
     if (value === '') {
       return ' -- Select option -- '

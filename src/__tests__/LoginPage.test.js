@@ -1,8 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import LoginPage from '../components/LoginPage';
-import logo from "../logo.png";
-
 
 describe('LoginPage Unit Tests', () => {
   test('renders', () => {

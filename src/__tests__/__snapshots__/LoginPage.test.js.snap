@@ -83,6 +83,13 @@ ShallowWrapper {
           >
             Don't have an account?
           </a>
+          <br />
+          <a
+            href="/forgotpassword"
+            id="signUpLink"
+          >
+            Forgot Password
+          </a>
         </div>
       </div>,
     },
@@ -155,6 +162,13 @@ ShallowWrapper {
               id="signUpLink"
             >
               Don't have an account?
+            </a>
+            <br />
+            <a
+              href="/forgotpassword"
+              id="signUpLink"
+            >
+              Forgot Password
             </a>
           </div>,
         ],
@@ -242,6 +256,13 @@ ShallowWrapper {
                 id="signUpLink"
               >
                 Don't have an account?
+              </a>,
+              <br />,
+              <a
+                href="/forgotpassword"
+                id="signUpLink"
+              >
+                Forgot Password
               </a>,
             ],
             "className": "form",
@@ -432,6 +453,28 @@ ShallowWrapper {
               "rendered": "Don't have an account?",
               "type": "a",
             },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Forgot Password",
+                "href": "/forgotpassword",
+                "id": "signUpLink",
+              },
+              "ref": null,
+              "rendered": "Forgot Password",
+              "type": "a",
+            },
           ],
           "type": "div",
         },
@@ -511,6 +554,13 @@ ShallowWrapper {
             >
               Don't have an account?
             </a>
+            <br />
+            <a
+              href="/forgotpassword"
+              id="signUpLink"
+            >
+              Forgot Password
+            </a>
           </div>
         </div>,
       },
@@ -583,6 +633,13 @@ ShallowWrapper {
                 id="signUpLink"
               >
                 Don't have an account?
+              </a>
+              <br />
+              <a
+                href="/forgotpassword"
+                id="signUpLink"
+              >
+                Forgot Password
               </a>
             </div>,
           ],
@@ -670,6 +727,13 @@ ShallowWrapper {
                   id="signUpLink"
                 >
                   Don't have an account?
+                </a>,
+                <br />,
+                <a
+                  href="/forgotpassword"
+                  id="signUpLink"
+                >
+                  Forgot Password
                 </a>,
               ],
               "className": "form",
@@ -858,6 +922,28 @@ ShallowWrapper {
                 },
                 "ref": null,
                 "rendered": "Don't have an account?",
+                "type": "a",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": "br",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Forgot Password",
+                  "href": "/forgotpassword",
+                  "id": "signUpLink",
+                },
+                "ref": null,
+                "rendered": "Forgot Password",
                 "type": "a",
               },
             ],

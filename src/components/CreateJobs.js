@@ -5,7 +5,8 @@ import Header from './Header';
 export default class CreateJobs extends Component {
   constructor(props) {
     super(props);
-
+    
+    // Establish state with fields
     this.state = {
       city: '',
       company_name: '',
@@ -34,6 +35,7 @@ export default class CreateJobs extends Component {
   handleChange = (e) => {
     var name = e.target.name;
     const { skills } = this.state;
+    // if statement to deal with handleChange inside a nested state
     if (name.includes('skill')) {
       skills[0][name] = e.target.value;
       this.setState({
@@ -58,7 +60,8 @@ export default class CreateJobs extends Component {
 
     console.log(this.state);
     const { skills } = this.state;
-
+    
+    // Create a new job object with corresponding fields
     const newJob = {
       city: this.state.city,
       company_name: this.state.company_name,
@@ -81,11 +84,13 @@ export default class CreateJobs extends Component {
       url: this.state.url,
       employer_id: eid,
     }
-
+    
+    // Post object to backend
     axios.post('http://35.212.88.235/jobs/add', newJob)
       .then(res => console.log(res.data));
     alert("New Job added");
 
+    // Redirect to jobs list page
     this.props.history.push('/jobs');
   }
 
@@ -93,7 +98,6 @@ export default class CreateJobs extends Component {
     return (
       <div>
         <Header />
-
         <div style={{ marginTop: 20 }}>
           <div className="createjobs">
             <h3>Create New Job Posting</h3>
