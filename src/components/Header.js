@@ -49,7 +49,7 @@ class Header extends Component {
   render() {
     return (
       <nav id="navBar" className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="/">
+        <a href={homeLink()} className="navbar-brand">
           <img id="headerLogo" src={logo} alt="application logo" />
         </a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
