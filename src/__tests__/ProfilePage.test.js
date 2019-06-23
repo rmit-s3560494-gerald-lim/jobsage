@@ -60,7 +60,7 @@ describe('Profile Page Unit Tests', () => {
         expect(wrapper.containsMatchingElement(
             <div className="form-group">
                 <input type="submit" value="Update Profile" className="btn btn-primary" />
-                <a href="/users" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
+                <a href="/employeehome" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
             </div>
         )).toBeTruthy();
     })
