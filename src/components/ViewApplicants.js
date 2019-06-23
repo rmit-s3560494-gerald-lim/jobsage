@@ -12,7 +12,6 @@ export default class ViewApplicants extends React.Component {
       users: [],
       job: {},
     };
-
   }
 
   componentDidMount() {
@@ -20,13 +19,11 @@ export default class ViewApplicants extends React.Component {
 
     axios.get(`http://35.212.88.235/jobs/${id}/applicants`)
       .then(response => {
-        console.log(response.data);
         var applicants = response.data;
 
         applicants.forEach(applicant => {
           axios.get(`http://35.212.88.235/users/${applicant}`)
             .then(response => {
-              console.log(response.data);
               this.setState({
                 users: [...this.state.users, response.data]
               })
@@ -42,7 +39,6 @@ export default class ViewApplicants extends React.Component {
   }
 
   delete(currUser) {
-    console.log(currUser._id)
     axios.get('http://35.212.88.235/users/delete/' + currUser._id)
       .then(console.log('Deleted'))
       .catch(err => console.log(err))

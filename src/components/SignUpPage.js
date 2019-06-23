@@ -38,19 +38,47 @@ class SignUpPage extends Component {
   }
 
   validateNewUser = () => {
-    axios.post('http://35.212.88.235/users/signup', {
-      user_name: this.state.user_name,
-      user_email: this.state.email,
-      password: this.state.password2,
-      user_type: this.state.type,
-    }).then(response => {
-      alert('Succesfully registered. Clicking ok will redirect to login page')
-      this.props.history.push('/login');
-    }).catch(error => {
-      this.setState({
-        error: 'emailError',
-      });
-    })
+    if (this.state.type === 'employer') {
+      axios.post('http://35.212.88.235/users/signup', {
+        user_name: this.state.user_name,
+        user_email: this.state.email,
+        password: this.state.password2,
+        user_type: this.state.type,
+      }).then(response => {
+        alert('Succesfully registered. Clicking ok will redirect to login page')
+        this.props.history.push('/login');
+      }).catch(error => {
+        this.setState({
+          error: 'emailError',
+        });
+      })
+    } else if (this.state.type === 'employee') {
+      axios.post('http://35.212.88.235/users/signup', {
+        user_name: this.state.user_name,
+        user_email: this.state.email,
+        password: this.state.password2,
+        user_type: this.state.type,
+        skills: [{
+          skill1: '',
+          rating1: '',
+          skill2: '',
+          rating2: '',
+          skill3: '',
+          rating3: '',
+          skill4: '',
+          rating4: '',
+          skill5: '',
+          rating5: '',
+        }]
+      }).then(response => {
+        alert('Succesfully registered. Clicking ok will redirect to login page')
+        this.props.history.push('/login');
+      }).catch(error => {
+        this.setState({
+          error: 'emailError',
+        });
+      })
+    }
   }
 
   checkPassword = () => {

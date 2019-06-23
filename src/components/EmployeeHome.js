@@ -13,9 +13,21 @@ const Jobs = props => (
     <td>{props.job.skills[0].skill1 + ', ' + props.job.skills[0].skill2 + ', ' + props.job.skills[0].skill3 +
       ', ' + props.job.skills[0].skill4 + ', ' + props.job.skills[0].skill5}</td>
     <td>{props.job.salary_offered}</td>
-    <td> <a href={props.job.url} class="btn btn-primary" target="https://google.com">Apply</a></td>
+    <td> <a href={props.job.url} onClick={() => addApplicant(props.job._id)} class="btn btn-primary" target="https://google.com">Apply</a></td>
   </tr>
 )
+
+const addApplicant = (id) => {
+  var applicant = JSON.parse(localStorage.getItem('user'))._id;
+
+  axios.post(`http://35.212.88.235/jobs/${id}/apply/${applicant}`)
+    .then(response => {
+      alert('Shown intered in job');
+    })
+    .catch(error => {
+      console.log(error);
+    })
+}
 
 class EmployeeHome extends Component {
 
@@ -56,10 +68,21 @@ class EmployeeHome extends Component {
         for (var j = 0; j < knn_jobs.length; j++) {
           this.customJobsList(knn_jobs[j], jobs_details, job_set_with_id, this.state.custom_list);
         }
-        this.setState({
-          displayNewUserMessage: false,
-          isLoaded: true,
-        })
+
+        axios.get(`http://35.212.88.235/users/id/${JSON.parse(localStorage.getItem('user'))._id}`)
+          .then(response => {
+            if (response.data[0].skills[0].rating1 === null) {
+              this.setState({
+                displayNewUserMessage: true,
+                isLoaded: true,
+              })
+            } else {
+              this.setState({
+                displayNewUserMessage: false,
+                isLoaded: true,
+              })
+            }
+          })
       })
       .catch(error => {
         this.setState({

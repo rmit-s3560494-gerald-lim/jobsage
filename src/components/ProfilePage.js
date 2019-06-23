@@ -68,6 +68,13 @@ export default class ProfilePage extends Component {
     }
   }
 
+  skillCheck = (response, value) => {
+    var check = response.data.skills[0];
+    if (check !== undefined) {
+      return check[value] ? check[value] : ''
+    }
+  }
+
   componentDidMount() {
     axios.get('http://35.212.88.235/users/' + this.getUserId())
       .then(response => {
@@ -78,16 +85,16 @@ export default class ProfilePage extends Component {
           user_type: response.data.user_type,
           password: response.data.password,
           skills: [{
-            skill1: response.data.skills[0].skill1 ? response.data.skills[0].skill1 : '',
-            rating1: this.skillRatingMapperToText(response.data.skills[0].rating1),
-            skill2: response.data.skills[0].skill2 ? response.data.skills[0].skill2 : '',
-            rating2: this.skillRatingMapperToText(response.data.skills[0].rating2),
-            skill3: response.data.skills[0].skill3 ? response.data.skills[0].skill3 : '',
-            rating3: this.skillRatingMapperToText(response.data.skills[0].rating3),
-            skill4: response.data.skills[0].skill4 ? response.data.skills[0].skill4 : '',
-            rating4: this.skillRatingMapperToText(response.data.skills[0].rating4),
-            skill5: response.data.skills[0].skill5 ? response.data.skills[0].skill5 : '',
-            rating5: this.skillRatingMapperToText(response.data.skills[0].rating5),
+            skill1: this.skillCheck(response, 'skill1'),
+            rating1: this.skillRatingMapperToText(this.skillCheck(response, 'rating1')),
+            skill2: this.skillCheck(response, 'skill2'),
+            rating2: this.skillRatingMapperToText(this.skillCheck(response, 'rating2')),
+            skill3: this.skillCheck(response, 'skill3'),
+            rating3: this.skillRatingMapperToText(this.skillCheck(response, 'rating3')),
+            skill4: this.skillCheck(response, 'skill4'),
+            rating4: this.skillRatingMapperToText(this.skillCheck(response, 'rating4')),
+            skill5: this.skillCheck(response, 'skill5'),
+            rating5: this.skillRatingMapperToText(this.skillCheck(response, 'rating5')),
           }],
         })
       })

@@ -3,7 +3,6 @@ import './App.css';
 import axios from 'axios';
 import Header from './Header';
 
-
 export default class AdminRemoveUsers extends React.Component {
 
   constructor(props) {
@@ -16,22 +15,17 @@ export default class AdminRemoveUsers extends React.Component {
       .then(response => {
         this.setState({
           users: response.data
-
         });
-        console.log(this.state.users);
       })
       .catch(function (error) {
-        console.log(error.response);
         window.location.reload();
       })
   }
 
   delete(currUser) {
-    console.log(currUser._id)
     axios.get('http://35.212.88.235/users/delete/' + currUser._id)
-      .then(console.log('Deleted'))
+      .then(alert("User deleted"))
       .catch(err => console.log(err))
-    alert("User deleted");
     window.location.reload();
   }
 

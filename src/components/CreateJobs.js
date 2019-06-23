@@ -5,7 +5,7 @@ import Header from './Header';
 export default class CreateJobs extends Component {
   constructor(props) {
     super(props);
-    
+
     // Establish state with fields
     this.state = {
       city: '',
@@ -57,10 +57,8 @@ export default class CreateJobs extends Component {
     e.preventDefault();
     var employer_details = JSON.parse(localStorage.getItem('user'));
     var eid = employer_details._id;
-
-    console.log(this.state);
     const { skills } = this.state;
-    
+
     // Create a new job object with corresponding fields
     const newJob = {
       city: this.state.city,
@@ -84,14 +82,14 @@ export default class CreateJobs extends Component {
       url: this.state.url,
       employer_id: eid,
     }
-    
+
     // Post object to backend
     axios.post('http://35.212.88.235/jobs/add', newJob)
-      .then(res => console.log(res.data));
-    alert("New Job added");
-
-    // Redirect to jobs list page
-    this.props.history.push('/jobs');
+      .then(res => {
+        console.log(res.data);
+        alert("New Job added");
+        this.props.history.push('/jobs');
+      });
   }
 
   render() {
@@ -162,45 +160,45 @@ export default class CreateJobs extends Component {
                   <input className="form-control" name="skill1" type="text" placeholder="e.g. ReactJS" onChange={this.handleChange} />
                   <select className="form-control" name="rating1" id="skillSelect" onChange={this.handleChange}>
                     <option disabled selected value> -- Select option -- </option>
-                    <option value="0">Beginner</option>
-                    <option value="1">Intermediate</option>
-                    <option value="2">Expert</option>
+                    <option value="1">Beginner</option>
+                    <option value="2">Intermediate</option>
+                    <option value="3">Expert</option>
                   </select>
                 </div>
                 <div className="form-group entry input-group col-xs-3">
                   <input className="form-control" name="skill2" type="text" placeholder="" onChange={this.handleChange} />
                   <select className="form-control " name="rating2" id="skillSelect" onChange={this.handleChange}>
                     <option disabled selected value> -- Select option -- </option>
-                    <option value="0">Beginner</option>
-                    <option value="1">Intermediate</option>
-                    <option value="2">Expert</option>
+                    <option value="1">Beginner</option>
+                    <option value="2">Intermediate</option>
+                    <option value="3">Expert</option>
                   </select>
                 </div>
                 <div className="form-group entry input-group col-xs-3">
                   <input className="form-control" name="skill3" type="text" placeholder="" onChange={this.handleChange} />
                   <select className="form-control " name="rating3" id="skillSelect" onChange={this.handleChange}>
                     <option disabled selected value> -- Select option -- </option>
-                    <option value="0">Beginner</option>
-                    <option value="1">Intermediate</option>
-                    <option value="2">Expert</option>
+                    <option value="1">Beginner</option>
+                    <option value="2">Intermediate</option>
+                    <option value="3">Expert</option>
                   </select>
                 </div>
                 <div className="form-group entry input-group col-xs-3">
                   <input className="form-control" name="skill4" type="text" placeholder="" onChange={this.handleChange} />
                   <select className="form-control " name="rating4" id="skillSelect" onChange={this.handleChange}>
                     <option disabled selected value> -- Select option -- </option>
-                    <option value="0">Beginner</option>
-                    <option value="1">Intermediate</option>
-                    <option value="2">Expert</option>
+                    <option value="1">Beginner</option>
+                    <option value="2">Intermediate</option>
+                    <option value="3">Expert</option>
                   </select>
                 </div>
                 <div className="form-group entry input-group col-xs-3">
                   <input className="form-control" name="skill5" type="text" placeholder="" onChange={this.handleChange} />
                   <select className="form-control " name="rating5" id="skillSelect" onChange={this.handleChange}>
                     <option disabled selected value> -- Select option -- </option>
-                    <option value="0">Beginner</option>
-                    <option value="1">Intermediate</option>
-                    <option value="2">Expert</option>
+                    <option value="1">Beginner</option>
+                    <option value="2">Intermediate</option>
+                    <option value="3">Expert</option>
                   </select>
                 </div>
               </div>

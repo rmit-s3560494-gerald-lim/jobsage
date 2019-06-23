@@ -13,12 +13,11 @@ export default class JobsList extends Component {
 
   }
 
-  componentDidMount() {
+  componentWillMount() {
     if (localStorage.getItem('isEmployerLoggedIn') !== 'true') {
       axios.get('http://35.212.88.235/jobs/')
         .then(response => {
           this.setState({ jobs: response.data });
-          console.log(this.state.jobs);
         })
         .catch(function (error) {
           console.log(error.response);
@@ -28,15 +27,12 @@ export default class JobsList extends Component {
     else {
       if (localStorage.getItem('isAdminLoggedIn') !== 'true') {
         var user_details = JSON.parse(localStorage.getItem('user'));
-        console.log(user_details._id)
       }
       axios.get('http://35.212.88.235/jobs/view/' + user_details._id)
         .then(response => {
           this.setState({ jobs: response.data });
-          console.log(this.state.jobs);
         })
         .catch(function (error) {
-          console.log("ERROR")
           console.log(error.response);
         })
     }
@@ -44,7 +40,7 @@ export default class JobsList extends Component {
 
 
   }
-  componentDidUpdate() {
+  componentWillUpdate() {
     if (localStorage.getItem('isEmployerLoggedIn') !== 'true') {
       axios.get('http://35.212.88.235/jobs/')
         .then(response => {
@@ -58,7 +54,6 @@ export default class JobsList extends Component {
     else {
       if (localStorage.getItem('isAdminLoggedIn') !== 'true') {
         var user_details = JSON.parse(localStorage.getItem('user'));
-
       }
       axios.get('http://35.212.88.235/jobs/view/' + user_details._id)
         .then(response => {
@@ -73,7 +68,6 @@ export default class JobsList extends Component {
   }
 
   delete(job) {
-    console.log(job);
     axios.get('http://35.212.88.235/jobs/delete/' + job._id)
       .then(console.log('Deleted'))
       .catch(err => console.log(err))
@@ -95,7 +89,7 @@ export default class JobsList extends Component {
         + job.skills[0].skill5}
       </td>
       <td>{job.salary_offered}</td>
-      <td> <a href={job.url} onClick={this.addApplicant(job._id)} target="https://google.com">Apply</a></td>
+      <td> <a href={job.url} onClick={() => this.addApplicant(job._id)} target="https://google.com">Apply</a></td>
 
       {localStorage.getItem('isEmployerLoggedIn') === 'true' && (<td>
         <Link to={"/edit/" + job._id}>Edit</Link>
@@ -110,7 +104,16 @@ export default class JobsList extends Component {
   )
 
   addApplicant = (id) => {
-    console.log(id)
+    var applicant = JSON.parse(localStorage.getItem('user'))._id;
+
+    axios.post(`http://35.212.88.235/jobs/${id}/apply/${applicant}`)
+      .then(response => {
+        alert('Shown intered in job');
+      })
+      .catch(error => {
+        console.log(error);
+      })
+
   }
 
   jobsList() {
@@ -120,7 +123,6 @@ export default class JobsList extends Component {
   render() {
     return (
       <div>
-        {/* {console.log(this.state.jobs)} */}
         <Header />
         <h3 id="jobsage">Jobs List</h3>
         <div class="card">

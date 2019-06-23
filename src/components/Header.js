@@ -33,17 +33,10 @@ class Header extends Component {
 
       this.props.history.push('/adminlogin');
     }
-    if (localStorage.getItem('isEmployerLoggedIn') === 'true') {
+    if (localStorage.getItem('isEmployerLoggedIn') === 'true' || localStorage.getItem('isEmployeeLoggedIn') === 'true') {
       localStorage.setItem('isEmployerLoggedIn', 'false');
       localStorage.setItem('isAdminLoggedIn', 'false');
       localStorage.setItem('isEmployeeLoggedIn', 'false');
-
-      this.props.history.push('/login');
-    }
-    if (localStorage.getItem('isEmployeeLoggedIn') === 'true') {
-      localStorage.setItem('isEmployeeLoggedIn', 'false');
-      localStorage.setItem('isAdminLoggedIn', 'false');
-      localStorage.setItem('isEmployerLoggedIn', 'false');
 
       this.props.history.push('/login');
     }
@@ -86,7 +79,6 @@ class Header extends Component {
               </div>
             </li>
           </ul>
-          {/*<button className="btn btn-primary my-2 my-sm-0" onClick={this.handleSignOut}>Sign Out</button>*/}
         </div>
       </nav>
     );
