@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import axios from 'axios';
 import logo from '../logo.png';
 
-const Error = props => <div id="loginOrPasswordMessage" class="alert alert-danger" role="alert">Email not valid</div>
-const Success = props => <div id="loginOrPasswordMessage" class="alert alert-success" role="alert">Recovery email sent</div>
+const Error = props => <div id="helperAlert" class="alert alert-danger" role="alert">Email not valid</div>
+const Success = props => <div id="helperAlert" class="alert alert-success" role="alert">Recovery email sent</div>
 
 class ForgotPassword extends Component {
 
@@ -20,7 +20,7 @@ class ForgotPassword extends Component {
   validateEmail = () => {
     axios.get('http://35.212.88.235/users/').then(response => {
       const users = response.data;
-      if(users.find(user => user.user_email === this.state.email) !== undefined) {
+      if (users.find(user => user.user_email === this.state.email) !== undefined) {
         this.setState({
           success: true,
           error: false,

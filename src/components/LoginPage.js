@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios';
 import logo from '../logo.png';
 
-const Error = props => <div id="userLoginError" class="alert alert-danger" role="alert">Username and Password invalid</div>
+const Error = props => <div id="helperAlert" class="alert alert-danger" role="alert">Username and Password invalid</div>
 class LoginPage extends Component {
 
   constructor(props) {
@@ -89,7 +89,8 @@ class LoginPage extends Component {
               </div>
               <button type="submit" className="btn btn-primary">Submit</button>
             </form>
-            <a id="signUpLink" href="/signup">Don't have an account?</a>
+            <a id="signUpLink" href="/signup">Don't have an account?</a><br />
+            <a id="signUpLink" href="/forgotpassword">Forgot Password</a>
           </div>
         </div>
       </div>

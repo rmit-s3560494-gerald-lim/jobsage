@@ -25,14 +25,23 @@ class Header extends Component {
     e.preventDefault();
     if (localStorage.getItem('isAdminLoggedIn') === 'true') {
       localStorage.setItem('isAdminLoggedIn', 'false');
+      localStorage.setItem('isEmployerLoggedIn', 'false');
+      localStorage.setItem('isEmployeeLoggedIn', 'false');
+
       this.props.history.push('/adminlogin');
     }
     if (localStorage.getItem('isEmployerLoggedIn') === 'true') {
       localStorage.setItem('isEmployerLoggedIn', 'false');
+      localStorage.setItem('isAdminLoggedIn', 'false');
+      localStorage.setItem('isEmployeeLoggedIn', 'false');
+
       this.props.history.push('/login');
     }
     if (localStorage.getItem('isEmployeeLoggedIn') === 'true') {
       localStorage.setItem('isEmployeeLoggedIn', 'false');
+      localStorage.setItem('isAdminLoggedIn', 'false');
+      localStorage.setItem('isEmployerLoggedIn', 'false');
+
       this.props.history.push('/login');
     }
   }

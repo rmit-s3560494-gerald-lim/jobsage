@@ -22,6 +22,7 @@ import AdminHomePage from './AdminHomePage';
 import AdminRemoveUsers from './AdminRemoveUsers';
 import ProfilePage from './ProfilePage.js';
 import ViewApplicants from './ViewApplicants';
+import ForgotPassword from './ForgotPassword';
 
 class App extends Component {
   render() {
@@ -42,11 +43,11 @@ class App extends Component {
           <ProtectedSharedRoute path='/jobs' component={JobsList} />
           <ProtectedSharedRoute path='/profile' component={ProfilePage} />
 
-          <Route path='/adminlogin' component={AdminLogin} />
-          <Route path='/signup' component={SignUpPage} />
-          <Route path='/' component={LoginPage} />
-          <Route path='/login' component={LoginPage} />
-
+          <Route exact path='/adminlogin' component={AdminLogin} />
+          <Route exact path='/signup' component={SignUpPage} />
+          <Route exact path='/' component={LoginPage} />
+          <Route exact path='/login' component={LoginPage} />
+          <Route exact path='/forgotpassword' component={ForgotPassword} />
 
         </Switch>
       </BrowserRouter>

@@ -3,17 +3,13 @@ import './App.css';
 import logo from '../logo.png';
 import axios from "axios";
 
-// const PasswordMismatch = props => <div id="userLoginError" class="alert alert-danger" role="alert">Password do not match.</div>
-// const EmailInUse = props => <div id="userLoginError" class="alert alert-danger" role="alert">Email already in use.</div>
-
-const Error = props => <div id="userLoginError" class="alert alert-danger" role="alert">Password do not match.</div>
-// const Error = (type) => {
-//   if(type === 'email')
-//     return <div id="userLoginError" class="alert alert-danger" role="alert">Password do not match.</div>
-//   else {
-//     return <div id="userLoginError" class="alert alert-danger" role="alert">Email already in use.</div>
-//   }
-// }
+const Error = (props) => {
+  if (props.error === 'emailError') {
+    return <div id="helperAlert" class="alert alert-danger" role="alert">Email already used</div>
+  } else if (props.error === 'passwordError') {
+    return <div id="helperAlert" class="alert alert-danger" role="alert">Password do not match</div>
+  }
+}
 class SignUpPage extends Component {
 
   constructor(props) {
@@ -25,8 +21,7 @@ class SignUpPage extends Component {
       password1: '',
       password2: '',
       type: '',
-      emailError: false,
-      passwordError: false,
+      error: '',
     }
   }
 
@@ -34,15 +29,6 @@ class SignUpPage extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-    // if (this.state.password2 !== this.state.password1) {
-    //   this.setState({
-    //     passwordError: true,
-    //   })
-    // } else {
-    //   this.setState({
-    //     passwordError: false,
-    //   })
-    // }
   }
 
   selectChange = (e) => {
@@ -58,22 +44,32 @@ class SignUpPage extends Component {
       password: this.state.password2,
       user_type: this.state.type,
     }).then(response => {
-      console.log(response);
-      this.setState({
-        emailError: false,
-      })
+      alert('Succesfully registered. Clicking ok will redirect to login page')
       this.props.history.push('/login');
     }).catch(error => {
-      console.log(error.response);
       this.setState({
-        emailError: true,
+        error: 'emailError',
       });
     })
   }
 
+  checkPassword = () => {
+    if (this.state.password1 === this.state.password2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
-    this.validateNewUser();
+    if (this.checkPassword() === true) {
+      this.validateNewUser();
+    } else {
+      this.setState({
+        error: 'passwordError',
+      })
+    }
   }
 
   render() {
@@ -81,9 +77,7 @@ class SignUpPage extends Component {
       <div>
         <div class="centerLogin">
           <img src={logo} className="img-fluid" alt="JobSage Logo" />
-          {this.state.passwordError === true || this.state.emailError === true && (
-            <Error />
-          )}
+          {this.state.error && <Error error={this.state.error} />}
           <div class="form">
             <form onSubmit={this.handleSubmit}>
               <div class="form-group">
