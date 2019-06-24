@@ -38,19 +38,10 @@ export default class ViewApplicants extends React.Component {
       })
   }
 
-  delete(currUser) {
-    axios.get('http://35.212.88.235/users/delete/' + currUser._id)
-      .then(console.log('Deleted'))
-      .catch(err => console.log(err))
-    alert("User deleted");
-    window.location.reload();
-  }
-
   makeUserTable = (currUser) => (
     <tr>
       <td>{currUser.user_name}</td>
       <td>{currUser.user_email}</td>
-      <td><button onClick={() => this.delete(currUser)} className="btn btn-danger">Delete</button></td>
     </tr>
   )
 
@@ -71,7 +62,6 @@ export default class ViewApplicants extends React.Component {
               <tr>
                 <th>User Name</th>
                 <th>User Email</th>
-                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
